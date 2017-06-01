@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package ile_interdite;
 /**
  *
  * @author ravinelt
  */
-public class Pilote extends Aventurier {
 
-    public Pilote(int nbAction, String role, int positionX, int positionY) {
+public class Ingenieur  extends Aventurier{
+
+    public Ingenieur(int nbAction, String role, int positionX, int positionY) {
         super(nbAction, role, positionX, positionY);
     }
-      @Override
-    public void deplacer(){
-}
+    @Override
+    public void assecher(){
+        
+    }
 }

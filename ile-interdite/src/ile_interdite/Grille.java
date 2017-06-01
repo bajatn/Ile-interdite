@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ile.interdite;
+package ile_interdite;
 
 
-import static ile.interdite.Lieu.*;
-import static ile.interdite.Etat.*;
+import static ile_interdite.Etat.*;
+import static ile_interdite.Lieu.*;
 import java.util.ArrayList;
 
 /**
@@ -63,6 +63,11 @@ public class Grille {
         this.tuiles.add(new Tuile(5, 6, null, null));
         this.tuiles.add(new Tuile(6, 6, null, null));
     }
+    
+    public ArrayList<Tuile> getTuiles() {
+        return tuiles;
+    }
+    
     
     public void addToCaseDispo() {
         // Pour marc et Thomas :*

@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package ile_interdite;
 /**
  *
  * @author ravinelt
  */
-interface Observateur {
-    public void traiterMessage(Message msg);
+public class Message {
+    private TypeMessage type;
+    private int x;
+    private int y;
 }

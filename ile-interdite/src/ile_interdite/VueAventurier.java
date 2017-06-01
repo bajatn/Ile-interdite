@@ -1,4 +1,4 @@
-package view;
+package ile_interdite;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package ile_interdite;
 /**
  *
  * @author ravinelt
  */
-public enum TypeMessage {
-    DEPLACER,
-    ASSECHER,
-    CHOIX_TUILE;
+interface Observateur {
+    public void traiterMessage(Message msg);
 }
