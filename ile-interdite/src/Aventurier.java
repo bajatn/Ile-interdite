@@ -50,6 +50,9 @@ public class Aventurier {
         ArrayList<Tuile> tuilesDispo = calculerAdjacent();
         
         
+        
+        
+        
     }
     
     public void assecher(){
