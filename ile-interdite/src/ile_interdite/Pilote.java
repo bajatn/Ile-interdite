@@ -14,8 +14,8 @@ public class Pilote extends Aventurier {
         super(nbAction, role, tuile);
     }
 
-
       @Override
     public void deplacer(){
-}
+
+    }
 }

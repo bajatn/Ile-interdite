@@ -38,15 +38,9 @@ public class Controleur {
         }
     }
     
-    public ArrayList<Tuile> calculerAdjacent(int x, int y){
-        ArrayList<Tuile> result = new ArrayList<>();
-        for (Tuile tuile: grille.getTuiles()){
-            if ((tuile.getX() == x) && (tuile.getY() == (y+1)) || (tuile.getX() == x) && (tuile.getY() == (y-1)) || (tuile.getX() == (x+1)) && (tuile.getY() == y) || (tuile.getX() == (x-1)) && (tuile.getY() == y)) {
-                result.add(tuile);
-            }
-        }
-        return result;
-    }
+
+    
+    
     
     
 }

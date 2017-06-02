@@ -23,7 +23,6 @@ public class Aventurier {
         return tuileActu;
     }
     
-    
     public int getPositionX() {
         return tuileActu.getX();
     }
@@ -44,16 +43,21 @@ public class Aventurier {
     public void deplacer(){
         int posX = getPositionX();
         int posY = getPositionY();
-   
+        
+        
+        
+        
     }
     
     public void assecher(){
-        
+      
     }
     
     public void attendre(){
         
     }
-  
+    public void action(){
+        
+    }
 }
 

@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package ile_interdite;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author bajatn
@@ -14,6 +17,7 @@ public class Tuile {
     private int y;
     private Etat etat;
     private Lieu nom;
+    private Grille grille;
     
     ////////////////////////////////////////////////////
 
@@ -47,6 +51,36 @@ public class Tuile {
         // Pour Marc et Thomas
     }
     
+    public ArrayList<Tuile> calculerAutours(){
+        ArrayList<Tuile> result = new ArrayList<>();
+        for (Tuile tuile: grille.getTuiles()){
+            if ((tuile.getX() == x) && (tuile.getY() == (y+1)) || 
+                (tuile.getX() == x) && (tuile.getY() == (y-1)) || 
+                (tuile.getX() == (x+1)) && (tuile.getY() == y) || 
+                (tuile.getX() == (x-1)) && (tuile.getY() == y) || 
+                (tuile.getX() == (x+1)) && (tuile.getY() == (y+1)) ||
+                (tuile.getX() == (x-1)) && (tuile.getY() == (y+1)) ||
+                (tuile.getX() == (x+1)) && (tuile.getY() == (y-1)) ||
+                (tuile.getX() == (x-1)) && (tuile.getY() == (y-1))) 
+            {
+                result.add(tuile);
+            }
+        }
+        return result;
+    }
     
+        public ArrayList<Tuile> calculerAdjacent(int x, int y){
+        ArrayList<Tuile> result = new ArrayList<>();
+        for (Tuile tuile: grille.getTuiles()){
+            if ((tuile.getX() == x) && (tuile.getY() == (y+1)) || 
+                (tuile.getX() == x) && (tuile.getY() == (y-1)) || 
+                (tuile.getX() == (x+1)) && (tuile.getY() == y) ||
+                (tuile.getX() == (x-1)) && (tuile.getY() == y)) 
+            {
+                result.add(tuile);
+            }
+        }
+        return result;
+    }
     
 }
