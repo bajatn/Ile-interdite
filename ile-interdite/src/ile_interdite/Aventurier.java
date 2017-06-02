@@ -8,33 +8,33 @@ import java.util.*;
 public class Aventurier {
     private int nbAction;
     private String role;
-    private int positionX;
-    private int positionY;
+    
+    private Tuile tuileActu;
+    
     
 
-    public Aventurier(int nbAction, String role, int positionX, int positionY) {
+    public Aventurier(int nbAction, String role, Tuile tuile) {
         this.nbAction = nbAction;
         this.role = role;
-        this.positionX = positionX;
-        this.positionY = positionY;
+        this.tuileActu = tuile;
     }
-
+    
     public int getPositionX() {
-        return positionX;
+        return tuileActu.getX();
     }
 
-    public void setPositionX(int positionX) {
-        this.positionX = positionX;
+    public void setPositionX() {
+        
     }
 
     public int getPositionY() {
-        return positionY;
+        return tuileActu.getY();
     }
 
     public void setPositionY(int positionY) {
-        this.positionY = positionY;
+      
     }
-
+    
     public void setNbAction(int nbAction) {
         this.nbAction = nbAction;
     }
@@ -42,10 +42,9 @@ public class Aventurier {
     public void deplacer(){
         int posX = getPositionX();
         int posY = getPositionY();
+        Controleur controleur = ;
         
-        ArrayList<Tuile> tuilesDispo = calculerAdjacent();
-        
-        
+        ArrayList<Tuile> tuilesDispo = controleur.calculerAdjacent(posX, posY);
         
         
         
