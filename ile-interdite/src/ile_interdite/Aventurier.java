@@ -42,9 +42,9 @@ public class Aventurier {
     public void deplacer(){
         int posX = getPositionX();
         int posY = getPositionY();
-        Controleur controleur = ;
+   
         
-        ArrayList<Tuile> tuilesDispo = controleur.calculerAdjacent(posX, posY);
+        ArrayList<Tuile> tuilesDispo = calculerAdjacent(posX, posY);
         
         
         
