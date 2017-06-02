@@ -10,9 +10,10 @@ package ile_interdite;
  */
 public class Navigateur extends Aventurier {
 
-    public Navigateur(int nbAction, String role, int positionX, int positionY) {
-        super(nbAction, role, positionX, positionY);
+    public Navigateur(int nbAction, String role, Tuile tuile) {
+        super(nbAction, role, tuile);
     }
+
 
     
 }

@@ -11,9 +11,10 @@ package ile_interdite;
 
 public class Ingenieur  extends Aventurier{
 
-    public Ingenieur(int nbAction, String role, int positionX, int positionY) {
-        super(nbAction, role, positionX, positionY);
+    public Ingenieur(int nbAction, String role, Tuile tuile) {
+        super(nbAction, role, tuile);
     }
+
     @Override
     public void assecher(){
         

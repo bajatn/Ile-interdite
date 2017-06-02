@@ -21,17 +21,6 @@ public class Controleur {
         
     }
     
-    private String getRole(String roleAventurier){
-        
-    }
-    
-    private Tuile getTuile(int x, int y){
-        
-    }
-    
-    public Tuile choixTuile(){
-        
-    }
     
     public void traiterMessage ( Message message){
         

@@ -10,9 +10,11 @@ package ile_interdite;
  */
 public class Plongeur extends Aventurier {
 
-    public Plongeur(int nbAction, String role, int positionX, int positionY) {
-        super(nbAction, role, positionX, positionY);
+    public Plongeur(int nbAction, String role, Tuile tuile) {
+        super(nbAction, role, tuile);
     }
+
+
       @Override
     public void deplacer(){
 }

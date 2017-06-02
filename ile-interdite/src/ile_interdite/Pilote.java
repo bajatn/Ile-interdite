@@ -10,9 +10,11 @@ package ile_interdite;
  */
 public class Pilote extends Aventurier {
 
-    public Pilote(int nbAction, String role, int positionX, int positionY) {
-        super(nbAction, role, positionX, positionY);
+    public Pilote(int nbAction, String role, Tuile tuile) {
+        super(nbAction, role, tuile);
     }
+
+
       @Override
     public void deplacer(){
 }

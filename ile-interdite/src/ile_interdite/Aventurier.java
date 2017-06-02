@@ -23,16 +23,13 @@ public class Aventurier {
         return tuileActu.getX();
     }
 
-    public void setPositionX() {
-        this.
+    public void setPosition(Tuile tuile) {
+        this.tuileActu = tuile;
+        
     }
 
     public int getPositionY() {
         return tuileActu.getY();
-    }
-
-    public void setPositionY(int positionY) {
-      
     }
     
     public void setNbAction(int nbAction) {
@@ -42,9 +39,7 @@ public class Aventurier {
     public void deplacer(){
         int posX = getPositionX();
         int posY = getPositionY();
-   
         
-        ArrayList<Tuile> tuilesDispo = calculerAdjacent(posX, posY);
         
         
         
