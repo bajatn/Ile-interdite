@@ -24,7 +24,7 @@ public class Aventurier {
     }
 
     public void setPositionX() {
-        
+        this.
     }
 
     public int getPositionY() {
