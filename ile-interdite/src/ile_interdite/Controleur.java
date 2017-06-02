@@ -26,17 +26,6 @@ public class Controleur {
         
     }
     
-    public void assecher(Aventurier aventurier){
-        int positionX = aventurier.getPositionX();
-        int positionY = aventurier.getPositionY();
-        ArrayList<Tuile> collecTuiles = calculerAdjacent(positionX, positionY);
-        for (Tuile tuile: collecTuiles){
-            if (tuile.getEtat() == Etat.Inonde){
-                System.out.println("tuile : " + tuile.getNom());
-             //   vue.Afficher(tuile);
-            }
-        }
-    }
     
 
     
