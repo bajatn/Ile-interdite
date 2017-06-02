@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Grille {
     private ArrayList<Tuile> tuiles;
-
+    
     public Grille(ArrayList<Tuile> tuiles) {
         
      /*                 // Essaie boucle for pour la création de la grille
