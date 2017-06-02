@@ -18,6 +18,11 @@ public class Aventurier {
         this.role = role;
         this.tuileActu = tuile;
     }
+
+    public Tuile getTuileActu() {
+        return tuileActu;
+    }
+    
     
     public int getPositionX() {
         return tuileActu.getX();
@@ -39,10 +44,7 @@ public class Aventurier {
     public void deplacer(){
         int posX = getPositionX();
         int posY = getPositionY();
-        
-        
-        
-        
+   
     }
     
     public void assecher(){
@@ -52,8 +54,6 @@ public class Aventurier {
     public void attendre(){
         
     }
-    public void action(){
-        
-    }
+  
 }
 
