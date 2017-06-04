@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package ile_interdite;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author ravinelt
@@ -16,7 +19,16 @@ public class Ingenieur  extends Aventurier{
     }
 
     @Override
-    public void assecher(){
-        
+    public ArrayList<Tuile> assecher(){
+        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+        int positionX = getPositionX();
+        int positionY = getPositionY();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
+        for (Tuile tuile: collecTuiles){
+            if (tuile.getEtat() == Etat.Inonde){
+              choixTuile.add(tuile);
+            }
+        }
+        return choixTuile;
     }
 }

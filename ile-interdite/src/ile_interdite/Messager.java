@@ -14,7 +14,3 @@ public class Messager extends Aventurier {
         super(nbAction, role, tuile);
     }
 }
-
-    
-
-}

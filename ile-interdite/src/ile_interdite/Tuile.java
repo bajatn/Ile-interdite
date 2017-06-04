@@ -69,7 +69,7 @@ public class Tuile {
         return result;
     }
     
-        public ArrayList<Tuile> calculerAdjacent(int x, int y){
+        public ArrayList<Tuile> calculerAdjacent(){
         ArrayList<Tuile> result = new ArrayList<>();
         for (Tuile tuile: grille.getTuiles()){
             if ((tuile.getX() == x) && (tuile.getY() == (y+1)) || 

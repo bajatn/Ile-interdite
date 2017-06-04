@@ -40,17 +40,30 @@ public class Aventurier {
         this.nbAction = nbAction;
     }
     
-    public void deplacer(){
-        int posX = getPositionX();
-        int posY = getPositionY();
-        
-        
-        
-        
+    public ArrayList<Tuile> deplacer(){
+        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+        int positionX = getPositionX();
+        int positionY = getPositionY();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent(); // addToCaseDispo indispensable ???
+        for (Tuile tuile: collecTuiles){
+            if (tuile.getEtat() == Etat.Asseche){
+              choixTuile.add(tuile);
+            }
+        }
+        return choixTuile;        
     }
     
-    public void assecher(){
-      
+    public ArrayList<Tuile> assecher(){
+        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+        int positionX = getPositionX();
+        int positionY = getPositionY();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
+        for (Tuile tuile: collecTuiles){
+            if (tuile.getEtat() == Etat.Inonde){
+              choixTuile.add(tuile);
+            }
+        }
+        return choixTuile;
     }
     
     public void attendre(){

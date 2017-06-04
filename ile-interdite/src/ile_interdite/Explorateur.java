@@ -19,8 +19,17 @@ public class Explorateur extends Aventurier {
 
     
     @Override
-    public void deplacer(){
-        
+    public ArrayList<Tuile> deplacer(){
+        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+        int positionX = getPositionX();
+        int positionY = getPositionY();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAutours(); // idem ????
+        for (Tuile tuile: collecTuiles){
+            if (tuile.getEtat() == Etat.Asseche){
+              choixTuile.add(tuile);
+            }
+        }
+        return choixTuile;
     }
     
     @Override
