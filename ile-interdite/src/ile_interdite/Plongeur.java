@@ -15,6 +15,7 @@ public class Plongeur extends Aventurier {
     }
 
       @Override
-    public void deplacer(){
-}
+    public ArrayList<Tuile> deplacer(){
+        
+    }
 }

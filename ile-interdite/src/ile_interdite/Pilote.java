@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package ile_interdite;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author ravinelt
@@ -15,7 +18,7 @@ public class Pilote extends Aventurier {
     }
 
       @Override
-    public void deplacer(){
+    public ArrayList<Tuile> deplacer(){
 
     }
 }
