@@ -16,9 +16,26 @@ public class Pilote extends Aventurier {
     public Pilote(int nbAction, String role, Tuile tuile) {
         super(nbAction, role, tuile);
     }
-
+    Boolean aVole = false;
     @Override
     public ArrayList<Tuile> deplacer(){
-     
+        if(aVole = false){
+        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+        ArrayList<Tuile> collecTuiles = getTuileActu().getGrille().getTuiles();
+        aVole = true;
+        return collecTuiles;
+        }else{
+        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+        // int positionX = getPositionX();
+        // int positionY = getPositionY();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent(); // addToCaseDispo indispensable ???
+        for (Tuile tuile: collecTuiles){
+            if (tuile.getEtat() == Etat.Asseche){
+              choixTuile.add(tuile);
+            }
+        }
+        return choixTuile;        
+         }
+       }
+            
     }
-}
