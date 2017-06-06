@@ -1,5 +1,6 @@
 package ile_interdite;
 
+import static ile_interdite.Lieu.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -107,7 +108,29 @@ public class VueAventurier  {
      public static void main(String [] args) {
         // Instanciation de la fenÃªtre 
         Grille grille = new Grille();
-        Aventurier Explo = new Aventurier("Explorateur",)
+        
+        for (Tuile tuile: grille.getTuiles()){
+            
+            switch (tuile.getNom()) {
+                case La_Porte_de_Bronze:
+                    Ingenieur inge = new Ingenieur("Ingenieur", tuile);
+                    break;
+                case La_Porte_de_Cuivre:
+                    Explorateur explo = new Explorateur("Explorateur", tuile);
+                    break;
+                case Heliport:
+                    Pilote pilote = new Pilote("Pilote", tuile);
+                    break;
+                case La_Porte_de_Fer:
+                    Plongeur plongeur = new Plongeur("Plongeur", tuile);
+                    break;
+                case La_Porte_d_Argent:
+                    Messager messager = new Messager("Messager", tuile);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 

@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Explorateur extends Aventurier {
 
-    public Explorateur(int nbAction, String role, Tuile tuile) {
-        super(nbAction, role, tuile);
+    public Explorateur(String role, Tuile tuile) {
+        super(role, tuile);
     }
 
     

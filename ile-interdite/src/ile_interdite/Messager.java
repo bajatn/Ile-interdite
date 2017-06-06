@@ -10,7 +10,7 @@ package ile_interdite;
  */
 public class Messager extends Aventurier {
 
-    public Messager(int nbAction, String role, Tuile tuile) {
-        super(nbAction, role, tuile);
+    public Messager(String role, Tuile tuile) {
+        super(role, tuile);
     }
 }

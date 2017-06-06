@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Plongeur extends Aventurier {
 
-    public Plongeur(int nbAction, String role, Tuile tuile) {
-        super(nbAction, role, tuile);
+    public Plongeur(String role, Tuile tuile) {
+        super(role, tuile);
     }
 
       @Override

@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Pilote extends Aventurier {
 
-    public Pilote(int nbAction, String role, Tuile tuile) {
-        super(nbAction, role, tuile);
+    public Pilote(String role, Tuile tuile) {
+        super(role, tuile);
     }
     
     Boolean aVole = false;
