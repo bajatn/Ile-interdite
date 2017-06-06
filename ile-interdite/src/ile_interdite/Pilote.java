@@ -16,6 +16,7 @@ public class Pilote extends Aventurier {
     public Pilote(int nbAction, String role, Tuile tuile) {
         super(nbAction, role, tuile);
     }
+    
     Boolean aVole = false;
     @Override
     public ArrayList<Tuile> deplacer(){

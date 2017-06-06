@@ -25,7 +25,7 @@ public class VueAventurier  {
     private final JPanel mainPanel;
     private final JButton btnAller  ;
     private final JButton btnAssecher;
-    private final JButton btnAutreAction;
+    private final JButton btnChoixTuile;
     private final JButton btnTerminerTour;
     private final JTextField position;
     
@@ -70,12 +70,12 @@ public class VueAventurier  {
 
         this.btnAller = new JButton("Aller") ;
         this.btnAssecher = new JButton( "Assecher");
-        this.btnAutreAction = new JButton("AutreAction") ;
+        this.btnChoixTuile = new JButton("ChoixTuile") ;
         this.btnTerminerTour = new JButton("Terminer Tour") ;
         
         this.panelBoutons.add(btnAller);
         this.panelBoutons.add(btnAssecher);
-        this.panelBoutons.add(btnAutreAction);
+        this.panelBoutons.add(btnChoixTuile);
         this.panelBoutons.add(btnTerminerTour);
 
         this.window.setVisible(true);
@@ -83,7 +83,7 @@ public class VueAventurier  {
     }  
 
      public JButton getBtnAutreAction() {
-        return btnAutreAction;
+        return btnChoixTuile;
     }
 
     public void setPosition(String pos) {
@@ -106,7 +106,8 @@ public class VueAventurier  {
     
      public static void main(String [] args) {
         // Instanciation de la fenÃªtre 
-        VueAventurier vueAventurier = new VueAventurier ("Manon", "Explorateur",Color.RED);
+        Grille grille = new Grille();
+        Aventurier Explo = new Aventurier("Explorateur",)
     }
 }
 

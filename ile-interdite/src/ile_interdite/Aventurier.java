@@ -16,8 +16,8 @@ public class Aventurier {
     
     
 
-    public Aventurier(int nbAction, String role, Tuile tuile) {
-        this.nbAction = nbAction;
+    public Aventurier(String role, Tuile tuile) {
+        this.nbAction = 3;
         this.role = role;
         this.tuileActu = tuile;
     }
@@ -84,14 +84,5 @@ public class Aventurier {
         
         
     }  
-
-    
-    
-    public void attendre(){
-        
-    }
-    public void action(){
-        
-    }
 }
 
