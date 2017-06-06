@@ -19,7 +19,8 @@ public class Controleur {
     private VueAventurier vue;
     
     public void tour(){
-        
+        int nbAction = 0;
+        while(nbAction < 3)
     }
     
     
