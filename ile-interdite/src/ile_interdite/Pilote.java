@@ -17,8 +17,8 @@ public class Pilote extends Aventurier {
         super(nbAction, role, tuile);
     }
 
-      @Override
+    @Override
     public ArrayList<Tuile> deplacer(){
-
+     
     }
 }
