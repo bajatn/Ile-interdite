@@ -41,14 +41,13 @@ public class Tuile {
     public Etat getEtat() {
         return etat;
     }
+    public Grille getGrille() {
+        return grille;
+    }
+    
     
     public void setEtat(Etat etat) {
         this.etat = etat;
-    }
-
-    
-    public void addToListeCasesDispo(){
-        // Pour Marc et Thomas
     }
     
     public ArrayList<Tuile> calculerAutours(){

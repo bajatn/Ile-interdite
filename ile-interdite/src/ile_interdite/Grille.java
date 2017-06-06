@@ -69,9 +69,6 @@ public class Grille {
     }
     
     
-    public void addToCaseDispo() {
-        // Pour marc et Thomas :*
-    }
     
     public Tuile getTuile(int x, int y){
         for (Tuile tuile: tuiles){
@@ -81,7 +78,7 @@ public class Grille {
         };
         return null;
     }
-    
+      
     public void assécherTuile(int x, int y){
         if (getTuile(x, y) != null){
             getTuile(x, y).setEtat(Asseche);

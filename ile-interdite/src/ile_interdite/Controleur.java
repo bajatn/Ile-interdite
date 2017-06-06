@@ -1,4 +1,5 @@
 package ile_interdite;
+import static ile_interdite.TypeMessage.*;
 import java.util.ArrayList;
 
 /*
@@ -22,8 +23,19 @@ public class Controleur {
     }
     
     
-    public void traiterMessage ( Message message){
-        
+    public void traiterMessage (Message message){
+        if (message.getType() == DEPLACER) {
+            message.getAventurier().deplacer();
+        }
+        if (message.getType() == ASSECHER) {
+            message.getAventurier().assecher();
+        }
+        if (message.getType() == DEPLACER_CHOIX_TUILE) {
+            message.getAventurier().deplacerVersTuile(message.getX(),message.getY());
+        }
+        if (message.getType() == ASSECHER_CHOIX_TUILE) {
+            grille.assécherTuile(message.getX(),message.getY());
+        }
     }
     
     
