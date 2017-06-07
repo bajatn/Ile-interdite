@@ -1,10 +1,13 @@
 package ile_interdite;
 
 import static ile_interdite.Lieu.*;
+import static ile_interdite.TypeMessage.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -24,11 +27,12 @@ public class VueAventurier  {
     private final JFrame window;
     private final JPanel panelAventurier;
     private final JPanel mainPanel;
-    private final JButton btnAller  ;
+    private final JButton btnDeplacer  ;
     private final JButton btnAssecher;
     private final JButton btnChoixTuile;
     private final JButton btnTerminerTour;
     private final JTextField position;
+    private Observateur observateur;
     
     public VueAventurier (String nomJoueur, String nomAventurier, Color couleur){
 
@@ -69,20 +73,65 @@ public class VueAventurier  {
         this.panelBoutons.setOpaque(false);
         mainPanel.add(this.panelBoutons, BorderLayout.SOUTH);
 
-        this.btnAller = new JButton("Aller") ;
+        this.btnDeplacer = new JButton("Aller") ;
         this.btnAssecher = new JButton( "Assecher");
         this.btnChoixTuile = new JButton("ChoixTuile") ;
         this.btnTerminerTour = new JButton("Terminer Tour") ;
         
-        this.panelBoutons.add(btnAller);
+        this.panelBoutons.add(btnDeplacer);
         this.panelBoutons.add(btnAssecher);
         this.panelBoutons.add(btnChoixTuile);
         this.panelBoutons.add(btnTerminerTour);
 
         this.window.setVisible(true);
         mainPanel.repaint();
-    }  
-
+        
+        btnDeplacer.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(DEPLACER);
+                    observateur.traiterMessage(m);
+                }
+     });
+        btnAssecher.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(ASSECHER);
+                    observateur.traiterMessage(m);
+                }
+     });
+        btnDeplacer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Message m = new Message();
+                m.setType(DEPLACER);
+                observateur.traiterMessage(m);
+            }
+        });
+           btnChoixTuile.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    if(m.getType() == DEPLACER){
+                        m.setType(DEPLACER_CHOIX_TUILE);
+                        observateur.traiterMessage(m);
+                    }else if(m.getType() == ASSECHER){
+                        m.setType(ASSECHER_CHOIX_TUILE);
+                        observateur.traiterMessage(m);
+                    }
+                }
+        });
+           btnTerminerTour.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TERMINER_TOUR);
+                    observateur.traiterMessage(m);
+            }
+        });   
+    }
      public JButton getBtnAutreAction() {
         return btnChoixTuile;
     }
@@ -92,7 +141,7 @@ public class VueAventurier  {
     }
 
     public JButton getBtnAller() {
-        return btnAller;
+        return btnDeplacer;
     }
     
     public JButton getBtnAssecher() {
@@ -108,7 +157,6 @@ public class VueAventurier  {
      public static void main(String [] args) {
         // Instanciation de la fenÃªtre 
         Grille grille = new Grille();
-        
         for (Tuile tuile: grille.getTuiles()){
             
             switch (tuile.getNom()) {
@@ -131,6 +179,7 @@ public class VueAventurier  {
                     break;
             }
         }
+    
     }
 }
 

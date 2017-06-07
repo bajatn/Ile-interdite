@@ -21,9 +21,17 @@ public class Message {
         this.aventurier = aventurier;
     }
 
+    Message() {
+    }
+
     public TypeMessage getType() {
         return type;
     }
+
+    public void setType(TypeMessage type) {
+        this.type = type;
+    }
+    
 
     public int getX() {
         return x;

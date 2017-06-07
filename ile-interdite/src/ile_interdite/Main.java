@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 package ile_interdite;
+
 /**
  *
  * @author ravinelt
  */
-public enum TypeMessage {
-    DEPLACER,
-    ASSECHER,
-    DEPLACER_CHOIX_TUILE,
-    ASSECHER_CHOIX_TUILE,
-    TERMINER_TOUR;
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        new Controleur();
+    }
+    
 }
