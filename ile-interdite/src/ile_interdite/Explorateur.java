@@ -25,7 +25,7 @@ public class Explorateur extends Aventurier {
         int positionY = getPositionY();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAutours(); // idem ????
         for (Tuile tuile: collecTuiles){
-            if (tuile.getEtat() == Etat.Asseche){
+            if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
               choixTuile.add(tuile);
             }
         }

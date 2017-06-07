@@ -31,7 +31,7 @@ public class Pilote extends Aventurier {
         // int positionY = getPositionY();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent(); // addToCaseDispo indispensable ???
         for (Tuile tuile: collecTuiles){
-            if (tuile.getEtat() == Etat.Asseche){
+            if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
               choixTuile.add(tuile);
             }
         }

@@ -19,6 +19,7 @@ public class Controleur {
     private VueAventurier vue;
     private int actionRestantes = 3;
     private int compteurTour = 0;
+    private Aventurier joueurCourant;
     
     
     public void traiterMessage (Message message){
@@ -26,11 +27,9 @@ public class Controleur {
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
                 message.getAventurier().deplacer();
-                actionRestantes--;
                 break;
             case ASSECHER:
                 message.getAventurier().assecher();
-                actionRestantes--;
                 break;
             case DEPLACER_CHOIX_TUILE:
                 message.getAventurier().deplacerVersTuile(message.getX(),message.getY());
@@ -43,12 +42,14 @@ public class Controleur {
             default:
                 break;
         }
-            if(actionRestantes < 1){
-                compteurTour++;
-                aventuriers.get(compteurTour%4);
-                        }
-            }
+            
+            
+        if(actionRestantes < 1){
+            compteurTour++;
+            joueurCourant = aventuriers.get(compteurTour%4);
+        }
     }
+}
     
     
 

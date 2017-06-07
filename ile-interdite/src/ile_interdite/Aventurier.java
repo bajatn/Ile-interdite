@@ -47,11 +47,9 @@ public class Aventurier {
     
     public ArrayList<Tuile> deplacer(){
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-        // int positionX = getPositionX();
-        // int positionY = getPositionY();
-        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent(); // addToCaseDispo indispensable ???
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
         for (Tuile tuile: collecTuiles){
-            if (tuile.getEtat() == Etat.Asseche){
+            if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
               choixTuile.add(tuile);
             }
         }
@@ -60,8 +58,6 @@ public class Aventurier {
     
     public ArrayList<Tuile> assecher(){
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-        //int positionX = getPositionX();
-        //int positionY = getPositionY();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
         for (Tuile tuile: collecTuiles){
             if (tuile.getEtat() == Etat.Inonde){

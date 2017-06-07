@@ -20,8 +20,6 @@ public class Plongeur extends Aventurier {
       @Override
     public ArrayList<Tuile> deplacer(){
       ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-        //int positionX = getPositionX();
-       // int positionY = getPositionY();
       ArrayList<Tuile> tuilesEau;
       ArrayList<Tuile> tuilesEau2 = new ArrayList();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent(); 
