@@ -17,26 +17,37 @@ public class Controleur {
     private Grille grille;
     private ArrayList<Aventurier> aventuriers;
     private VueAventurier vue;
-    
-    public void tour(){
-        int nbAction = 0;
-        while(nbAction < 3)
-    }
+    private int actionRestantes = 3;
+    private int compteurTour = 0;
     
     
     public void traiterMessage (Message message){
-        if (message.getType() == DEPLACER) {
-            message.getAventurier().deplacer();
+        
+        if (null != message.getType()) switch (message.getType()) {
+            case DEPLACER:
+                message.getAventurier().deplacer();
+                actionRestantes--;
+                break;
+            case ASSECHER:
+                message.getAventurier().assecher();
+                actionRestantes--;
+                break;
+            case DEPLACER_CHOIX_TUILE:
+                message.getAventurier().deplacerVersTuile(message.getX(),message.getY());
+                actionRestantes--;
+                break;
+            case ASSECHER_CHOIX_TUILE:
+                grille.assécherTuile(message.getX(),message.getY());
+                actionRestantes--;
+                break;
+            default:
+                break;
         }
-        if (message.getType() == ASSECHER) {
-            message.getAventurier().assecher();
-        }
-        if (message.getType() == DEPLACER_CHOIX_TUILE) {
-            message.getAventurier().deplacerVersTuile(message.getX(),message.getY());
-        }
-        if (message.getType() == ASSECHER_CHOIX_TUILE) {
-            grille.assécherTuile(message.getX(),message.getY());
-        }
+            if(actionRestantes < 1){
+                compteurTour++;
+                aventuriers.get(compteurTour%4);
+                        }
+            }
     }
     
     
@@ -45,4 +56,4 @@ public class Controleur {
     
     
     
-}
+
