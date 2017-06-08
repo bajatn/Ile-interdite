@@ -20,9 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    
-        VueAventurier vue = new VueAventurier("nomJoueur","nomAventurier",Color.darkGray);
-        //new Controleur();
+        Controleur controleur = new Controleur();
     }
     
 }

@@ -18,14 +18,7 @@ public class Grille {
     private ArrayList<Tuile> tuiles;
     
     public Grille() {
-        
-     /*                 // Essaie boucle for pour la création de la grille
-        Lieu lieuElem 
-        for (int i=1; i<=36; i++) {
-            Tuile tuile = new Tuile(i%6, i, Asséché, Lieu[1]);
-        }
-     */
-    
+        tuiles = new ArrayList();        
         this.tuiles.add(new Tuile(1, 1, null, null));
         this.tuiles.add(new Tuile(2, 1, null, null));
         this.tuiles.add(new Tuile(3, 1, Asseche, Le_Pont_des_Abimes));

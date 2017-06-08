@@ -1,3 +1,5 @@
+
+
 package ile_interdite;
 
 import static ile_interdite.Lieu.*;
@@ -85,6 +87,7 @@ public class VueAventurier  {
         this.window.setVisible(true);
         mainPanel.repaint();
         
+
         btnDeplacer.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
