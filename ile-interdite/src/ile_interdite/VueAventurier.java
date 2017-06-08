@@ -132,7 +132,8 @@ public class VueAventurier  {
                     m.setType(TERMINER_TOUR);
                     observateur.traiterMessage(m);
             }
-        });   
+        });  
+           position.addActionListener()
     }
      public JButton getBtnAutreAction() {
         return btnChoixTuile;
