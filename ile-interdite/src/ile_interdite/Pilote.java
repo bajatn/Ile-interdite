@@ -14,30 +14,36 @@ import java.util.ArrayList;
  */
 public class Pilote extends Aventurier {
 
+    private boolean aVole;
+    
     public Pilote(Tuile tuile) {
         super("Pilote", tuile, Color.BLUE);
+        aVole = false;
+    }
+
+    public boolean getAVole() {
+        return aVole;
+    }
+    public void setAVole(boolean aVole) {
+        this.aVole = aVole;
     }
     
-    Boolean aVole = false;
+    
     @Override
     public ArrayList<Tuile> deplacer(){
         if(aVole = false){
-        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-        ArrayList<Tuile> collecTuiles = getTuileActu().getGrille().getTuiles();
-        aVole = true;
-        return collecTuiles;
-        }else{
-        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-        // int positionX = getPositionX();
-        // int positionY = getPositionY();
-        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
-        for (Tuile tuile: collecTuiles){
-            if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
-              choixTuile.add(tuile);
+            ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+            for (Tuile tuile: getTuileActu().getGrille().getTuiles()){ 
+                if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
+                    choixTuile.add(tuile);
+                }
             }
+            aVole = true;
+            return choixTuile;
+        } else {
+            return super.deplacer();
         }
-        return choixTuile;        
-         }
-       }
-            
     }
+            
+}
+

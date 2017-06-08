@@ -18,26 +18,49 @@ public class Plongeur extends Aventurier {
         super("Plongeur", tuile, Color.BLACK);
     }
 
-      @Override
+    @Override
     public ArrayList<Tuile> deplacer(){
-      ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-      ArrayList<Tuile> tuilesEau;
-      ArrayList<Tuile> tuilesEau2 = new ArrayList();
-        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent(); 
-        for (Tuile tuile: collecTuiles){
-           choixTuile.add(tuile);
-           if (tuile.getEtat() == Etat.Inonde || tuile.getEtat() == Etat.Submerge ){
-               tuilesEau = tuile.calculerAdjacent();
-               for(Tuile tuileSub : tuilesEau){
-                   if(tuile.getEtat()!=Etat.Asseche){
-                        tuilesEau2.add(tuileSub);
-                   }
-               }
-           }            
+        
+        ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
+        ArrayList<Tuile> tuilesEauAccessibles = new ArrayList<Tuile>();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
+        // Examine les tuiles adjacentes
+        for (Tuile tuile: collecTuiles){ 
+            if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
+                choixTuile.add(tuile);
+            }
+            // Si il y a de l'eau dessus, on l'ajoute à tuilesEauAccessibles
+            if (tuile.getEtat() == Etat.Submerge || tuile.getEtat() == Etat.Inonde){
+                tuilesEauAccessibles.add(tuile);
+            }
         }
-        for(Tuile tuile : tuilesEau2){
-            choixTuile.add(tuile);
+        boolean modif = true;
+        // Tant qu'on modifies tuilesEauAccessibles
+        while (modif = true) {
+            modif = false;
+            // On parcours tuilesEauAccessibles
+            for (Tuile tuileEau: tuilesEauAccessibles){
+                // On parcours les tuiles adjacentes aux tuiles de tuilesEauAccessibles
+                for (Tuile tuile: tuileEau.calculerAdjacent()){
+                    if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
+                        choixTuile.add(tuile);
+                    }
+                    // Si il y a de l'eau dessus, on l'ajoute à tuilesEauAccessibles
+                    if (tuile.getEtat() == Etat.Submerge || tuile.getEtat() == Etat.Inonde){
+                        tuilesEauAccessibles.add(tuile);
+                        modif = true;
+                    }
+                }
+            }
         }
-        return choixTuile;
+        // Enleve la tuile sur laquelle est le joueur
+        for (Tuile tuile: choixTuile){
+            if (tuile == this.getTuileActu()){
+                choixTuile.remove(tuile);
+            }
+        }
+        
+        return choixTuile;     
+        
     } 
 }
