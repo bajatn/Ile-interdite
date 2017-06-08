@@ -5,7 +5,6 @@
  */
 package ile_interdite;
 import ile_interdite.*;
-//import com.sun.prism.paint.Color;
 import java.awt.Color;
 
 

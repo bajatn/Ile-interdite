@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public class Messager extends Aventurier {
 
-    public Messager(String role, Tuile tuile) {
-        super("Messager", tuile,Color.GRAY);
+    public Messager(Tuile tuile) {
+        super("Messager", tuile, Color.GRAY);
     }
 }

@@ -35,24 +35,26 @@ public class VueAventurier  {
     private final JButton btnTerminerTour;
     private final JTextField position;
     private Observateur observateur;
+    private JLabel nomAventurier;
     
     public VueAventurier (String nomJoueur, String nomAventurier, Color couleur){
         this.window = new JFrame();
         window.setSize(350, 200);
-
+        
         window.setTitle(nomJoueur);
         mainPanel = new JPanel(new BorderLayout());
         this.window.add(mainPanel);
         
         mainPanel.setBackground(new Color(230, 230, 230));
-        mainPanel.setBorder(BorderFactory.createLineBorder(couleur, 2)) ;
+        mainPanel.setBorder(BorderFactory.createLineBorder(couleur, 2));
 
         // =================================================================================
         // NORD : le titre = nom de l'aventurier + nom du joueur sur la couleurActive du pion
 
         this.panelAventurier = new JPanel();
         panelAventurier.setBackground(couleur);
-        panelAventurier.add(new JLabel(nomAventurier,SwingConstants.CENTER));
+        this.nomAventurier =new JLabel(nomAventurier,SwingConstants.CENTER);
+        panelAventurier.add(this.nomAventurier);
         mainPanel.add(panelAventurier, BorderLayout.NORTH);
    
         // =================================================================================
@@ -88,27 +90,27 @@ public class VueAventurier  {
         mainPanel.repaint();
         
 
-        btnDeplacer.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Message m = new Message();
-                    m.setType(DEPLACER);
-                    observateur.traiterMessage(m);
-                }
-     });
+      
         btnAssecher.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Message m = new Message();
                     m.setType(ASSECHER);
+                    
                     observateur.traiterMessage(m);
+                   
                 }
      });
         btnDeplacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String stringPosition;
                 Message m = new Message();
                 m.setType(DEPLACER);
+               // String stringPositionTextField = new String(position.getText());
+               // System.out.println(stringPositionTextField);
+               // System.out.print(m.getType().toString());                
+               // m.setCoordonees(4,4);
                 observateur.traiterMessage(m);
             }
         });
@@ -116,13 +118,11 @@ public class VueAventurier  {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Message m = new Message();
-                    if(m.getType() == DEPLACER){
-                        m.setType(DEPLACER_CHOIX_TUILE);
-                        observateur.traiterMessage(m);
-                    }else if(m.getType() == ASSECHER){
-                        m.setType(ASSECHER_CHOIX_TUILE);
-                        observateur.traiterMessage(m);
-                    }
+                    m.setType(CHOIX_TUILE);
+                    int x = Integer.parseInt(Character.toString(position.getText().charAt(0)));
+                    int y = Integer.parseInt(Character.toString(position.getText().charAt(2)));
+                    m.setCoordonees(x, y);
+                    observateur.traiterMessage(m);
                 }
         });
            btnTerminerTour.addActionListener(new ActionListener() {
@@ -132,8 +132,11 @@ public class VueAventurier  {
                     m.setType(TERMINER_TOUR);
                     observateur.traiterMessage(m);
             }
-        });  
-           position.addActionListener()
+        });
+    
+    }
+     public void setObservateur(Observateur observateur) {
+        this.observateur = observateur;
     }
      public JButton getBtnAutreAction() {
         return btnChoixTuile;
@@ -154,7 +157,25 @@ public class VueAventurier  {
     public JButton getBtnTerminerTour() {
         return btnTerminerTour;
     }
- 
+    
+   /* public void fermerFenetre(){
+        window.dispose();
+    }*/
+    
+    public void mettreAJour(String nomJoueur, String nomAventurier, Color couleur){
+        window.setTitle(nomJoueur);
+        mainPanel.setBorder(BorderFactory.createLineBorder(couleur, 2));
+        panelAventurier.add(new JLabel(nomAventurier,SwingConstants.CENTER));
+        panelAventurier.setBackground(couleur);
+        this.panelCentre.setBorder(new MatteBorder(0, 0, 2, 0, couleur));
+        this.nomAventurier =new JLabel(nomAventurier,SwingConstants.CENTER);
+
+        window.repaint();
+        
+
+
+    }
+    
 
     
     /* public static void main(String [] args) {

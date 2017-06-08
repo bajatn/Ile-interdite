@@ -21,11 +21,12 @@ public class Tuile {
     
     ////////////////////////////////////////////////////
 
-    public Tuile(int x, int y, Etat etat, Lieu nom) {
+    public Tuile(int x, int y, Etat etat, Lieu nom, Grille grille) {
         this.x = x;
         this.y = y;
         this.etat = etat;
         this.nom = nom;
+        this.grille = grille;
     }
 
     

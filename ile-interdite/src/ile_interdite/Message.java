@@ -12,13 +12,11 @@ public class Message {
     private TypeMessage type;
     private int x;
     private int y;
-    private Aventurier aventurier;
 
-    public Message(TypeMessage type, int x, int y, Aventurier aventurier) {
+    public Message(TypeMessage type, int x, int y) {
         this.type = type;
         this.x = x;
         this.y = y;
-        this.aventurier = aventurier;
     }
 
     Message() {
@@ -32,6 +30,11 @@ public class Message {
         this.type = type;
     }
     
+    public void setCoordonees(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    
 
     public int getX() {
         return x;
@@ -41,9 +44,6 @@ public class Message {
         return y;
     }
 
-    public Aventurier getAventurier() {
-        return aventurier;
-    }
     
     
 }

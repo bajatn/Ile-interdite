@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public class Navigateur extends Aventurier {
 
-    public Navigateur(String role, Tuile tuile) {
+    public Navigateur( Tuile tuile) {
         super("Navigateur", tuile,Color.YELLOW);
     }
 

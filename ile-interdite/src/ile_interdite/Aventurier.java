@@ -68,16 +68,9 @@ public class Aventurier {
     
     public void deplacerVersTuile(int x, int y){
         Tuile tuileVisee = null;
-        for (Tuile tuile: tuileActu.getGrille().getTuiles()){
-            if (tuile.getX() == x && tuile.getY() == y){
-                tuileVisee = tuile;
-            }
-        }
-        if (tuileVisee != null && tuileVisee.getEtat() != Submerge){
-            setTuileActu(tuileVisee);
-        }
-        
-        
+        tuileVisee = this.getTuileActu().getGrille().getTuile(x, y);
+        setTuileActu(tuileVisee);
+        System.out.println("Votre Aventurier c'est déplacé en " + x + "-" + y);System.out.println("");
     }  
 }
 

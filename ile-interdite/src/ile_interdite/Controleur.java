@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author ravinelt
  */
-public class Controleur {
+public class Controleur implements Observateur{
     
     private Grille grille;
     private ArrayList<Aventurier> aventuriers;
@@ -14,6 +14,7 @@ public class Controleur {
     private int actionRestantes = 3;
     private int compteurTour = 0;
     private Aventurier joueurCourant;
+    private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher 
 
     public Controleur() {
         this.grille = new Grille();
@@ -22,29 +23,40 @@ public class Controleur {
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
         aventuriers.add(new Plongeur(grille.getTuile(3,2)));
-        this.joueurCourant = aventuriers.get(0);
+        this.joueurCourant = aventuriers.get(1);
         this.vue = new VueAventurier("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
-
-        
+        vue.setObservateur(this);        
     }
     
+    @Override
     public void traiterMessage (Message message){
         
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
-                message.getAventurier().deplacer();
+                Afficher(joueurCourant.deplacer());
+                actionSelect = 0;
                 break;
+                
             case ASSECHER:
-                message.getAventurier().assecher();
+                Afficher(joueurCourant.assecher());
+                actionSelect = 1;
                 break;
-            case DEPLACER_CHOIX_TUILE:
-                message.getAventurier().deplacerVersTuile(message.getX(),message.getY());
+                
+            case CHOIX_TUILE:
+                if (actionSelect == 0) {
+                    joueurCourant.deplacerVersTuile(message.getX(),message.getY());
+                } else {
+                    grille.assécherTuile(message.getX(),message.getY());
+                }
                 actionRestantes--;
                 break;
-            case ASSECHER_CHOIX_TUILE:
-                grille.assécherTuile(message.getX(),message.getY());
-                actionRestantes--;
+                
+            case TERMINER_TOUR:
+                System.out.println("TERMINER_TOUR");
+                actionRestantes = 0;
+                      
                 break;
+                
             default:
                 break;
         }
@@ -53,6 +65,19 @@ public class Controleur {
         if(actionRestantes < 1){
             compteurTour++;
             joueurCourant = aventuriers.get(compteurTour%4);
+            actionRestantes = 3;
+            System.out.println("C'est maintenant le tour du "+joueurCourant.getRole());
+            this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
+
+            // Pense a faire en sorte que si le joueur etais un pilote on lui met son attribut "aVole" à false
+        }
+    }
+
+    private void Afficher(ArrayList<Tuile> tuiles) {
+        System.out.println("");
+        System.out.println("Tuiles dispos :");
+        for (Tuile tuile: tuiles){
+            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
         }
     }
 }
@@ -63,4 +88,5 @@ public class Controleur {
     
     
     
+
 

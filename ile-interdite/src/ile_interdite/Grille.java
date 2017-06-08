@@ -19,42 +19,42 @@ public class Grille {
     
     public Grille() {
         tuiles = new ArrayList();        
-        this.tuiles.add(new Tuile(1, 1, null, null));
-        this.tuiles.add(new Tuile(2, 1, null, null));
-        this.tuiles.add(new Tuile(3, 1, Asseche, Le_Pont_des_Abimes));
-        this.tuiles.add(new Tuile(4, 1, Inonde, La_Porte_de_Bronze));
-        this.tuiles.add(new Tuile(5, 1, null, null));
-        this.tuiles.add(new Tuile(6, 1, null, null));
-        this.tuiles.add(new Tuile(1, 2, null, null));
-        this.tuiles.add(new Tuile(2, 2, Asseche, La_Caverne_des_Ombres));
-        this.tuiles.add(new Tuile(3, 2, Asseche, La_Porte_de_Fer));
-        this.tuiles.add(new Tuile(4, 2, Asseche, La_Porte_d_Or));
-        this.tuiles.add(new Tuile(5, 2, Asseche, Les_Falaises_de_l_Oubli));
-        this.tuiles.add(new Tuile(6, 2, null, null));
-        this.tuiles.add(new Tuile(1, 3, Asseche, Le_Palais_de_Corail));
-        this.tuiles.add(new Tuile(2, 3, Asseche, La_Porte_d_Argent));
-        this.tuiles.add(new Tuile(3, 3, Submerge, Les_Dunes_de_l_Illusion));
-        this.tuiles.add(new Tuile(4, 3, Asseche, Heliport));
-        this.tuiles.add(new Tuile(5, 3, Asseche, La_Porte_de_Cuivre));
-        this.tuiles.add(new Tuile(6, 3, Asseche, Le_Jardin_des_Hurlements));
-        this.tuiles.add(new Tuile(1, 4, Asseche, La_Foret_Pourpre));
-        this.tuiles.add(new Tuile(2, 4, Inonde, Le_Lagon_Perdu));
-        this.tuiles.add(new Tuile(3, 4, Submerge, Le_Marais_Brumeux));
-        this.tuiles.add(new Tuile(4, 4, Inonde, Observatoire));
-        this.tuiles.add(new Tuile(5, 4, Submerge, Le_Rocher_Fantome));
-        this.tuiles.add(new Tuile(6, 4, Inonde, La_Caverne_du_Brasier));
-        this.tuiles.add(new Tuile(1, 5, null, null));
-        this.tuiles.add(new Tuile(2, 5, Asseche, Le_Temple_du_Soleil));
-        this.tuiles.add(new Tuile(3, 5, Submerge, Le_Temple_de_La_Lune));
-        this.tuiles.add(new Tuile(4, 5, Asseche, Le_Palais_des_Marees));
-        this.tuiles.add(new Tuile(5, 5, Asseche, Le_Val_du_Crepuscule));
-        this.tuiles.add(new Tuile(6, 5, null, null));
-        this.tuiles.add(new Tuile(1, 6, null, null));
-        this.tuiles.add(new Tuile(2, 6, null, null));
-        this.tuiles.add(new Tuile(3, 6, Asseche, La_Tour_du_Guet));
-        this.tuiles.add(new Tuile(4, 6, Inonde, Le_Jardin_des_Murmures));
-        this.tuiles.add(new Tuile(5, 6, null, null));
-        this.tuiles.add(new Tuile(6, 6, null, null));
+        this.tuiles.add(new Tuile(1, 1, null, null, this));
+        this.tuiles.add(new Tuile(2, 1, null, null, this));
+        this.tuiles.add(new Tuile(3, 1, Asseche, Le_Pont_des_Abimes, this));
+        this.tuiles.add(new Tuile(4, 1, Inonde, La_Porte_de_Bronze, this));
+        this.tuiles.add(new Tuile(5, 1, null, null, this));
+        this.tuiles.add(new Tuile(6, 1, null, null, this));
+        this.tuiles.add(new Tuile(1, 2, null, null, this));
+        this.tuiles.add(new Tuile(2, 2, Asseche, La_Caverne_des_Ombres, this));
+        this.tuiles.add(new Tuile(3, 2, Asseche, La_Porte_de_Fer, this));
+        this.tuiles.add(new Tuile(4, 2, Asseche, La_Porte_d_Or, this));
+        this.tuiles.add(new Tuile(5, 2, Asseche, Les_Falaises_de_l_Oubli, this));
+        this.tuiles.add(new Tuile(6, 2, null, null, this));
+        this.tuiles.add(new Tuile(1, 3, Asseche, Le_Palais_de_Corail, this));
+        this.tuiles.add(new Tuile(2, 3, Asseche, La_Porte_d_Argent, this));
+        this.tuiles.add(new Tuile(3, 3, Submerge, Les_Dunes_de_l_Illusion, this));
+        this.tuiles.add(new Tuile(4, 3, Asseche, Heliport, this));
+        this.tuiles.add(new Tuile(5, 3, Asseche, La_Porte_de_Cuivre, this));
+        this.tuiles.add(new Tuile(6, 3, Asseche, Le_Jardin_des_Hurlements, this));
+        this.tuiles.add(new Tuile(1, 4, Asseche, La_Foret_Pourpre, this));
+        this.tuiles.add(new Tuile(2, 4, Inonde, Le_Lagon_Perdu, this));
+        this.tuiles.add(new Tuile(3, 4, Submerge, Le_Marais_Brumeux, this));
+        this.tuiles.add(new Tuile(4, 4, Inonde, Observatoire, this));
+        this.tuiles.add(new Tuile(5, 4, Submerge, Le_Rocher_Fantome, this));
+        this.tuiles.add(new Tuile(6, 4, Inonde, La_Caverne_du_Brasier, this));
+        this.tuiles.add(new Tuile(1, 5, null, null, this));
+        this.tuiles.add(new Tuile(2, 5, Asseche, Le_Temple_du_Soleil, this));
+        this.tuiles.add(new Tuile(3, 5, Submerge, Le_Temple_de_La_Lune, this));
+        this.tuiles.add(new Tuile(4, 5, Asseche, Le_Palais_des_Marees, this));
+        this.tuiles.add(new Tuile(5, 5, Asseche, Le_Val_du_Crepuscule, this));
+        this.tuiles.add(new Tuile(6, 5, null, null, this));
+        this.tuiles.add(new Tuile(1, 6, null, null, this));
+        this.tuiles.add(new Tuile(2, 6, null, null, this));
+        this.tuiles.add(new Tuile(3, 6, Asseche, La_Tour_du_Guet, this));
+        this.tuiles.add(new Tuile(4, 6, Inonde, Le_Jardin_des_Murmures, this));
+        this.tuiles.add(new Tuile(5, 6, null, null, this));
+        this.tuiles.add(new Tuile(6, 6, null, null, this));
     }
     
     public ArrayList<Tuile> getTuiles() {
@@ -75,6 +75,7 @@ public class Grille {
     public void assécherTuile(int x, int y){
         if (getTuile(x, y) != null){
             getTuile(x, y).setEtat(Asseche);
+            System.out.println("La tuile " + x + "-" + y + " a été asséchée");System.out.println("");
         }
     }
     
