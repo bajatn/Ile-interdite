@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Pilote extends Aventurier {
 
-    public Pilote(String role, Tuile tuile) {
-        super(role, tuile);
+    public Pilote(Tuile tuile) {
+        super("Pilote", tuile);
     }
     
     Boolean aVole = false;
@@ -29,7 +29,7 @@ public class Pilote extends Aventurier {
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
         // int positionX = getPositionX();
         // int positionY = getPositionY();
-        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent(); // addToCaseDispo indispensable ???
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
         for (Tuile tuile: collecTuiles){
             if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
               choixTuile.add(tuile);

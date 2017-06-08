@@ -2,12 +2,6 @@ package ile_interdite;
 import static ile_interdite.TypeMessage.*;
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author ravinelt
@@ -20,7 +14,17 @@ public class Controleur {
     private int actionRestantes = 3;
     private int compteurTour = 0;
     private Aventurier joueurCourant;
-    
+
+    public Controleur() {
+        this.grille = new Grille();
+        this.aventuriers = new ArrayList<>();
+        aventuriers.add(new Pilote(grille.getTuile(4,3)));
+        aventuriers.add(new Explorateur(grille.getTuile(5,3)));
+        aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
+        aventuriers.add(new Plongeur(grille.getTuile(3,2)));
+        this.vue = new VueAventurier();
+        this.joueurCourant = new Aventurier();
+    }
     
     public void traiterMessage (Message message){
         

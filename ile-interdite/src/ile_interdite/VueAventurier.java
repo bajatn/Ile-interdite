@@ -35,14 +35,13 @@ public class VueAventurier  {
     private Observateur observateur;
     
     public VueAventurier (String nomJoueur, String nomAventurier, Color couleur){
-
         this.window = new JFrame();
         window.setSize(350, 200);
 
         window.setTitle(nomJoueur);
         mainPanel = new JPanel(new BorderLayout());
         this.window.add(mainPanel);
-
+        
         mainPanel.setBackground(new Color(230, 230, 230));
         mainPanel.setBorder(BorderFactory.createLineBorder(couleur, 2)) ;
 
@@ -51,7 +50,7 @@ public class VueAventurier  {
 
         this.panelAventurier = new JPanel();
         panelAventurier.setBackground(couleur);
-        panelAventurier.add(new JLabel(nomAventurier,SwingConstants.CENTER ));
+        panelAventurier.add(new JLabel(nomAventurier,SwingConstants.CENTER));
         mainPanel.add(panelAventurier, BorderLayout.NORTH);
    
         // =================================================================================
@@ -154,7 +153,7 @@ public class VueAventurier  {
  
 
     
-     public static void main(String [] args) {
+    /* public static void main(String [] args) {
         // Instanciation de la fenÃªtre 
         Grille grille = new Grille();
         for (Tuile tuile: grille.getTuiles()){
@@ -180,7 +179,7 @@ public class VueAventurier  {
             }
         }
     
-    }
+    }*/
 }
 
  

@@ -11,7 +11,7 @@ package ile_interdite;
 public class Navigateur extends Aventurier {
 
     public Navigateur(String role, Tuile tuile) {
-        super(role, tuile);
+        super("Navigateur", tuile);
     }
 
 

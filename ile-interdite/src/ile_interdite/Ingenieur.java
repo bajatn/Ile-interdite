@@ -13,7 +13,7 @@ package ile_interdite;
 
 public class Ingenieur  extends Aventurier{
 
-    public Ingenieur(String role, Tuile tuile) {
-        super(role, tuile);
+    public Ingenieur(Tuile tuile) {
+        super("Ingénieur", tuile);
     }
 }

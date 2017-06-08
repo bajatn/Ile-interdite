@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package ile_interdite;
+import ile_interdite.*;
+//import com.sun.prism.paint.Color;
+import java.awt.Color;
+
 
 /**
  *
@@ -16,7 +20,9 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new Controleur();
+    
+        VueAventurier vue = new VueAventurier("nomJoueur","nomAventurier",Color.darkGray);
+        //new Controleur();
     }
     
 }

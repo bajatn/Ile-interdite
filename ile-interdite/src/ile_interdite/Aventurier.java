@@ -9,15 +9,9 @@ import java.util.*;
 public class Aventurier {
     private int nbAction;
     private String role;
-    
     private Tuile tuileActu;
 
-    
-    
-    
-
     public Aventurier(String role, Tuile tuile) {
-        this.nbAction = 3;
         this.role = role;
         this.tuileActu = tuile;
     }
