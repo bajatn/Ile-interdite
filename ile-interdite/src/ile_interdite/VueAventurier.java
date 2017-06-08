@@ -158,19 +158,10 @@ public class VueAventurier  {
         return btnTerminerTour;
     }
     
-   /* public void fermerFenetre(){
-        window.dispose();
-    }*/
-    
     public void mettreAJour(String nomJoueur, String nomAventurier, Color couleur){
         window.setTitle(nomJoueur);
         mainPanel.setBorder(BorderFactory.createLineBorder(couleur, 2));
-        //panelAventurier.setBackground(couleur);
         this.panelCentre.setBorder(new MatteBorder(0, 0, 2, 0, couleur));
-        //panelAventurier.remove(this.nomAventurier);
-        //this.nomAventurier =new JLabel(nomAventurier,SwingConstants.CENTER);
-        //panelAventurier.add(this.nomAventurier);
-        //nomAventurier.setText("")
         panelAventurier.setBackground(couleur);
         this.nomAventurier.setText(nomAventurier);
         panelAventurier.add(this.nomAventurier);
@@ -180,36 +171,6 @@ public class VueAventurier  {
 
 
     }
-    
-
-    
-    /* public static void main(String [] args) {
-        // Instanciation de la fenÃªtre 
-        Grille grille = new Grille();
-        for (Tuile tuile: grille.getTuiles()){
-            
-            switch (tuile.getNom()) {
-                case La_Porte_de_Bronze:
-                    Ingenieur inge = new Ingenieur("Ingenieur", tuile);
-                    break;
-                case La_Porte_de_Cuivre:
-                    Explorateur explo = new Explorateur("Explorateur", tuile);
-                    break;
-                case Heliport:
-                    Pilote pilote = new Pilote("Pilote", tuile);
-                    break;
-                case La_Porte_de_Fer:
-                    Plongeur plongeur = new Plongeur("Plongeur", tuile);
-                    break;
-                case La_Porte_d_Argent:
-                    Messager messager = new Messager("Messager", tuile);
-                    break;
-                default:
-                    break;
-            }
-        }
-    
-    }*/
 }
 
  
