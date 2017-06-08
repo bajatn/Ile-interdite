@@ -5,6 +5,7 @@
  */
 package ile_interdite;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class Pilote extends Aventurier {
 
     public Pilote(Tuile tuile) {
-        super("Pilote", tuile);
+        super("Pilote", tuile, Color.BLUE);
     }
     
     Boolean aVole = false;

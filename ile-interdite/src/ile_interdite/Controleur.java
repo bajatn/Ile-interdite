@@ -22,8 +22,10 @@ public class Controleur {
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
         aventuriers.add(new Plongeur(grille.getTuile(3,2)));
-        this.vue = new VueAventurier();
-        this.joueurCourant = new Aventurier();
+        this.joueurCourant = aventuriers.get(0);
+        this.vue = new VueAventurier("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
+
+        
     }
     
     public void traiterMessage (Message message){

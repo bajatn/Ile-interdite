@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package ile_interdite;
+
+import java.awt.Color;
+
 /**
  *
  * @author ravinelt
@@ -11,6 +14,6 @@ package ile_interdite;
 public class Messager extends Aventurier {
 
     public Messager(String role, Tuile tuile) {
-        super("Messager", tuile);
+        super("Messager", tuile,Color.GRAY);
     }
 }

@@ -5,6 +5,7 @@
  */
 package ile_interdite;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class Plongeur extends Aventurier {
 
     public Plongeur(Tuile tuile) {
-        super("Plongeur", tuile);
+        super("Plongeur", tuile, Color.BLACK);
     }
 
       @Override

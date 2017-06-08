@@ -5,6 +5,8 @@
  */
 package ile_interdite;
 
+import java.awt.Color;
+
 
 /**
  *
@@ -14,6 +16,6 @@ package ile_interdite;
 public class Ingenieur  extends Aventurier{
 
     public Ingenieur(Tuile tuile) {
-        super("Ingénieur", tuile);
+        super("Ingénieur", tuile,Color.RED);
     }
 }

@@ -1,5 +1,6 @@
 package ile_interdite;
 import static ile_interdite.Etat.*;
+import java.awt.Color;
 import java.util.*;
 
 /**
@@ -7,13 +8,19 @@ import java.util.*;
  * @author ravinelt
  */
 public class Aventurier {
-    private int nbAction;
     private String role;
     private Tuile tuileActu;
+    private Color couleur;
+    
 
-    public Aventurier(String role, Tuile tuile) {
+    public Aventurier(String role, Tuile tuile, Color couleur) {
         this.role = role;
         this.tuileActu = tuile;
+        this.couleur = couleur;
+    }
+
+    public Color getCouleur() {
+        return couleur;
     }
 
     public Tuile getTuileActu() {
@@ -32,9 +39,7 @@ public class Aventurier {
     public void setPosition(Tuile tuile) {
         this.tuileActu = tuile;
     }
-    public void setNbAction(int nbAction) {
-        this.nbAction = nbAction;
-    }
+
     public void setTuileActu(Tuile tuileActu) {
         this.tuileActu = tuileActu;
     }
