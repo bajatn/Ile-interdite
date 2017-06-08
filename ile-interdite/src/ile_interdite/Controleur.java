@@ -1,4 +1,5 @@
 package ile_interdite;
+import static ile_interdite.Etat.*;
 import static ile_interdite.TypeMessage.*;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @author ravinelt
  */
 public class Controleur implements Observateur{
-    
+    boolean aDejaAsseche = false;
     private Grille grille;
     private ArrayList<Aventurier> aventuriers;
     private VueAventurier vue;
@@ -23,7 +24,7 @@ public class Controleur implements Observateur{
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
         aventuriers.add(new Plongeur(grille.getTuile(3,2)));
-        this.joueurCourant = aventuriers.get(1);
+        this.joueurCourant = aventuriers.get(0);
         this.vue = new VueAventurier("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
         vue.setObservateur(this);        
     }
@@ -43,12 +44,25 @@ public class Controleur implements Observateur{
                 break;
                 
             case CHOIX_TUILE:
-                if (actionSelect == 0) {
+                if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
-                } else {
+                    actionRestantes--;  
+                } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
                     grille.assécherTuile(message.getX(),message.getY());
+                    actionRestantes--;
+                } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==false){
+                    grille.assécherTuile(message.getX(),message.getY());  
+                    this.aDejaAsseche=true;     
+                } else if (actionSelect == 1){
+                    grille.assécherTuile(message.getX(),message.getY());
+                    this.aDejaAsseche = false;
+                    actionRestantes--;
+                } else {
+                    System.out.println("Action impossible");
                 }
-                actionRestantes--;
+                
+                
+                                
                 break;
                 
             case TERMINER_TOUR:

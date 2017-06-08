@@ -165,11 +165,16 @@ public class VueAventurier  {
     public void mettreAJour(String nomJoueur, String nomAventurier, Color couleur){
         window.setTitle(nomJoueur);
         mainPanel.setBorder(BorderFactory.createLineBorder(couleur, 2));
-        panelAventurier.add(new JLabel(nomAventurier,SwingConstants.CENTER));
-        panelAventurier.setBackground(couleur);
+        //panelAventurier.setBackground(couleur);
         this.panelCentre.setBorder(new MatteBorder(0, 0, 2, 0, couleur));
-        this.nomAventurier =new JLabel(nomAventurier,SwingConstants.CENTER);
-
+        //panelAventurier.remove(this.nomAventurier);
+        //this.nomAventurier =new JLabel(nomAventurier,SwingConstants.CENTER);
+        //panelAventurier.add(this.nomAventurier);
+        //nomAventurier.setText("")
+        panelAventurier.setBackground(couleur);
+        this.nomAventurier.setText(nomAventurier);
+        panelAventurier.add(this.nomAventurier);
+        mainPanel.add(panelAventurier, BorderLayout.NORTH);
         window.repaint();
         
 
