@@ -20,10 +20,12 @@ public class Pilote extends Aventurier {
         super("Pilote", tuile, Color.BLUE);
         aVole = false;
     }
-
+    
     public boolean getAVole() {
         return aVole;
     }
+    
+    @Override
     public void setAVole(boolean aVole) {
         this.aVole = aVole;
     }
@@ -31,18 +33,33 @@ public class Pilote extends Aventurier {
     
     @Override
     public ArrayList<Tuile> deplacer(){
-        if(aVole = false){
+        if(aVole == false){
             ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
             for (Tuile tuile: getTuileActu().getGrille().getTuiles()){ 
                 if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
                     choixTuile.add(tuile);
                 }
             }
-            aVole = true;
             return choixTuile;
         } else {
             return super.deplacer();
         }
+    }
+    
+    public void deplacerVersTuile(int x, int y){
+       ArrayList<Tuile> tuilesDeplacementNormal = this.getTuileActu().calculerAdjacent();
+       boolean deplacementNormal = false;
+        
+       for (Tuile tuile : tuilesDeplacementNormal){
+           if (this.getTuileActu().getGrille().getTuile(x, y) == tuile){
+               deplacementNormal = true;
+           }
+       }
+       if (deplacementNormal = false){
+           this.setAVole(true);
+       }
+       
+        super.deplacerVersTuile(x, y);
     }
             
 }

@@ -7,7 +7,7 @@ import java.util.*;
  *
  * @author ravinelt
  */
-public class Aventurier {
+public abstract class Aventurier {
     private String role;
     private Tuile tuileActu;
     private Color couleur;
@@ -70,7 +70,11 @@ public class Aventurier {
         Tuile tuileVisee = null;
         tuileVisee = this.getTuileActu().getGrille().getTuile(x, y);
         setTuileActu(tuileVisee);
-        System.out.println("Votre Aventurier c'est déplacé en " + x + "-" + y);System.out.println("");
+        System.out.println("Votre Aventurier s'est déplacé en " + x + "-" + y);System.out.println("");
     }  
-}
 
+    
+    public void setAVole(boolean b) {
+    }
+
+}

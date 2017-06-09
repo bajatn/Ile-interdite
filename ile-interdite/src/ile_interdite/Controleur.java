@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class Controleur implements Observateur{
     boolean aDejaAsseche = false;
+    boolean aDejaVole = false;
     private Grille grille;
     private ArrayList<Aventurier> aventuriers;
     private VueAventurier vue;
@@ -77,13 +78,15 @@ public class Controleur implements Observateur{
             
             
         if(actionRestantes < 1){
+            
+            if (joueurCourant.getRole() == "Pilote"){
+                joueurCourant.setAVole(false);
+            }
             compteurTour++;
             joueurCourant = aventuriers.get(compteurTour%4);
             actionRestantes = 3;
             System.out.println("C'est maintenant le tour du "+joueurCourant.getRole());
             this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
-
-            // Pense a faire en sorte que si le joueur etais un pilote on lui met son attribut "aVole" à false
         }
     }
 
