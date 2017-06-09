@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Pilote extends Aventurier {
 
-    private boolean aVole;
+    private boolean aVole = false;
     
     public Pilote(Tuile tuile) {
         super("Pilote", tuile, Color.BLUE);
@@ -42,7 +42,7 @@ public class Pilote extends Aventurier {
             }
             return choixTuile;
         } else {
-            return super.deplacer();
+            return super.deplacer();            
         }
     }
     
@@ -55,7 +55,7 @@ public class Pilote extends Aventurier {
                deplacementNormal = true;
            }
        }
-       if (deplacementNormal = false){
+       if (deplacementNormal == false){
            this.setAVole(true);
        }
        

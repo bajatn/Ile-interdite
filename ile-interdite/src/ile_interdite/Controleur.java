@@ -92,9 +92,11 @@ public class Controleur implements Observateur{
 
     private void Afficher(ArrayList<Tuile> tuiles) {
         System.out.println("");
+        System.out.println("Vous etes sur la case: " + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
+        System.out.println("");
         System.out.println("Tuiles dispos :");
         for (Tuile tuile: tuiles){
-            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
+            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY() + " : " + tuile.getNom());
         }
     }
 }
