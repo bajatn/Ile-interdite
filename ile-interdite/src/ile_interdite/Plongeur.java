@@ -23,44 +23,100 @@ public class Plongeur extends Aventurier {
         
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
         ArrayList<Tuile> tuilesEauAccessibles = new ArrayList<Tuile>();
-        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
-        // Examine les tuiles adjacentes
-        for (Tuile tuile: collecTuiles){ 
-            if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
-                choixTuile.add(tuile);
-            }
-            // Si il y a de l'eau dessus, on l'ajoute à tuilesEauAccessibles
-            if (tuile.getEtat() == Etat.Submerge || tuile.getEtat() == Etat.Inonde){
-                tuilesEauAccessibles.add(tuile);
-            }
-        }
+        ArrayList<Tuile> tuilesTemp = new ArrayList<Tuile>();
+         ArrayList<Tuile> tuilesTempGeneral = new ArrayList<Tuile>();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();  
+        Tuile tuileDepart = this.getTuileActu();
+        
+        choixTuile= chercheSolProcheEau(this.getTuileActu());
+        tuilesEauAccessibles= chercheEauProcheEau(this.getTuileActu());
+        
         boolean modif = true;
         // Tant qu'on modifies tuilesEauAccessibles
-        while (modif = true) {
+
+        while (modif == true) {
+            //System.out.println(" nouvelle boucle while");
             modif = false;
             // On parcours tuilesEauAccessibles
             for (Tuile tuileEau: tuilesEauAccessibles){
-                // On parcours les tuiles adjacentes aux tuiles de tuilesEauAccessibles
-                for (Tuile tuile: tuileEau.calculerAdjacent()){
-                    if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
-                        choixTuile.add(tuile);
-                    }
-                    // Si il y a de l'eau dessus, on l'ajoute à tuilesEauAccessibles
-                    if (tuile.getEtat() == Etat.Submerge || tuile.getEtat() == Etat.Inonde){
+                //System.out.println("tuilesEauAccessibles " + tuileEau.getX() + "-" + tuileEau.getY());
+
+                tuilesTemp = chercheEauProcheEau(tuileEau);
+                for (Tuile tuile: tuilesTemp){
+                    //System.out.println("tuileTemp " + tuile.getX() + "-" + tuile.getY());
+
+
+                    if(tuilesTempGeneral.contains(tuile) == false){
+                        tuilesTempGeneral.add(tuile);
+                    }   
+                }                
+            }
+            
+            //System.out.println("tuilesTempGeneral");
+        for (Tuile tuile : tuilesTempGeneral){
+            //System.out.println("");
+            //System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
+        }
+            
+            for (Tuile tuile: tuilesTempGeneral){
+                    if(tuilesEauAccessibles.contains(tuile) == false){
                         tuilesEauAccessibles.add(tuile);
+                        //System.out.println("tuiles eau accessibles gagne un membre");
                         modif = true;
-                    }
-                }
+                    }   
+            }  
+        //System.out.println(modif);
+        tuilesTempGeneral.clear();
+        }
+        System.out.println("sortie boucle while");
+        for (Tuile tuile : tuilesEauAccessibles){
+            tuilesTemp = chercheSolProcheEau(tuile);
+            for (Tuile tuileSol : tuilesTemp){
+                if(tuilesEauAccessibles.contains(tuileSol) == false){
+                    choixTuile.add(tuileSol);
+                } 
             }
         }
+
         // Enleve la tuile sur laquelle est le joueur
-        for (Tuile tuile: choixTuile){
-            if (tuile == this.getTuileActu()){
-                choixTuile.remove(tuile);
-            }
+        choixTuile.remove(tuileDepart);
+  
+
+        System.out.println("tuilesEauAccessibles");
+        for (Tuile tuile : tuilesEauAccessibles){
+            System.out.println("");
+            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
+        }
+        System.out.println("choixTuiles");
+        for (Tuile tuile : choixTuile){
+            System.out.println("");
+            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
         }
         
-        return choixTuile;     
+        //retourne des trucs en double
+        return choixTuile;
+         
         
     } 
+    private ArrayList<Tuile> chercheEauProcheEau(Tuile tuile){
+        ArrayList<Tuile> listeCaseProcheEau= tuile.calculerAdjacent();
+        ArrayList<Tuile> listeCaseEauProcheEau= new ArrayList();
+        for(Tuile tuileCourante : listeCaseProcheEau){
+            if(tuileCourante.getEtat() == Etat.Submerge || tuileCourante.getEtat() == Etat.Inonde){
+                listeCaseEauProcheEau.add(tuileCourante);
+            }
+        }
+        return listeCaseEauProcheEau;
+    }
+    
+    private ArrayList<Tuile> chercheSolProcheEau(Tuile tuile){
+        ArrayList<Tuile> listeCaseProcheEau= tuile.calculerAdjacent();
+        ArrayList<Tuile> listeCaseSolProcheEau= new ArrayList();
+        for(Tuile tuileCourante : listeCaseProcheEau){
+            if(tuileCourante.getEtat() == Etat.Asseche || tuileCourante.getEtat() == Etat.Inonde){
+                listeCaseSolProcheEau.add(tuileCourante);
+            }
+        }
+        return listeCaseSolProcheEau;
+    }
 }
