@@ -35,15 +35,12 @@ public class Plongeur extends Aventurier {
         // Tant qu'on modifies tuilesEauAccessibles
 
         while (modif == true) {
-            //System.out.println(" nouvelle boucle while");
             modif = false;
             // On parcours tuilesEauAccessibles
             for (Tuile tuileEau: tuilesEauAccessibles){
-                //System.out.println("tuilesEauAccessibles " + tuileEau.getX() + "-" + tuileEau.getY());
 
                 tuilesTemp = chercheEauProcheEau(tuileEau);
                 for (Tuile tuile: tuilesTemp){
-                    //System.out.println("tuileTemp " + tuile.getX() + "-" + tuile.getY());
 
 
                     if(tuilesTempGeneral.contains(tuile) == false){
@@ -52,7 +49,6 @@ public class Plongeur extends Aventurier {
                 }                
             }
             
-            //System.out.println("tuilesTempGeneral");
         for (Tuile tuile : tuilesTempGeneral){
             //System.out.println("");
             //System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
