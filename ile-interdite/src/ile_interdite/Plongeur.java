@@ -50,18 +50,14 @@ public class Plongeur extends Aventurier {
             }
             
         for (Tuile tuile : tuilesTempGeneral){
-            //System.out.println("");
-            //System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
         }
             
             for (Tuile tuile: tuilesTempGeneral){
                     if(tuilesEauAccessibles.contains(tuile) == false){
                         tuilesEauAccessibles.add(tuile);
-                        //System.out.println("tuiles eau accessibles gagne un membre");
                         modif = true;
                     }   
             }  
-        //System.out.println(modif);
         tuilesTempGeneral.clear();
         }
         for (Tuile tuile : tuilesEauAccessibles){
@@ -73,23 +69,10 @@ public class Plongeur extends Aventurier {
             }
         }
 
-        // Enleve la tuile sur laquelle est le joueur
         choixTuile.remove(tuileDepart);
   
 
-       /* System.out.println("tuilesEauAccessibles");
-        for (Tuile tuile : tuilesEauAccessibles){
-            System.out.println("");
-            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
-        }
-        System.out.println("choixTuiles");
-        for (Tuile tuile : choixTuile){
-            System.out.println("");
-            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
-        }
-*/
-        
-        //retourne des trucs en double
+
         return choixTuile;
          
         
