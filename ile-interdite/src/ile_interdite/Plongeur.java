@@ -68,7 +68,6 @@ public class Plongeur extends Aventurier {
         //System.out.println(modif);
         tuilesTempGeneral.clear();
         }
-        System.out.println("sortie boucle while");
         for (Tuile tuile : tuilesEauAccessibles){
             tuilesTemp = chercheSolProcheEau(tuile);
             for (Tuile tuileSol : tuilesTemp){
@@ -82,7 +81,7 @@ public class Plongeur extends Aventurier {
         choixTuile.remove(tuileDepart);
   
 
-        System.out.println("tuilesEauAccessibles");
+       /* System.out.println("tuilesEauAccessibles");
         for (Tuile tuile : tuilesEauAccessibles){
             System.out.println("");
             System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
@@ -92,6 +91,7 @@ public class Plongeur extends Aventurier {
             System.out.println("");
             System.out.println("tuile " + tuile.getX() + "-" + tuile.getY());
         }
+*/
         
         //retourne des trucs en double
         return choixTuile;
