@@ -24,7 +24,7 @@ public class Plongeur extends Aventurier {
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
         ArrayList<Tuile> tuilesEauAccessibles = new ArrayList<Tuile>();
         ArrayList<Tuile> tuilesTemp = new ArrayList<Tuile>();
-         ArrayList<Tuile> tuilesTempGeneral = new ArrayList<Tuile>();
+        ArrayList<Tuile> tuilesTempGeneral = new ArrayList<Tuile>();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();  
         Tuile tuileDepart = this.getTuileActu();
         

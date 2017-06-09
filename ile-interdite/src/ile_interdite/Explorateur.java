@@ -22,9 +22,7 @@ public class Explorateur extends Aventurier {
     @Override
     public ArrayList<Tuile> deplacer(){
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-        int positionX = getPositionX();
-        int positionY = getPositionY();
-        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAutours(); // idem ????
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAutours();
         for (Tuile tuile: collecTuiles){
             if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
               choixTuile.add(tuile);
@@ -36,8 +34,6 @@ public class Explorateur extends Aventurier {
     @Override
     public ArrayList<Tuile> assecher(){
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
-        int positionX = getPositionX();
-        int positionY = getPositionY();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAutours();
         for (Tuile tuile: collecTuiles){
             if (tuile.getEtat() == Etat.Inonde){
