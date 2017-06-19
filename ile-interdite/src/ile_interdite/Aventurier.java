@@ -11,12 +11,14 @@ public abstract class Aventurier {
     private String role;
     private Tuile tuileActu;
     private Color couleur;
+    private ArrayList<Type_Tresor> tresor;
     
 
     public Aventurier(String role, Tuile tuile, Color couleur) {
         this.role = role;
         this.tuileActu = tuile;
         this.couleur = couleur;
+        this.tresor= null;
     }
 
     public Color getCouleur() {
@@ -76,5 +78,22 @@ public abstract class Aventurier {
     
     public void setAVole(boolean b) {
     }
+    
+    public void prendreTresor(){
+        this.tresor.add(getTuileActu().getTresor());
+        getTuileActu().setTresor(null);
+    }
+
+    public Aventurier donnerCarte(){
+        ArrayList<Aventurier> choixAventurier = new ArrayList<Aventurier>();
+        ArrayList<Aventurier> collectAventuriers = ;
+        for (Aventurier aventurier: collectAventuriers){
+            if (){
+              choixAventurier.add(tuile);
+            }
+        }
+        return choixTuile;   
+    }
+
 
 }

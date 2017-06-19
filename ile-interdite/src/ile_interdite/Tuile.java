@@ -5,6 +5,8 @@
  */
 package ile_interdite;
 
+import static ile_interdite.Lieu.*;
+import static ile_interdite.Type_Tresor.*;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +20,7 @@ public class Tuile {
     private Etat etat;
     private Lieu nom;
     private Grille grille;
+    private Type_Tresor tresor;
     
     ////////////////////////////////////////////////////
 
@@ -27,9 +30,21 @@ public class Tuile {
         this.etat = etat;
         this.nom = nom;
         this.grille = grille;
+        if (this.nom==La_Caverne_des_Ombres || this.nom==La_Caverne_du_Brasier){
+            this.tresor = le_cristal_ardent;
+        }
+        else if (this.nom==Le_Jardin_des_Hurlements || this.nom==Le_Jardin_des_Murmures){
+            this.tresor = la_statue_du_zephyr;
+        }
+        else if (this.nom==Le_Temple_de_La_Lune || this.nom==Le_Temple_du_Soleil){
+            this.tresor = la_pierre_sacree;
+        }
+        else if (this.nom ==Le_Palais_des_Marees || this.nom ==Le_Palais_de_Corail){
+            this.tresor = le_calice_de_l_onde;
+        }
+        else {this.tresor = null;}
     }
 
-    
     public int getX() {
         return x;
     }
@@ -45,6 +60,16 @@ public class Tuile {
     public Grille getGrille() {
         return grille;
     }
+
+    public Type_Tresor getTresor() {
+        return tresor;
+    }
+
+    public void setTresor(Type_Tresor tresor) {
+        this.tresor = tresor;
+    }
+    
+    
     
     
     public void setEtat(Etat etat) {
