@@ -16,7 +16,7 @@ public class Controleur implements Observateur{
     private int actionRestantes = 3;
     private int compteurTour = 0;
     private Aventurier joueurCourant;
-    private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner
+    private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
     private ArrayList<Pile_de_Cartes> pileTresor;
     private ArrayList<Pile_de_Cartes> pileInnondation;
     
@@ -56,22 +56,44 @@ public class Controleur implements Observateur{
                 break;
                 
             case CHOIX_TUILE:
+                
+                    // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
                     actionRestantes--;  
+                    
+                    // Assecher (ingenieur)
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
                     grille.assécherTuile(message.getX(),message.getY());
                     actionRestantes--;
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==false){
                     grille.assécherTuile(message.getX(),message.getY());  
                     this.aDejaAsseche=true;     
+                    
+                    // Assecher
                 } else if (actionSelect == 1){
                     grille.assécherTuile(message.getX(),message.getY());
                     this.aDejaAsseche = false;
                     actionRestantes--;
+                    
+                    // Donner carte
+                } else if (actionSelect == 2){
+                    joueurCourant.transfererCarte(message.getAventurier(), message.getCarte());
+                    
+                    
+                    // Helico
+                } else if (actionSelect == 3){
+                    joueurCourant.deplacerVersTuile(message.getX(),message.getY()); // Ne deplace pas plusieurs joueurs sur la meme case
+                    
+                    // Sac de sable
+                } else if (actionSelect == 4){
+                    grille.assécherTuile(message.getX(),message.getY());
+                    
                 } else {
                     System.out.println("Action impossible");
                 }
+                
+                   
                 
                 
                                 
@@ -92,8 +114,12 @@ public class Controleur implements Observateur{
                 break;
                 
             case UTILISER_CARTE:
-                  message.getCarte().utiliserCarte(grille);
-                  if ()
+                  Afficher(message.getCarte().utiliserCarte(grille));
+                  if (message.getCarte().getType() == "Helicoptere"){
+                      actionSelect = 3;
+                  } else if (message.getCarte().getType() == "Sac_de_sable"){
+                      actionSelect = 4;
+                  }
             default:
                 break;
         }

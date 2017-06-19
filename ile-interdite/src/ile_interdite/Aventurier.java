@@ -115,6 +115,11 @@ public abstract class Aventurier {
         aventurier.addCarte(carte);
     }  
 
+    public ArrayList<Carte_Tresor> getMain() {
+        return main;
+    }
+
+
 
 
 

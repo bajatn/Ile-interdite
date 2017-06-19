@@ -11,6 +11,7 @@ package ile_interdite;
 public class Message {
     private TypeMessage type;
     private Carte_Tresor carte;
+    private Aventurier aventurier;
     private int x;
     private int y;
 
@@ -21,6 +22,10 @@ public class Message {
     }
 
     Message() {
+    }
+
+    public Aventurier getAventurier() {
+        return aventurier;
     }
 
     public TypeMessage getType() {
