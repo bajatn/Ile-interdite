@@ -12,7 +12,7 @@ public abstract class Aventurier {
     private Tuile tuileActu;
     private Color couleur;
     private ArrayList<Type_Tresor> tresor;
-    
+    private ArrayList<Carte_Tresor> main;
 
     public Aventurier(String role, Tuile tuile, Color couleur) {
         this.role = role;
@@ -46,6 +46,10 @@ public abstract class Aventurier {
         this.tuileActu = tuileActu;
     }
     
+    public void addCarte(Carte_Tresor carte) {
+        this.main.add(carte);
+    }
+    
     public ArrayList<Tuile> deplacer(){
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
@@ -70,8 +74,10 @@ public abstract class Aventurier {
     
     public void deplacerVersTuile(int x, int y){
         Tuile tuileVisee = null;
+        this.tuileActu.removeAventurier(this);
         tuileVisee = this.getTuileActu().getGrille().getTuile(x, y);
         setTuileActu(tuileVisee);
+        this.tuileActu.addAventurier(this);
         System.out.println("Votre Aventurier s'est déplacé en " + x + "-" + y);System.out.println("");
     }  
 
@@ -84,16 +90,25 @@ public abstract class Aventurier {
         getTuileActu().setTresor(null);
     }
 
-    public Aventurier donnerCarte(){
-        ArrayList<Aventurier> choixAventurier = new ArrayList<Aventurier>();
-        ArrayList<Aventurier> collectAventuriers = ;
-        for (Aventurier aventurier: collectAventuriers){
-            if (){
-              choixAventurier.add(tuile);
+    public ArrayList<Aventurier> donnerCarte(){
+        ArrayList<Aventurier> choixAventuriers = new ArrayList<Aventurier>();
+        ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
+        for (Tuile tuile: collecTuiles){
+            if (!(tuile.getAventuriers().isEmpty())){
+                for (Aventurier elem : tuile.getAventuriers()){
+                    choixAventuriers.add(elem); 
+                }
             }
         }
-        return choixTuile;   
+        return choixAventuriers;   
     }
+    
+    public void transfererCarte(Aventurier aventurier, Carte_Tresor carte){
+        this.main.remove(carte);
+        aventurier.addCarte(carte);
+    }  
+
+
 
 
 }

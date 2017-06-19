@@ -21,6 +21,7 @@ public class Tuile {
     private Lieu nom;
     private Grille grille;
     private Type_Tresor tresor;
+    private ArrayList<Aventurier> aventuriers;
     
     ////////////////////////////////////////////////////
 
@@ -30,6 +31,7 @@ public class Tuile {
         this.etat = etat;
         this.nom = nom;
         this.grille = grille;
+        this.aventuriers = new ArrayList<>();
         if (this.nom==La_Caverne_des_Ombres || this.nom==La_Caverne_du_Brasier){
             this.tresor = le_cristal_ardent;
         }
@@ -67,6 +69,16 @@ public class Tuile {
 
     public void setTresor(Type_Tresor tresor) {
         this.tresor = tresor;
+    }
+    
+    public void addAventurier(Aventurier aventurier){
+        this.aventuriers.add(aventurier);
+    }
+    public void removeAventurier(Aventurier aventurier){
+        this.aventuriers.remove(aventurier);
+    }
+    public ArrayList<Aventurier> getAventuriers() {
+        return aventuriers;
     }
     
     
@@ -107,5 +119,5 @@ public class Tuile {
         }
         return result;
     }
-    
+
 }
