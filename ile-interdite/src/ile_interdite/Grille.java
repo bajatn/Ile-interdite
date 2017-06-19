@@ -79,4 +79,15 @@ public class Grille {
         }
     }
     
+    public void innonderTuile(int x, int y){
+        if (getTuile(x, y) != null){
+            getTuile(x, y).setEtat(Inonde);
+        }
+    }
+    
+    public void submergerTuile(int x, int y){
+        if (getTuile(x, y) != null){
+            getTuile(x, y).setEtat(Submerge);
+        }
+    }
 }

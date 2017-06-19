@@ -9,6 +9,12 @@ package ile_interdite;
  *
  * @author ravinelt
  */
-public class Carte_Inondation extends Carte {
+public class Carte_Inondation extends Carte{
     private Lieu tuile;
+
+    public Carte_Inondation(Lieu tuile) {
+        this.tuile = tuile;
+    }
+    
+    
 }

@@ -79,11 +79,16 @@ public class Controleur implements Observateur{
                     // Donner carte
                 } else if (actionSelect == 2){
                     joueurCourant.transfererCarte(message.getAventurier(), message.getCarte());
-                    
-                    
+                    actionRestantes--;
+
                     // Helico
                 } else if (actionSelect == 3){
-                    joueurCourant.deplacerVersTuile(message.getX(),message.getY()); // Ne deplace pas plusieurs joueurs sur la meme case
+                    for (Aventurier aventurier : aventuriers){
+                        if (aventurier.getTuileActu() == joueurCourant.getTuileActu()){
+                            aventurier.deplacerVersTuile(message.getX(), message.getY());
+                        }
+                    }
+                    joueurCourant.deplacerVersTuile(message.getX(),message.getY());
                     
                     // Sac de sable
                 } else if (actionSelect == 4){
@@ -91,13 +96,10 @@ public class Controleur implements Observateur{
                     
                 } else {
                     System.out.println("Action impossible");
-                }
-                
-                   
-                
-                
-                                
+                }            
                 break;
+                
+                
                 
             case TERMINER_TOUR:
                 System.out.println("TERMINER_TOUR");

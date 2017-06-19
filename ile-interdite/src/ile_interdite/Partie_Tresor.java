@@ -9,6 +9,13 @@ package ile_interdite;
  *
  * @author bajatn
  */
-public abstract class Carte {
+public class Partie_Tresor extends Carte_Tresor {
+    
+    private Type_Tresor tresor;
+    
+    public Partie_Tresor(Type_Tresor tresor) {
+        super("Partie_Tresor");
+        this.tresor = tresor;
+    }
     
 }
