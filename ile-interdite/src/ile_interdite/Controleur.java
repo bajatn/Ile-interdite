@@ -28,7 +28,9 @@ public class Controleur implements Observateur{
         aventuriers.add(new Pilote(grille.getTuile(4,3)));
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
-        aventuriers.add(new Plongeur(grille.getTuile(3,2)));
+        aventuriers.add(new Plongeur(grille.getTuile(3,4)));
+        aventuriers.add(new Messager(grille.getTuile(3,2)));
+        aventuriers.add(new Navigateur(grille.getTuile(4,2)));
         this.joueurCourant = aventuriers.get(0);
         this.vue = new VueAventurier("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
         vue.setObservateur(this);
@@ -37,6 +39,10 @@ public class Controleur implements Observateur{
     
     @Override
     public void traiterMessage (Message message){
+        
+        if (joueurCourant.getRole()=="Navigateur"){
+            actionRestantes = 4;
+        }
         
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
@@ -88,7 +94,7 @@ public class Controleur implements Observateur{
                 joueurCourant.setAVole(false);
             }
             compteurTour++;
-            joueurCourant = aventuriers.get(compteurTour%4);
+            joueurCourant = aventuriers.get(compteurTour%6);
             actionRestantes = 3;
             System.out.println("C'est maintenant le tour du "+joueurCourant.getRole());
             this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
