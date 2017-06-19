@@ -16,7 +16,7 @@ public class Controleur implements Observateur{
     private int actionRestantes = 3;
     private int compteurTour = 0;
     private Aventurier joueurCourant;
-    private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher 
+    private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner
     private ArrayList<Pile_de_Cartes> pileTresor;
     private ArrayList<Pile_de_Cartes> pileInnondation;
     
@@ -83,7 +83,7 @@ public class Controleur implements Observateur{
                 break;
                 
             case DONNER:
-                Afficher(joueurCourant.deplacer());
+                Afficher2(joueurCourant.donnerCarte());
                 actionSelect = 2;
                 break;
                 
@@ -91,6 +91,9 @@ public class Controleur implements Observateur{
                 joueurCourant.prendreTresor();
                 break;
                 
+            case UTILISER_CARTE:
+                  message.getCarte().utiliserCarte(grille);
+                  if ()
             default:
                 break;
         }
@@ -116,6 +119,16 @@ public class Controleur implements Observateur{
         System.out.println("Tuiles dispos :");
         for (Tuile tuile: tuiles){
             System.out.println("tuile " + tuile.getX() + "-" + tuile.getY() + " : " + tuile.getNom());
+        }
+    }
+    
+    private void Afficher2(ArrayList<Aventurier> aventuriers) {
+        System.out.println("");
+        System.out.println("Vous etes sur la case: " + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
+        System.out.println("");
+        System.out.println("aventuriers dispos :");
+        for (Aventurier aventurier: aventuriers){
+            System.out.println("- " + aventurier.getRole());
         }
     }
 }

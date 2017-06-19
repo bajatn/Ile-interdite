@@ -10,6 +10,7 @@ package ile_interdite;
  */
 public class Message {
     private TypeMessage type;
+    private Carte_Tresor carte;
     private int x;
     private int y;
 
@@ -43,6 +44,11 @@ public class Message {
     public int getY() {
         return y;
     }
+
+    public Carte_Tresor getCarte() {
+        return carte;
+    }
+
 
     
     
