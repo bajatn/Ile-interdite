@@ -17,17 +17,22 @@ public class Controleur implements Observateur{
     private int compteurTour = 0;
     private Aventurier joueurCourant;
     private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher 
-
+    private ArrayList<Pile_de_Cartes> pilesTresor;
+    private ArrayList<Pile_de_Cartes> pilesInnondation;
+    
     public Controleur() {
         this.grille = new Grille();
         this.aventuriers = new ArrayList<>();
+        this.pilesTresor= new ArrayList<>();
+        this.pilesInnondation = new ArrayList<>();
         aventuriers.add(new Pilote(grille.getTuile(4,3)));
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
         aventuriers.add(new Plongeur(grille.getTuile(3,2)));
         this.joueurCourant = aventuriers.get(0);
         this.vue = new VueAventurier("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
-        vue.setObservateur(this);        
+        vue.setObservateur(this);
+        
     }
     
     @Override
