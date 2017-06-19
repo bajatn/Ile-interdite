@@ -2,6 +2,8 @@ package ile_interdite;
 import static ile_interdite.Etat.*;
 import java.awt.Color;
 import java.util.*;
+import static ile_interdite.Lieu.*;
+import static ile_interdite.Type_Tresor.*;
 
 /**
  *
@@ -88,6 +90,11 @@ public abstract class Aventurier {
     public void prendreTresor(){
         this.tresor.add(getTuileActu().getTresor());
         getTuileActu().setTresor(null);
+        for (Tuile tuile : getTuileActu().getGrille().getTuiles()){
+            if (tuile.getTresor() == this.getTuileActu().getTresor()){
+                tuile.setTresor(null);
+            }
+        }
     }
 
     public ArrayList<Aventurier> donnerCarte(){

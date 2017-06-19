@@ -14,6 +14,5 @@ public enum TypeMessage {
     CHOIX_TUILE,
     TERMINER_TOUR,
     DONNER,
-    RECUPERER_TRESOR
-    ;
+    RECUPERER_TRESOR;
 }

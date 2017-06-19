@@ -17,14 +17,14 @@ public class Controleur implements Observateur{
     private int compteurTour = 0;
     private Aventurier joueurCourant;
     private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher 
-    private ArrayList<Pile_de_Cartes> pilesTresor;
-    private ArrayList<Pile_de_Cartes> pilesInnondation;
+    private ArrayList<Pile_de_Cartes> pileTresor;
+    private ArrayList<Pile_de_Cartes> pileInnondation;
     
     public Controleur() {
         this.grille = new Grille();
         this.aventuriers = new ArrayList<>();
-        this.pilesTresor= new ArrayList<>();
-        this.pilesInnondation = new ArrayList<>();
+        this.pileTresor= new ArrayList<>();
+        this.pileInnondation = new ArrayList<>();
         aventuriers.add(new Pilote(grille.getTuile(4,3)));
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
@@ -80,7 +80,15 @@ public class Controleur implements Observateur{
             case TERMINER_TOUR:
                 System.out.println("TERMINER_TOUR");
                 actionRestantes = 0;
-                      
+                break;
+                
+            case DONNER:
+                Afficher(joueurCourant.deplacer());
+                actionSelect = 2;
+                break;
+                
+            case RECUPERER_TRESOR:
+                joueurCourant.prendreTresor();
                 break;
                 
             default:
