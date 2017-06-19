@@ -12,5 +12,8 @@ public enum TypeMessage {
     DEPLACER,
     ASSECHER,
     CHOIX_TUILE,
-    TERMINER_TOUR;
+    TERMINER_TOUR,
+    DONNER,
+    RECUPERER_TRESOR
+    ;
 }

@@ -5,10 +5,13 @@
  */
 package ile_interdite;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ravinelt
  */
 public abstract class Carte {
-    
+    private ArrayList<Carte_Inondation> cartesInnondations;
+    private ArrayList<Carte_Tresor> cartesTresor;
 }

@@ -11,4 +11,7 @@ package ile_interdite;
  */
 public class Carte_Tresor extends Carte{
     private Type_Carte_Tresor type;
+   
 }
+
+
