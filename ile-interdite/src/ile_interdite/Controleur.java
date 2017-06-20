@@ -55,7 +55,7 @@ public class Controleur implements Observateur{
                 actionSelect = 1;
                 break;
                 
-            case CHOIX_TUILE:
+            case CHOIX:
                 
                     // Deplacer
                 if (actionSelect == 0){

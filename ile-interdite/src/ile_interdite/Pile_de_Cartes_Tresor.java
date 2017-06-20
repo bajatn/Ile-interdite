@@ -33,6 +33,7 @@ public class Pile_de_Cartes_Tresor extends Pile_de_Cartes {
                 this.getCartes().add(new Partie_Tresor(la_pierre_sacree));
             } 
         }
+        setCarte_dessus();
     }
     
 }

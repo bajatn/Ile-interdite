@@ -88,13 +88,38 @@ public abstract class Aventurier {
     }
     
     public void prendreTresor(){
-        this.tresor.add(getTuileActu().getTresor());
-        getTuileActu().setTresor(null);
-        for (Tuile tuile : getTuileActu().getGrille().getTuiles()){
-            if (tuile.getTresor() == this.getTuileActu().getTresor()){
-                tuile.setTresor(null);
+        int a =0;
+        Type_Tresor tresor = getTuileActu().getTresor();
+        for (Carte_Tresor elem : main){
+            if (elem.getType() == "Partie_Tresor" ){
+                Partie_Tresor elem2 = (Partie_Tresor) elem;
+                if (elem2.getTresor() == tresor){
+                   a++;
+                }
             }
         }
+        if (a>=4) {
+            this.tresor.add(getTuileActu().getTresor());
+            getTuileActu().setTresor(null);
+            for (Tuile tuile : getTuileActu().getGrille().getTuiles()){
+                if (tuile.getTresor() == this.getTuileActu().getTresor()){
+                   tuile.setTresor(null);
+                }
+            }
+            int i = 0;
+            while (i < 4) {
+                Carte_Tresor elem = this.main.get(i);
+                if (elem.getType() == "Partie_Tresor" ){
+                    Partie_Tresor elem2 = (Partie_Tresor) elem;
+                    if (elem2.getTresor() == tresor){
+                       this.main.remove(elem2);
+                       i++;
+                    }
+                }
+            }
+        }
+        
+        
     }
 
     public ArrayList<Aventurier> donnerCarte(){

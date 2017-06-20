@@ -17,5 +17,9 @@ public class Partie_Tresor extends Carte_Tresor {
         super("Partie_Tresor");
         this.tresor = tresor;
     }
+
+    public Type_Tresor getTresor() {
+        return tresor;
+    }
     
 }

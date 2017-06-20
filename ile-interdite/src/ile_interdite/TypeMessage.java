@@ -11,7 +11,7 @@ package ile_interdite;
 public enum TypeMessage {
     DEPLACER,
     ASSECHER,
-    CHOIX_TUILE,
+    CHOIX,
     TERMINER_TOUR,
     DONNER,
     RECUPERER_TRESOR,

@@ -40,6 +40,7 @@ public class Pile_de_Cartes_Inondation extends Pile_de_Cartes{
         this.getCartes().add(new Carte_Inondation(Le_Val_du_Crepuscule));
         this.getCartes().add(new Carte_Inondation(La_Tour_du_Guet));
         this.getCartes().add(new Carte_Inondation(Le_Jardin_des_Murmures));
+        setCarte_dessus();
     }
     
 }

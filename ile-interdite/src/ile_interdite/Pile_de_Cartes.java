@@ -19,8 +19,7 @@ public abstract class Pile_de_Cartes {
     
     public Pile_de_Cartes() {
         this.cartes = new ArrayList<>();
-        this.carte_dessus = carte_dessus;
-        defausse = new ArrayList<>();
+        this.defausse = new ArrayList<>();
     }
     
     public ArrayList<Carte> getCartes() {
