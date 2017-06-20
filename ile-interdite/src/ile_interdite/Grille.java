@@ -95,11 +95,11 @@ public class Grille {
             tuile.setEtat(Submerge);
         }
     }
+
     
-    
-    public void piocheCarteInondation(Pile_de_Cartes_Inondation pile, Niveau_Eau niv) {
+    public void Inondation(Pile_de_Cartes_Inondation pile, Niveau_Eau niv) {
         Carte carte;
-        for (int i=0; i<niv.getNiveau(); i++){
+        for (int i=0; i<niv.getPalier(); i++){
             carte = pile.pioche();
             Carte_Inondation elem = (Carte_Inondation) carte;
             Lieu lieu = elem.getLieu();
@@ -110,6 +110,4 @@ public class Grille {
             }
         }
     }   
-
-    
 }

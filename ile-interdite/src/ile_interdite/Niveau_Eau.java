@@ -22,6 +22,11 @@ public class Niveau_Eau {
         return niveau;
     }
 
+    public int getPalier() {
+        return palier;
+    }
+    
+
     public void monteNiveau() {
         this.niveau = this.niveau++;
     }

@@ -49,16 +49,18 @@ public abstract class Pile_de_Cartes {
     public Carte pioche() {
         Carte result = carte_dessus;
         cartes.remove(carte_dessus);
+        if (cartes.isEmpty()){
+            this.ChangerPile();
+        }
         setCarte_dessus();
         return result;
     }
     
     public void ChangerPile(){
-        if(cartes.isEmpty()){
-            for(Carte carte : defausse){
-               cartes.add(carte);
-            }
-            defausse = new ArrayList<>(); 
+        for(Carte carte : defausse){
+           cartes.add(carte);
         }
+        setCarte_dessus();
+        defausse = new ArrayList<>(); 
     }
 }
