@@ -102,6 +102,10 @@ public abstract class Aventurier {
         }
     }
 
+    public void defausseCarteMain(Carte carte, Pile_de_Cartes_Tresor pileT){
+        this.main.remove(carte);
+        pileT.defausseCarte(carte);
+    }
     
     public void prendreTresor(){
         int a = 0;

@@ -61,6 +61,6 @@ public abstract class Pile_de_Cartes {
            cartes.add(carte);
         }
         setCarte_dessus();
-        defausse = new ArrayList<>(); 
+        defausse.clear();
     }
 }
