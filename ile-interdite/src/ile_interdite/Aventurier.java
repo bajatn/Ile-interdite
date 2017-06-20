@@ -20,7 +20,8 @@ public abstract class Aventurier {
         this.role = role;
         this.tuileActu = tuile;
         this.couleur = couleur;
-        this.tresor= null;
+        this.main = new ArrayList<>();
+        this.tresor = new ArrayList<>();
     }
 
     public Color getCouleur() {
@@ -88,7 +89,7 @@ public abstract class Aventurier {
     }
     
     public void prendreTresor(){
-        int a =0;
+        int a = 0;
         Type_Tresor tresor = getTuileActu().getTresor();
         for (Carte_Tresor elem : main){
             if (elem.getType() == "Partie_Tresor" ){
@@ -100,7 +101,6 @@ public abstract class Aventurier {
         }
         if (a>=4) {
             this.tresor.add(getTuileActu().getTresor());
-            getTuileActu().setTresor(null);
             for (Tuile tuile : getTuileActu().getGrille().getTuiles()){
                 if (tuile.getTresor() == this.getTuileActu().getTresor()){
                    tuile.setTresor(null);
