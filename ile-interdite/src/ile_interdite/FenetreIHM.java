@@ -34,7 +34,7 @@ public class FenetreIHM {
     private JPanel panelSud;
     private JPanel afficherActions;
     private JPanel afficherJoueur;
-
+    private Observateur observateur;
     public FenetreIHM(){
             //Création et initialisation de la fenetre
         this.window = new JFrame();
@@ -82,7 +82,9 @@ public class FenetreIHM {
         
         this.window.setVisible(true);
         panelMain.repaint();
-        
-        
     }
+    
+    public void setObservateur(Observateur observateur) {
+            this.observateur = observateur;
+        }
 }

@@ -12,19 +12,19 @@ public class Controleur implements Observateur{
     boolean aDejaVole = false;
     private Grille grille;
     private ArrayList<Aventurier> aventuriers;
-    private VueAventurier vue;
+    private FenetreIHM vue;
     private int actionRestantes = 3;
     private int compteurTour = 0;
     private Aventurier joueurCourant;
     private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
-    private ArrayList<Pile_de_Cartes> pileTresor;
-    private ArrayList<Pile_de_Cartes> pileInnondation;
+    private Pile_de_Cartes_Tresor pileTresor;
+    private Pile_de_Cartes_Inondation pileInnondation;
     
     public Controleur() {
         this.grille = new Grille();
         this.aventuriers = new ArrayList<>();
-        this.pileTresor= new ArrayList<>();
-        this.pileInnondation = new ArrayList<>();
+        this.pileTresor = new Pile_de_Cartes_Tresor();
+        this.pileInnondation = new Pile_de_Cartes_Inondation();
         aventuriers.add(new Pilote(grille.getTuile(4,3)));
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
@@ -32,8 +32,8 @@ public class Controleur implements Observateur{
         aventuriers.add(new Messager(grille.getTuile(3,2)));
         aventuriers.add(new Navigateur(grille.getTuile(4,2)));
         this.joueurCourant = aventuriers.get(0);
-        this.vue = new VueAventurier("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
-        vue.setObservateur(this);
+        this.vue = new FenetreIHM();
+        //vue.setObservateur(this);
         
     }
     
@@ -116,12 +116,18 @@ public class Controleur implements Observateur{
                 break;
                 
             case UTILISER_CARTE:
-                  Afficher(message.getCarte().utiliserCarte(grille));
-                  if (message.getCarte().getType() == "Helicoptere"){
-                      actionSelect = 3;
-                  } else if (message.getCarte().getType() == "Sac_de_sable"){
-                      actionSelect = 4;
-                  }
+                    Afficher(message.getCarte().utiliserCarte(grille));
+                    if (message.getCarte().getType() == "Helicoptere"){
+                        actionSelect = 3;
+                    } else if (message.getCarte().getType() == "Sac_de_sable"){
+                        actionSelect = 4;
+                    }
+                break;
+                
+            case DEFAUSSER_CARTE:
+                    joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
+                break;
+                
             default:
                 break;
         }
@@ -136,7 +142,14 @@ public class Controleur implements Observateur{
             joueurCourant = aventuriers.get(compteurTour%6);
             actionRestantes = 3;
             System.out.println("C'est maintenant le tour du "+joueurCourant.getRole());
-            this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
+            // PLUS LA BONNE VUE this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
+            
+            //Pioche
+            
+            if (joueurCourant.getMain().size()>4) {
+                // A FAIRE
+                System.out.println("Il faut vous defausser de certaines cartes");
+            }
         }
     }
 
