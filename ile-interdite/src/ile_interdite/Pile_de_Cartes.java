@@ -25,13 +25,20 @@ public abstract class Pile_de_Cartes {
     public ArrayList<Carte> getCartes() {
         return cartes;
     }
+
+    public ArrayList<Carte> getDefausse() {
+        return defausse;
+    }
+
+    public Carte getCarte_dessus() {
+        return carte_dessus;
+    }
     
     public void addCarte(Carte carte){
         cartes.add(carte);
     }
     
-    public void DefausseCarte(Carte carte){
-        cartes.remove(carte);
+    public void defausseCarte(Carte carte){
         defausse.add(carte);
     }
     
@@ -41,7 +48,7 @@ public abstract class Pile_de_Cartes {
 
     public Carte pioche() {
         Carte result = carte_dessus;
-        DefausseCarte(carte_dessus);
+        cartes.remove(carte_dessus);
         setCarte_dessus();
         return result;
     }
@@ -53,5 +60,5 @@ public abstract class Pile_de_Cartes {
             }
             defausse = new ArrayList<>(); 
         }
-   }
+    }
 }

@@ -71,23 +71,45 @@ public class Grille {
         };
         return null;
     }
+    
+    public Tuile getTuile(Lieu lieu) {
+        for (Tuile tuile: tuiles){
+            if (tuile.getNom() == lieu){
+                return tuile;
+            }
+        };
+        return null;
+    }
       
     public void assécherTuile(int x, int y){
-        if (getTuile(x, y) != null){
+        if (getTuile(x, y) != null && getTuile(x, y).getEtat() != Submerge){
             getTuile(x, y).setEtat(Asseche);
             System.out.println("La tuile " + x + "-" + y + " a été asséchée");System.out.println("");
         }
     }
     
-    public void innonderTuile(int x, int y){
-        if (getTuile(x, y) != null){
-            getTuile(x, y).setEtat(Inonde);
+    public void inonderTuile(Tuile tuile){
+        if (tuile.getEtat() == Asseche){
+            tuile.setEtat(Inonde);
+        } else if (tuile.getEtat() == Inonde){
+            tuile.setEtat(Submerge);
         }
     }
     
-    public void submergerTuile(int x, int y){
-        if (getTuile(x, y) != null){
-            getTuile(x, y).setEtat(Submerge);
+    
+    public void piocheCarteInondation(Pile_de_Cartes_Inondation pile, Niveau_Eau niv) {
+        Carte carte;
+        for (int i=0; i<niv.getNiveau(); i++){
+            carte = pile.pioche();
+            Carte_Inondation elem = (Carte_Inondation) carte;
+            Lieu lieu = elem.getLieu();
+            Tuile tuile = getTuile(lieu);
+            inonderTuile(tuile);
+            if (tuile.getEtat() != Submerge){
+               pile.defausseCarte(carte); 
+            }
         }
-    }
+    }   
+
+    
 }

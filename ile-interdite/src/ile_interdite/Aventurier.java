@@ -88,6 +88,11 @@ public abstract class Aventurier {
     public void setAVole(boolean b) {
     }
     
+    public void piocheCarteTresor(Pile_de_Cartes pile){
+        Carte carte = pile.pioche();
+    }
+
+    
     public void prendreTresor(){
         int a = 0;
         Type_Tresor tresor = getTuileActu().getTresor();

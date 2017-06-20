@@ -118,7 +118,7 @@ public class VueAventurier  {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Message m = new Message();
-                    m.setType(CHOIX_TUILE);
+                    m.setType(CHOIX);
                     int x = Integer.parseInt(Character.toString(position.getText().charAt(0)));
                     int y = Integer.parseInt(Character.toString(position.getText().charAt(2)));
                     m.setCoordonees(x, y);
