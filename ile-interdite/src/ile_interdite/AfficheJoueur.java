@@ -41,4 +41,8 @@ class AfficheJoueur extends JPanel {
         this.observateur = observateur;
     }
     
+    public void setDescription(String description){
+        this.
+    }
+    
 }

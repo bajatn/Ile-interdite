@@ -16,6 +16,6 @@ import java.awt.Color;
 public class Ingenieur  extends Aventurier{
 
     public Ingenieur(Tuile tuile) {
-        super("Ingénieur", tuile,Color.RED, 3);
+        super("Ingénieur", tuile,Color.RED, 3,"L'Ingénieur peut assécher 2 tuiles pour une action. ");
     }
 }
