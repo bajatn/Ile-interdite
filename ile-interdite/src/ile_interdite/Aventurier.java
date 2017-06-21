@@ -28,6 +28,10 @@ public abstract class Aventurier {
         this.description = description;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public Color getCouleur() {
         return couleur;
     }

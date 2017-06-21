@@ -38,7 +38,7 @@ public class Controleur implements Observateur{
         aventuriers.add(new Messager(grille.getTuile(3,2)));
         aventuriers.add(new Navigateur(grille.getTuile(4,2)));
         this.joueurCourant = aventuriers.get(1);
-        this.vue = new FenetreIHM(this);
+        this.vue = new FenetreIHM(this,grille);
         vue.setObservateur(this);
         System.out.println("On pioche 2 cartes tresor"); 
             joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
@@ -169,10 +169,10 @@ public class Controleur implements Observateur{
             
             
         if(actionUtilise >= joueurCourant.getNbAction()){
-            System.out.println(""); 
-            System.out.println(""); 
+            System.out.println(); 
+            System.out.println(); 
             System.out.println("TOUR " + compteurTour); 
-            System.out.println(""); 
+            System.out.println(); 
             System.out.println("nb cartes dans pile tresor : " + pileTresor.getCartes().size()); 
             System.out.println("nb cartes dans pile inondation : " + pileInondation.getCartes().size());
             System.out.println(""); 
@@ -191,6 +191,7 @@ public class Controleur implements Observateur{
             if (joueurCourant.getMain().size()>4) {
                 defausse = 1;
             }
+            vue.setDefAventurier(joueurCourant.getDescription());
         }
     }
 

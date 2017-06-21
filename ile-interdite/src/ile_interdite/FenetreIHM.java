@@ -89,6 +89,7 @@ public class FenetreIHM {
         panelMain.repaint();
     }
     
+    
     public void setObservateur(Observateur observateur) {
             System.out.println("Observateur de Fenetre IHM ="+observateur);
             this.observateur = observateur;
@@ -98,4 +99,8 @@ public class FenetreIHM {
 //            this.afficherCases.setObservateur(observateur);
 
         }
+    
+    void setDefAventurier(String description) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
