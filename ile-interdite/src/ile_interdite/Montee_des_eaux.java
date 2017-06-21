@@ -15,8 +15,10 @@ public class Montee_des_eaux extends Carte_Tresor {
         super("Montee_des_eaux");
     }
     
-    public void carteTiree(Niveau_Eau niv){
-        niv.monteNiveau();
+    public void carteTiree(Pile_de_Cartes_Tresor pileT, Pile_de_Cartes_Inondation pileI, Niveau_Eau niv){
+            pileI.ChangerPile();
+            niv.monteNiveau();
+            pileT.defausseCarte(this);
     }
     
 }

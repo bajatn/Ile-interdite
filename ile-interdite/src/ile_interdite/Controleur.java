@@ -19,6 +19,7 @@ public class Controleur implements Observateur{
     private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
     private Pile_de_Cartes_Tresor pileTresor;
     private Pile_de_Cartes_Inondation pileInnondation;
+    private Niveau_Eau niv;
     
     public Controleur() {
         this.grille = new Grille();
@@ -144,10 +145,12 @@ public class Controleur implements Observateur{
             System.out.println("C'est maintenant le tour du "+joueurCourant.getRole());
             // PLUS LA BONNE VUE this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
             
-            //Pioche
+            joueurCourant.piocheCarteTresor(pileTresor, pileInnondation, niv);
+            joueurCourant.piocheCarteTresor(pileTresor, pileInnondation, niv);
+            grille.Inondation(pileInnondation, niv);
             
             if (joueurCourant.getMain().size()>4) {
-                // A FAIRE
+                // A FAIRE (defausse de cartes si le joueur en a trop)
                 System.out.println("Il faut vous defausser de certaines cartes");
             }
         }
