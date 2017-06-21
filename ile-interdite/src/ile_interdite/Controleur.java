@@ -16,7 +16,10 @@ public class Controleur implements Observateur{
     private int actionRestantes = 3;
     private int compteurTour = 0;
     private Aventurier joueurCourant;
-    private int actionSelect = -1; // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
+// Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
+    private int actionSelect = -1;
+// defausse = 0 >> Normal, defausse = 1 >> Le joueur doit se defausser de certaines cartes
+    private int defausse = 0;
     private Pile_de_Cartes_Tresor pileTresor;
     private Pile_de_Cartes_Inondation pileInnondation;
     private Niveau_Eau niv;
@@ -116,17 +119,23 @@ public class Controleur implements Observateur{
                 joueurCourant.prendreTresor();
                 break;
                 
-            case UTILISER_CARTE:
-                    Afficher(message.getCarte().utiliserCarte(grille));
-                    if (message.getCarte().getType() == "Helicoptere"){
-                        actionSelect = 3;
-                    } else if (message.getCarte().getType() == "Sac_de_sable"){
-                        actionSelect = 4;
+            case CARTE:
+                    if (defausse == 1){
+                        joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
+                        if (joueurCourant.getMain().size()<=4) {
+                            defausse = 0;
+                        }
+                        
+                    } else {
+                        Afficher(message.getCarte().utiliserCarte(grille));
+                        if (message.getCarte().getType() == "Helicoptere"){
+                            actionSelect = 3;
+                        } else if (message.getCarte().getType() == "Sac_de_sable"){
+                            actionSelect = 4;
+                        }
                     }
-                break;
-                
-            case DEFAUSSER_CARTE:
-                    joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
+                    
+                    
                 break;
                 
             default:
@@ -150,8 +159,7 @@ public class Controleur implements Observateur{
             grille.Inondation(pileInnondation, niv);
             
             if (joueurCourant.getMain().size()>4) {
-                // A FAIRE (defausse de cartes si le joueur en a trop)
-                System.out.println("Il faut vous defausser de certaines cartes");
+                defausse = 1;
             }
         }
     }
