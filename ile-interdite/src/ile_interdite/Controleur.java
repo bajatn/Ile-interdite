@@ -37,7 +37,7 @@ public class Controleur implements Observateur{
         aventuriers.add(new Navigateur(grille.getTuile(4,2)));
         this.joueurCourant = aventuriers.get(0);
         this.vue = new FenetreIHM();
-        //vue.setObservateur(this);
+        vue.setObservateur(this);
         
     }
     

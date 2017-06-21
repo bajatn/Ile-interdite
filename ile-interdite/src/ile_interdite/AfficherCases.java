@@ -85,11 +85,6 @@ class AfficherCases extends JPanel {
 //            this.add(new JButton());
 //            this.add(new JPanel());
 //            this.add(new JLabel("trésor BD"));           
-
-            
-        
-        //this.setVisible(true);
-        //this.repaint();
     }
     
     public void setObservateur(Observateur observateur){
