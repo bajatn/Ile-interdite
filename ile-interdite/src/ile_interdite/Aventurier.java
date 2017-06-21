@@ -26,6 +26,7 @@ public abstract class Aventurier {
         this.tresor = new ArrayList<>();
         this.nbAction = nbAction;
         this.description = description;
+        this.getTuileActu().addAventurier(this);
     }
 
     public String getDescription() {

@@ -5,6 +5,7 @@
  */
 package ile_interdite;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -26,13 +27,11 @@ class AfficherCases extends JPanel {
         
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
-                BoutonCase bouton = new BoutonCase(y+1,i+1,grille.getTuile(y+1, i+1));
-                bouton.setObservateur(observateur);
-
+                PanelCase panelCase = new PanelCase(observateur, y+1, i+1, grille.getTuile(y+1,i+1));
                 
                 if (i==0||i==5){
-                    if (y==2||y==3){              
-                        this.add(bouton);
+                    if (y==2||y==3){
+                        this.add(panelCase);
                     }
                     else{
                         this.add(new JLabel());
@@ -43,11 +42,11 @@ class AfficherCases extends JPanel {
                         this.add(new JLabel());
                     }
                     else{
-                        this.add(bouton);
+                        this.add(panelCase);
                     }
                 }
                 if (i==2||i==3){
-                    this.add(bouton);
+                    this.add(panelCase);
                 }
             }        
         }
@@ -101,13 +100,11 @@ class AfficherCases extends JPanel {
         
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
-                BoutonCase bouton = new BoutonCase(y,i,grille.getTuile(y+1, i+1));
-                bouton.setObservateur(observateur);
-
+                PanelCase panelCase = new PanelCase(observateur, y+1, i+1, grille.getTuile(y+1,i+1));
                 
                 if (i==0||i==5){
-                    if (y==2||y==3){              
-                        this.add(bouton);
+                    if (y==2||y==3){
+                        this.add(panelCase);
                     }
                     else{
                         this.add(new JLabel());
@@ -118,14 +115,13 @@ class AfficherCases extends JPanel {
                         this.add(new JLabel());
                     }
                     else{
-                        this.add(bouton);
+                        this.add(panelCase);
                     }
                 }
                 if (i==2||i==3){
-                    this.add(bouton);
+                    this.add(panelCase);
                 }
             }        
         }
     }
-    
 }
