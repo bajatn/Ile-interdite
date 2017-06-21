@@ -43,18 +43,23 @@ class AfficheCartes extends JPanel {
 
     
 
-    public AfficheCartes(ArrayList<Carte_Tresor> cartes,Observateur
-            observateur) {
+    public AfficheCartes(ArrayList<Carte_Tresor> cartes, Observateur observateur) {
         this.setLayout(new BorderLayout());
         panelCartes = new JPanel(new GridLayout(5,1));
         
                 
         for(int i=0;i<5;i++){
-            BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
-            panelCartes.add(carte);    
+            System.out.println(i);
+            System.out.println(cartes.size());
+            if (cartes.isEmpty()){
+                panelCartes.add(new JButton());
+            }
+            else{
+                BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
+                System.out.println(i);
+                panelCartes.add(carte);
+            }
         }
-        
-        
         panelCommande = new JPanel(new GridLayout(10,1));
         panelCommande.setBorder(BorderFactory.createLineBorder(Color.black));
         

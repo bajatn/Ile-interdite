@@ -5,6 +5,7 @@
  */
 package ile_interdite;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -18,9 +19,10 @@ public class BoutonCarte extends JButton{
     private Observateur observateur;
 
     public BoutonCarte(Carte_Tresor carte,Observateur observateur) {
-        super();
+        super(carte.getType());
         this.carte = carte;
         this.observateur = observateur;
+        this.setBackground(Color.red);
         this.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -32,7 +34,4 @@ public class BoutonCarte extends JButton{
                 }
         });
     }
-    
-    
-    
 }

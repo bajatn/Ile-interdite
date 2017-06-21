@@ -8,6 +8,7 @@ package ile_interdite;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,7 +40,7 @@ public class FenetreIHM {
     private AfficheJoueur afficherJoueur;
     
     private Observateur observateur;
-    public FenetreIHM(Observateur observateur, Grille grille){
+    public FenetreIHM(Observateur observateur, Grille grille, ArrayList<Carte_Tresor> cartesTresor){
             //Création et initialisation de la fenetre
         this.setObservateur(observateur);
         this.window = new JFrame();
@@ -71,7 +72,8 @@ public class FenetreIHM {
         panelMain.add(afficherNiveauEau, BorderLayout.EAST);
         
             //Ajout et initialisation de afficherCartes a l'ouest de PanelMain
-        this.afficherCartes = new AfficheCartes();
+        this.afficherCartes = new AfficheCartes(cartesTresor, observateur);
+        
         panelMain.add(afficherCartes, BorderLayout.WEST);
         
             //Ajout et initialisation de panelSud au sud de PanelMain
