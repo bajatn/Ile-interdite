@@ -31,6 +31,7 @@ public class BoutonCase extends JButton{
         this.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    System.out.println("click bouton");
                     Message m = new Message();
                     m.setCoordonees(getPosX(), getPosY());
                     m.setType(TypeMessage.CHOIX);
