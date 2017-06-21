@@ -18,6 +18,7 @@ import javax.swing.border.CompoundBorder;
  * @author baratinm
  */
 class AfficheActions extends JPanel {
+    private Observateur observateur;
 
     public AfficheActions() {
         
@@ -35,6 +36,9 @@ class AfficheActions extends JPanel {
         this.add(new JButton("tresor")); 
         this.add(new JButton("action spé"));
         this.add(new JButton("quitter/décoller"));        
+    }
+    public void setObservateur(Observateur observateur){
+        this.observateur = observateur;
     }
     
 }

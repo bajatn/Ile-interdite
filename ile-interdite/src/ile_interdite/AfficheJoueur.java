@@ -19,6 +19,7 @@ class AfficheJoueur extends JPanel {
     private JPanel panelImage;
     private JPanel panelDescription;
     private JLabel labelDescription;
+    private Observateur observateur;
 
     
     
@@ -34,11 +35,10 @@ class AfficheJoueur extends JPanel {
         labelDescription = new JLabel("Description de la classe");
         panelDescription.add(labelDescription);
         panelGeneral.add(panelDescription, BorderLayout.CENTER);
-        
-        
-
-        
-        
+    }
+    
+    public void setObservateur(Observateur observateur){
+        this.observateur = observateur;
     }
     
 }

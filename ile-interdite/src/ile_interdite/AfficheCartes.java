@@ -18,6 +18,8 @@ import javax.swing.JPanel;
  * @author baratinm
  */
 class AfficheCartes extends JPanel {
+    private Observateur observateur;
+    
     private JPanel panelCartes;
 
     private JButton carte1;
@@ -94,4 +96,7 @@ class AfficheCartes extends JPanel {
         this.add(panelCommande, BorderLayout.EAST);
     }
     
+    public void setObservateur(Observateur observateur){
+        this.observateur = observateur;
+    }
 }

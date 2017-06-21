@@ -25,15 +25,19 @@ public class FenetreIHM {
     
     private JFrame window;
     private JPanel panelMain;
+    
     private JPanel panelCentral;
     private JPanel panelLabel;
     private JLabel labelCentral;
-    private JPanel afficherCases;
-    private JPanel afficherNiveauEau;
-    private JPanel afficherCartes;
+    private AfficherCases afficherCases;
+    
+    private AfficheNiveauEau afficherNiveauEau;
+    private AfficheCartes afficherCartes;
+    
     private JPanel panelSud;
-    private JPanel afficherActions;
-    private JPanel afficherJoueur;
+    private AfficheActions afficherActions;
+    private AfficheJoueur afficherJoueur;
+    
     private Observateur observateur;
     public FenetreIHM(){
             //Création et initialisation de la fenetre
@@ -86,5 +90,11 @@ public class FenetreIHM {
     
     public void setObservateur(Observateur observateur) {
             this.observateur = observateur;
+            this.afficherActions.setObservateur(observateur);
+            this.afficherCartes.setObservateur(observateur);
+            this.afficherJoueur.setObservateur(observateur);
+            this.afficherNiveauEau.setObservateur(observateur);
+            this.afficherCases.setObservateur(observateur);
+
         }
 }
