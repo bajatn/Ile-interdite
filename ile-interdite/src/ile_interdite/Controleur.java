@@ -120,22 +120,46 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
-                    if (defausse == 1){
-                        joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
-                        if (joueurCourant.getMain().size()<=4) {
-                            defausse = 0;
-                        }
-                        
-                    } else {
-                        Afficher(message.getCarte().utiliserCarte(grille));
-                        if (message.getCarte().getType() == "Helicoptere"){
-                            actionSelect = 3;
-                        } else if (message.getCarte().getType() == "Sac_de_sable"){
-                            actionSelect = 4;
+                if (defausse == 1){
+                    joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
+                    if (joueurCourant.getMain().size()<=4) {
+                        defausse = 0;
+                    }
+
+                } else {
+                    Afficher(message.getCarte().utiliserCarte(grille));
+                    if (message.getCarte().getType() == "Helicoptere"){
+                        actionSelect = 3;
+                    } else if (message.getCarte().getType() == "Sac_de_sable"){
+                        actionSelect = 4;
+                    }
+                }
+                break;
+                
+             case TERMINER_JEU:
+                int aventurierPresent = 0;
+                for (Aventurier aventurier: aventuriers){
+                    if(aventurier.getTuileActu() == grille.getTuile(Lieu.Heliport)){
+                        aventurierPresent = aventurierPresent++;
+                    }
+                }
+                if (aventurierPresent == aventuriers.size()){
+                    boolean carteHelico = false;
+                    for (Aventurier aventurier: aventuriers){
+                        for (Carte_Tresor carte: aventurier.getMain()){
+                            if(carte.getType()=="Helicoptere"){
+                                carteHelico = true;
+                            }
                         }
                     }
-                    
-                    
+                    if (carteHelico == true){
+                        // GAGNE !
+                        System.out.println("Partie gagnée, felicitation !");
+                    } else {
+                        // PERDU !
+                        System.out.println("Partie perdue !");
+                    }
+                }
                 break;
                 
             default:
