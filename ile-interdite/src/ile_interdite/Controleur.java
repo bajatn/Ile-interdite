@@ -18,7 +18,8 @@ public class Controleur implements Observateur{
     private Aventurier joueurCourant;
 // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
     private int actionSelect = -1;
-// defausse = 0 >> Normal, defausse = 1 >> Le joueur doit se defausser de certaines cartes
+// defausse = 0 >> Normal
+// defausse = 1 >> Le joueur doit se defausser de certaines cartes
     private int defausse = 0;
     private Pile_de_Cartes_Tresor pileTresor;
     private Pile_de_Cartes_Inondation pileInnondation;

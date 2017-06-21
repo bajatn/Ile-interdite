@@ -9,5 +9,5 @@ package ile_interdite;
  * @author ravinelt
  */
 interface Observateur {
-    public void traiterMessage(Message msg);
+    public void traiterMessage(Message message);
 }
