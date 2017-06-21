@@ -32,6 +32,9 @@ public class Tuile {
         this.nom = nom;
         this.grille = grille;
         this.aventuriers = new ArrayList<>();
+        
+        
+        
         if (this.nom==La_Caverne_des_Ombres || this.nom==La_Caverne_du_Brasier){
             this.tresor = le_cristal_ardent;
         }

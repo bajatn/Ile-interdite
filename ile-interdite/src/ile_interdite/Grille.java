@@ -96,7 +96,8 @@ public class Grille {
             tuile.setEtat(Inonde);
         } else if (tuile.getEtat() == Inonde){
             tuile.setEtat(Submerge);
-            if (!(tuile.getAventuriers().isEmpty())){
+// ça s'est quand on a une case qui se submerge sous un aventurier il faut qu'il bouge, mais ça fait tout buger looooooool
+      /*    if (!(tuile.getAventuriers().isEmpty())){
                 // Il y a un ou plusieurs aventurier sur la case
                 for (Aventurier aventurier: tuile.getAventuriers()){
                     if (!(aventurier.deplacer().isEmpty())){
@@ -108,7 +109,7 @@ public class Grille {
                         System.out.println("Partie perdue, un aventurier s'est noyé !");
                     }
                 }
-            }
+            }*/
         }
     }
 
