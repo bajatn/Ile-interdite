@@ -31,12 +31,13 @@ public class Controleur implements Observateur{
         this.pileTresor = new Pile_de_Cartes_Tresor();
         this.pileInnondation = new Pile_de_Cartes_Inondation();
         aventuriers.add(new Pilote(grille.getTuile(4,3)));
+        this.niv = new Niveau_Eau(1);
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
         aventuriers.add(new Plongeur(grille.getTuile(3,4)));
         aventuriers.add(new Messager(grille.getTuile(3,2)));
         aventuriers.add(new Navigateur(grille.getTuile(4,2)));
-        this.joueurCourant = aventuriers.get(0);
+        this.joueurCourant = aventuriers.get(1);
         this.vue = new FenetreIHM(this);
         vue.setObservateur(this);
         
@@ -44,12 +45,6 @@ public class Controleur implements Observateur{
     
     @Override
     public void traiterMessage(Message message){
-        
-        /* 
-        if (joueurCourant.getRole()=="Navigateur"){
-            actionRestantes = 4;
-        }
-        */
         
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
@@ -178,9 +173,8 @@ public class Controleur implements Observateur{
             compteurTour++;
             joueurCourant = aventuriers.get(compteurTour%6);
             actionUtilise = 0;
-            System.out.println("C'est maintenant le tour du "+joueurCourant.getRole());
-            // PLUS LA BONNE VUE this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
-            
+            System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
+            System.out.println("On pioche 2 cartes tresor"); 
             joueurCourant.piocheCarteTresor(pileTresor, pileInnondation, niv);
             joueurCourant.piocheCarteTresor(pileTresor, pileInnondation, niv);
             grille.Inondation(pileInnondation, niv);

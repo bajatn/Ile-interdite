@@ -27,7 +27,6 @@ public class BoutonCase extends JButton{
         this.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("G E T L O S T I N T H E G R O O V E");
                     Message m = new Message();
                     m.setCoordonees(getPosX(), getPosY());
                     m.setType(TypeMessage.CHOIX);
@@ -46,7 +45,6 @@ public class BoutonCase extends JButton{
     }
 
     public void setObservateur(Observateur observateur) {
-        System.out.println("Observateur de BoutonCases ="+observateur);
         this.observateur = observateur;
     }
     
