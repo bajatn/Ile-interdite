@@ -21,10 +21,11 @@ class AfficheNiveauEau extends JPanel {
     private Observateur observateur;
     
     private JSlider niveauEau;
-
+    private int valeurNiveauEau;
     public AfficheNiveauEau() {
         this.setBorder(BorderFactory.createLineBorder(Color.black));
-        niveauEau = new JSlider(SwingConstants.VERTICAL,0,10,0);
+        valeurNiveauEau = 0;
+        niveauEau = new JSlider(SwingConstants.VERTICAL,valeurNiveauEau,10,0);
         niveauEau.setMinorTickSpacing(1);
         niveauEau.setMajorTickSpacing(5);
         niveauEau.setPreferredSize(new Dimension(30,650));
@@ -37,6 +38,11 @@ class AfficheNiveauEau extends JPanel {
     
     public void setObservateur(Observateur observateur){
         this.observateur = observateur;
+    }
+    
+    public void augmenterNiveauEau(){
+        valeurNiveauEau++;
+        niveauEau.setValue(valeurNiveauEau);
     }
     
 }

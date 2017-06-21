@@ -88,6 +88,7 @@ public class FenetreIHM {
     }
     
     public void setObservateur(Observateur observateur) {
+            System.out.println("Observateur de Fenetre IHM ="+observateur);
             this.observateur = observateur;
             this.afficherActions.setObservateur(observateur);
             this.afficherCartes.setObservateur(observateur);

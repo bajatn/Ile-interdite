@@ -17,7 +17,8 @@ import javax.swing.JPanel;
 class AfficherCases extends JPanel {
     private Observateur observateur;
 
-    public AfficherCases() {
+    public AfficherCases(Observateur observateur){
+        this.setObservateur(observateur);
         this.setLayout(new GridLayout(6,6,10,10));
         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
@@ -88,6 +89,7 @@ class AfficherCases extends JPanel {
     }
     
     public void setObservateur(Observateur observateur){
+         System.out.println("Observateur d'afficherCases ="+observateur);
         this.observateur = observateur;        
     }
     

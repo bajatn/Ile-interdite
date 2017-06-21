@@ -60,7 +60,6 @@ public class Controleur implements Observateur{
                 break;
                 
             case CHOIX:
-                
                     // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
@@ -208,12 +207,3 @@ public class Controleur implements Observateur{
         }
     }
 }
-    
-    
-
-    
-    
-    
-    
-
-
