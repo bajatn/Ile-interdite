@@ -26,7 +26,7 @@ class AfficherCases extends JPanel {
         
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
-                BoutonCase bouton = new BoutonCase(y,i,grille.getTuile(y+1, i+1));
+                BoutonCase bouton = new BoutonCase(y+1,i+1,grille.getTuile(y+1, i+1));
                 bouton.setObservateur(observateur);
 
                 

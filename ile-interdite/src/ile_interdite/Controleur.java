@@ -13,8 +13,8 @@ public class Controleur implements Observateur{
     private Grille grille;
     private ArrayList<Aventurier> aventuriers;
     private FenetreIHM vue;
-    private int actionUtilise = 0;
-    private int compteurTour = 0;
+    private int actionUtilise = 10;
+    private int compteurTour = -1;
     private Aventurier joueurCourant;
 // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
     private int actionSelect = -1;
@@ -30,18 +30,17 @@ public class Controleur implements Observateur{
         this.pileInondation = new Pile_de_Cartes_Inondation();
         this.grille = new Grille(pileInondation);
         this.aventuriers = new ArrayList<>();
-        aventuriers.add(new Pilote(grille.getTuile(4,3)));
         this.niv = new Niveau_Eau(1);
+        aventuriers.add(new Pilote(grille.getTuile(4,3)));
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
         aventuriers.add(new Ingenieur(grille.getTuile(4,1)));
         aventuriers.add(new Plongeur(grille.getTuile(3,4)));
         aventuriers.add(new Messager(grille.getTuile(3,2)));
         aventuriers.add(new Navigateur(grille.getTuile(4,2)));
-        this.joueurCourant = aventuriers.get(1);
+        this.joueurCourant = aventuriers.get(0);
         this.vue = new FenetreIHM(this,grille);
         vue.setObservateur(this);
-        joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
-        joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+        TourSuiv();
         
     }
     
@@ -60,6 +59,7 @@ public class Controleur implements Observateur{
                 break;
                 
             case CHOIX:
+              
                     // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
@@ -168,25 +168,28 @@ public class Controleur implements Observateur{
             
             
         if(actionUtilise >= joueurCourant.getNbAction()){
-            if (joueurCourant.getRole() == "Pilote"){
-                joueurCourant.setAVole(false);
-            }
-            compteurTour++;
-            joueurCourant = aventuriers.get(compteurTour%6);
-            actionUtilise = 0;
-            System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
-            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
-            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
             grille.Inondation(pileInondation, niv);
-            vue.getAfficherCases().MettreAjourCases(this, grille);
-            
-            if (joueurCourant.getMain().size()>4) {
-                defausse = 1;
-            }
-            vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
+            TourSuiv();
         }
     }
 
+    private void TourSuiv(){
+        if (joueurCourant.getRole() == "Pilote"){
+            joueurCourant.setAVole(false);
+        }
+        compteurTour++;
+        joueurCourant = aventuriers.get(compteurTour%6);
+        actionUtilise = 0;
+        System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
+        joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+        joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+        vue.getAfficherCases().MettreAjourCases(this, grille);
+        if (joueurCourant.getMain().size()>4) {
+            defausse = 1;
+        }
+        vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
+    }
+    
     private void Afficher(ArrayList<Tuile> tuiles) {
         System.out.println("");
         System.out.println("Vous etes sur la case: " + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
