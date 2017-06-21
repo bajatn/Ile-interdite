@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Messager extends Aventurier {
 
     public Messager(Tuile tuile) {
-        super("Messager", tuile, Color.GRAY);
+        super("Messager", tuile, Color.GRAY, 3);
     }
     
     @Override

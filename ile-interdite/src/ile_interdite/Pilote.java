@@ -17,7 +17,7 @@ public class Pilote extends Aventurier {
     private boolean aVole = false;
     
     public Pilote(Tuile tuile) {
-        super("Pilote", tuile, Color.BLUE);
+        super("Pilote", tuile, Color.BLUE, 3);
         aVole = false;
     }
     

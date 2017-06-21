@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Plongeur extends Aventurier {
 
     public Plongeur(Tuile tuile) {
-        super("Plongeur", tuile, Color.BLACK);
+        super("Plongeur", tuile, Color.BLACK, 3);
     }
 
     @Override

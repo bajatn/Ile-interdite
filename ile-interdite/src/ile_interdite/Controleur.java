@@ -13,7 +13,7 @@ public class Controleur implements Observateur{
     private Grille grille;
     private ArrayList<Aventurier> aventuriers;
     private FenetreIHM vue;
-    private int actionRestantes = 3;
+    private int actionUtilise = 0;
     private int compteurTour = 0;
     private Aventurier joueurCourant;
 // Action Selectionnée -> 0 pour deplacer, 1 pour assecher, 2 pour donner, 3 pour carte helico, 4 pour carte sable
@@ -45,9 +45,11 @@ public class Controleur implements Observateur{
     @Override
     public void traiterMessage(Message message){
         
+        /* 
         if (joueurCourant.getRole()=="Navigateur"){
             actionRestantes = 4;
         }
+        */
         
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
@@ -64,12 +66,12 @@ public class Controleur implements Observateur{
                     // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
-                    actionRestantes--;  
+                    actionUtilise++;  
                     
                     // Assecher (ingenieur)
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
                     grille.assécherTuile(message.getX(),message.getY());
-                    actionRestantes--;
+                    actionUtilise++;  
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==false){
                     grille.assécherTuile(message.getX(),message.getY());  
                     this.aDejaAsseche=true;     
@@ -78,12 +80,12 @@ public class Controleur implements Observateur{
                 } else if (actionSelect == 1){
                     grille.assécherTuile(message.getX(),message.getY());
                     this.aDejaAsseche = false;
-                    actionRestantes--;
+                    actionUtilise++;  
                     
                     // Donner carte
                 } else if (actionSelect == 2){
                     joueurCourant.transfererCarte(message.getAventurier(), message.getCarte());
-                    actionRestantes--;
+                    actionUtilise++;  
 
                     // Helico
                 } else if (actionSelect == 3){
@@ -107,7 +109,7 @@ public class Controleur implements Observateur{
                 
             case TERMINER_TOUR:
                 System.out.println("TERMINER_TOUR");
-                actionRestantes = 0;
+                actionUtilise = 10;
                 break;
                 
             case DONNER:
@@ -138,6 +140,7 @@ public class Controleur implements Observateur{
                 
              case TERMINER_JEU:
                 int aventurierPresent = 0;
+                // J'ai oublier de verifier que les aventuriers possèdent bien les quatres tresors !!  
                 for (Aventurier aventurier: aventuriers){
                     if(aventurier.getTuileActu() == grille.getTuile(Lieu.Heliport)){
                         aventurierPresent = aventurierPresent++;
@@ -167,14 +170,14 @@ public class Controleur implements Observateur{
         }
             
             
-        if(actionRestantes < 1){
+        if(actionUtilise >= joueurCourant.getNbAction()){
             
             if (joueurCourant.getRole() == "Pilote"){
                 joueurCourant.setAVole(false);
             }
             compteurTour++;
             joueurCourant = aventuriers.get(compteurTour%6);
-            actionRestantes = 3;
+            actionUtilise = 0;
             System.out.println("C'est maintenant le tour du "+joueurCourant.getRole());
             // PLUS LA BONNE VUE this.vue.mettreAJour("Nom",joueurCourant.getRole(),joueurCourant.getCouleur());
             

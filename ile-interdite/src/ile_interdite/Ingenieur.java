@@ -16,6 +16,6 @@ import java.awt.Color;
 public class Ingenieur  extends Aventurier{
 
     public Ingenieur(Tuile tuile) {
-        super("Ingénieur", tuile,Color.RED);
+        super("Ingénieur", tuile,Color.RED, 3);
     }
 }

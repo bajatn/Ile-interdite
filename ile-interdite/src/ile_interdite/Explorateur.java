@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Explorateur extends Aventurier {
 
     public Explorateur(Tuile tuile) {
-        super("Explorateur", tuile,Color.GREEN);
+        super("Explorateur", tuile, Color.GREEN, 3);
     }
 
     

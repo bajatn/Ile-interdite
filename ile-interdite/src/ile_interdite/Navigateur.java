@@ -14,7 +14,7 @@ import java.awt.Color;
 public class Navigateur extends Aventurier {
 
     public Navigateur( Tuile tuile) {
-        super("Navigateur", tuile,Color.YELLOW);
+        super("Navigateur", tuile,Color.YELLOW, 4);
     }
 
 

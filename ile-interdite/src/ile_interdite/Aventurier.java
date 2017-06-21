@@ -13,15 +13,17 @@ public abstract class Aventurier {
     private String role;
     private Tuile tuileActu;
     private Color couleur;
+    private int nbAction;
     private ArrayList<Type_Tresor> tresor;
     private ArrayList<Carte_Tresor> main;
 
-    public Aventurier(String role, Tuile tuile, Color couleur) {
+    public Aventurier(String role, Tuile tuile, Color couleur, int nbAction) {
         this.role = role;
         this.tuileActu = tuile;
         this.couleur = couleur;
         this.main = new ArrayList<>();
         this.tresor = new ArrayList<>();
+        this.nbAction = nbAction;
     }
 
     public Color getCouleur() {
@@ -40,6 +42,10 @@ public abstract class Aventurier {
     public int getPositionY() {
         return tuileActu.getY();
     }
+    public int getNbAction() {
+        return nbAction;
+    }
+    
     
     public void setPosition(Tuile tuile) {
         this.tuileActu = tuile;
