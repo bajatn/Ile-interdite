@@ -46,6 +46,7 @@ class AfficheCartes extends JPanel {
     public AfficheCartes() {
         this.setLayout(new BorderLayout());
         panelCartes = new JPanel(new GridLayout(5,1));
+        
         carte1 = new JButton("carte1");
         panelCartes.add(carte1);
         carte2 = new JButton("carte2");
@@ -59,31 +60,40 @@ class AfficheCartes extends JPanel {
         
         panelCommande = new JPanel(new GridLayout(10,1));
         panelCommande.setBorder(BorderFactory.createLineBorder(Color.black));
+        
         partieSuiv = new JButton(">");
         panelCommande.add(partieSuiv);
+        
         partiePrec = new JButton("<");
         panelCommande.add(partiePrec);
+        
         panelCommande.add(new JPanel());
         panelCommande.add(new JPanel());
+        
         joueur1 = new JButton("P");
         joueur1.setBackground(Color.blue);
         joueur1.setForeground(Color.white);
         panelCommande.add(joueur1);
+        
         joueur2 = new JButton("E");
         joueur2.setBackground(Color.green);
         joueur2.setForeground(Color.white);
         panelCommande.add(joueur2);
+        
         joueur3 = new JButton("I");
         joueur3.setBackground(Color.red);
         joueur3.setForeground(Color.white);
         panelCommande.add(joueur3);
+        
         joueur4 = new JButton("Pl");
         joueur4.setBackground(Color.black);
         joueur4.setForeground(Color.white);
         panelCommande.add(joueur4);
+        
         joueur5 = new JButton("M");
         joueur5.setBackground(Color.lightGray);
         panelCommande.add(joueur5);
+        
         joueur6 = new JButton("N");
         joueur6.setBackground(Color.yellow);
         joueur6.setForeground(Color.black);

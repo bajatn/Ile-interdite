@@ -5,7 +5,6 @@
  */
 package ile_interdite;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -19,7 +18,6 @@ class AfficherCases extends JPanel {
     private Observateur observateur;
 
     public AfficherCases() {
-        this.setPreferredSize(new Dimension(500,500));
         this.setLayout(new GridLayout(6,6,10,10));
         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
@@ -29,6 +27,7 @@ class AfficherCases extends JPanel {
             for (int y=0;y<6;y++){
                 BoutonCase bouton = new BoutonCase(y,i);
                 bouton.setObservateur(observateur);
+
                 
                 if (i==0||i==5){
                     if (y==2||y==3){              
@@ -89,8 +88,8 @@ class AfficherCases extends JPanel {
 
             
         
-        this.setVisible(true);
-        this.repaint();
+        //this.setVisible(true);
+        //this.repaint();
     }
     
     public void setObservateur(Observateur observateur){

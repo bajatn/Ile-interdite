@@ -20,26 +20,27 @@ public class BoutonCase extends JButton{
     private Observateur observateur;
 
     public BoutonCase(int x, int y) {
+        super();
+        
         this.x = x;
         this.y = y;
         this.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Message m = new Message();
-                    m.setCoordonees(getX(), getY());
-                    m.setType(TypeMessage.CHOIX);
-                                        
+                    m.setCoordonees(getPosX(), getPosY());
+                    m.setType(TypeMessage.CHOIX);               
                     observateur.traiterMessage(m);
                    
                 }
         });
     }
 
-    public int getX() {
+    public int getPosX() {
         return x;
     }
 
-    public int getY() {
+    public int getPosY() {
         return y;
     }
 

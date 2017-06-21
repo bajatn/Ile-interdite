@@ -5,8 +5,11 @@
  */
 package ile_interdite;
 
+import static ile_interdite.TypeMessage.*;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -27,14 +30,63 @@ class AfficheActions extends JPanel {
             BorderFactory.createLineBorder(Color.black),    
             BorderFactory.createEmptyBorder(10,10,10,10)
         ));
-      
-        this.add(new JButton("deplacer"));
-        this.add(new JButton("assécher"));
-        this.add(new JPanel());
-        this.add(new JButton("attendre"));
-        this.add(new JButton("donner"));
-        this.add(new JButton("tresor")); 
-        this.add(new JButton("action spé"));
+        JButton deplacer = new JButton("deplacer");
+        deplacer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Message m = new Message();
+                m.setType(DEPLACER);
+                observateur.traiterMessage(m);
+            }
+
+        });
+        this.add(deplacer);
+                
+        JButton assecher = new JButton("assecher");
+        
+        assecher.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Message m = new Message();
+                m.setType(ASSECHER);
+                observateur.traiterMessage(m);
+            }
+        });  
+        this.add(assecher);
+        
+        JButton attendre = new JButton("attendre");
+        attendre.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TERMINER_TOUR);
+                    observateur.traiterMessage(m);
+            }
+        });        
+        this.add(attendre);
+        
+        JButton donner = new JButton("donner");
+        donner.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(DONNER);
+                    observateur.traiterMessage(m);
+            }
+        });        
+        this.add(donner);
+        
+        JButton tresor = new JButton("tresor");
+        donner.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(RECUPERER_TRESOR);
+                    observateur.traiterMessage(m);
+            }
+        });        
+        this.add(tresor);
+        
         this.add(new JButton("quitter/décoller"));        
     }
     public void setObservateur(Observateur observateur){
