@@ -44,6 +44,7 @@ public abstract class Pile_de_Cartes {
     
     public void setCarte_dessus(){
         carte_dessus = cartes.get((int)Math.random()*cartes.size());
+        System.out.println(cartes.size());
     }
 
     public Carte pioche() {
@@ -51,9 +52,14 @@ public abstract class Pile_de_Cartes {
         cartes.remove(carte_dessus);
         if (cartes.isEmpty()){
             this.ChangerPile();
+            System.out.println("vide");
+
         }
         setCarte_dessus();
+        System.out.println("carte mise dessus");
+        System.out.println(result);
         return result;
+
     }
     
     public void ChangerPile(){

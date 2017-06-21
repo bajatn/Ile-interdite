@@ -95,6 +95,7 @@ public abstract class Aventurier {
     }
     
     public void piocheCarteTresor(Pile_de_Cartes_Tresor pileT, Pile_de_Cartes_Inondation pileI, Niveau_Eau niv){
+        
         Carte carte = pileT.pioche();
         Carte_Tresor carte_t = (Carte_Tresor) carte;
         

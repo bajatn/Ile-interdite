@@ -30,7 +30,7 @@ class AfficheActions extends JPanel {
             BorderFactory.createLineBorder(Color.black),    
             BorderFactory.createEmptyBorder(10,10,10,10)
         ));
-        JButton deplacer = new JButton("deplacer");
+        JButton deplacer = new JButton("Deplacer");
         deplacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +42,7 @@ class AfficheActions extends JPanel {
         });
         this.add(deplacer);
                 
-        JButton assecher = new JButton("assecher");
+        JButton assecher = new JButton("Assecher");
         
         assecher.addActionListener(new ActionListener() {
             @Override
@@ -54,7 +54,7 @@ class AfficheActions extends JPanel {
         });  
         this.add(assecher);
         
-        JButton attendre = new JButton("attendre");
+        JButton attendre = new JButton("Fin de tour");
         attendre.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -65,7 +65,7 @@ class AfficheActions extends JPanel {
         });        
         this.add(attendre);
         
-        JButton donner = new JButton("donner");
+        JButton donner = new JButton("Donner");
         donner.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -76,7 +76,7 @@ class AfficheActions extends JPanel {
         });        
         this.add(donner);
         
-        JButton tresor = new JButton("tresor");
+        JButton tresor = new JButton("Tresor");
         donner.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -87,7 +87,7 @@ class AfficheActions extends JPanel {
         });        
         this.add(tresor);
         
-        this.add(new JButton("quitter/décoller"));        
+        this.add(new JButton("Quitter/Décoller"));        
     }
     public void setObservateur(Observateur observateur){
         this.observateur = observateur;
