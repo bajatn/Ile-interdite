@@ -42,7 +42,7 @@ public class Controleur implements Observateur{
     }
     
     @Override
-    public void traiterMessage (Message message){
+    public void traiterMessage(Message message){
         
         if (joueurCourant.getRole()=="Navigateur"){
             actionRestantes = 4;
