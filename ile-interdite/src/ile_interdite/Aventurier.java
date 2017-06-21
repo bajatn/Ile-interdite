@@ -16,14 +16,16 @@ public abstract class Aventurier {
     private int nbAction;
     private ArrayList<Type_Tresor> tresor;
     private ArrayList<Carte_Tresor> main;
+    private String description;
 
-    public Aventurier(String role, Tuile tuile, Color couleur, int nbAction) {
+    public Aventurier(String role, Tuile tuile, Color couleur, int nbAction,String description) {
         this.role = role;
         this.tuileActu = tuile;
         this.couleur = couleur;
         this.main = new ArrayList<>();
         this.tresor = new ArrayList<>();
         this.nbAction = nbAction;
+        this.description = description;
     }
 
     public Color getCouleur() {
