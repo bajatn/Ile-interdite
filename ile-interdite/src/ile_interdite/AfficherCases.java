@@ -8,6 +8,7 @@ package ile_interdite;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -34,12 +35,12 @@ class AfficherCases extends JPanel {
                         this.add(bouton);
                     }
                     else{
-                        this.add(new JPanel());
+                        this.add(new JLabel());
                     }   
                 }
                 if (i==1||i==4){
                     if(y==0||y==5){
-                        this.add(new JPanel());
+                        this.add(new JLabel());
                     }
                     else{
                         this.add(bouton);
