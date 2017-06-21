@@ -15,5 +15,6 @@ public enum TypeMessage {
     TERMINER_TOUR,
     DONNER,
     RECUPERER_TRESOR,
+    TERMINER_JEU,
     CARTE;
 }

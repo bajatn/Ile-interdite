@@ -93,6 +93,9 @@ public class Grille {
             tuile.setEtat(Inonde);
         } else if (tuile.getEtat() == Inonde){
             tuile.setEtat(Submerge);
+            if (!(tuile.getAventuriers().isEmpty())){
+                // Il y a un ou plusieurs aventurier sur la case ! il faut donc les deplacer !
+            }
         }
     }
 
