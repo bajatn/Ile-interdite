@@ -40,6 +40,24 @@ public class Message {
         this.x = x;
         this.y = y;
     }
+
+    public void setCarte(Carte_Tresor carte) {
+        this.carte = carte;
+    }
+
+    public void setAventurier(Aventurier aventurier) {
+        this.aventurier = aventurier;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+    
+    
     
 
     public int getX() {

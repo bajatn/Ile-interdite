@@ -9,6 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -19,15 +22,12 @@ import javax.swing.JPanel;
  */
 class AfficheCartes extends JPanel {
     private Observateur observateur;
+    private int decalage;
+    
+    private ArrayList<Carte_Tresor> cartes;
     
     private JPanel panelCartes;
-
-    private JButton carte1;
-    private JButton carte2;
-    private JButton carte3;
-    private JButton carte4;
-    private JButton carte5;
-    
+   
     private JPanel panelCommande;
     
     private JButton partieSuiv;
@@ -43,20 +43,17 @@ class AfficheCartes extends JPanel {
 
     
 
-    public AfficheCartes() {
+    public AfficheCartes(ArrayList<Carte_Tresor> cartes,Observateur
+            observateur) {
         this.setLayout(new BorderLayout());
         panelCartes = new JPanel(new GridLayout(5,1));
         
-        carte1 = new JButton("carte1");
-        panelCartes.add(carte1);
-        carte2 = new JButton("carte2");
-        panelCartes.add(carte2);
-        carte3 = new JButton("carte3");
-        panelCartes.add(carte3);
-        carte4 = new JButton("carte4");
-        panelCartes.add(carte4);
-        carte5 = new JButton("carte5");
-        panelCartes.add(carte5);
+                
+        for(int i=0;i<5;i++){
+            BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
+            panelCartes.add(carte);    
+        }
+        
         
         panelCommande = new JPanel(new GridLayout(10,1));
         panelCommande.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -108,5 +105,32 @@ class AfficheCartes extends JPanel {
     
     public void setObservateur(Observateur observateur){
         this.observateur = observateur;
+    }
+    
+    public void mettreAJourCartes(ArrayList<Carte_Tresor> cartes){
+        decalage = 0;        
+        this.panelCartes.removeAll();
+        for(int i=0;i<5;i++){
+            BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
+            panelCartes.add(carte);    
+        }
+    }
+    
+    public void cartesSuivantes(){
+        decalage++;
+        this.panelCartes.removeAll();
+        for(int i=0;i<5;i++){
+            BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
+            panelCartes.add(carte);    
+        }    
+    }
+    
+    public void cartesPrecedentes(){
+        decalage--;
+        this.panelCartes.removeAll();
+        for(int i=0;i<5;i++){
+            BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
+            panelCartes.add(carte);    
+        }    
     }
 }
