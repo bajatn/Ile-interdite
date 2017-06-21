@@ -191,7 +191,7 @@ public class Controleur implements Observateur{
             if (joueurCourant.getMain().size()>4) {
                 defausse = 1;
             }
-            vue.setDefAventurier(joueurCourant.getDescription());
+            vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
         }
     }
 

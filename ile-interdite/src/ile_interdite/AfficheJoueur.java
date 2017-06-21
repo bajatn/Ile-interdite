@@ -6,6 +6,7 @@
 package ile_interdite;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -43,6 +44,10 @@ class AfficheJoueur extends JPanel {
     
     public void setDescription(String description){
         this.labelDescription.setText(description);
+    }
+    
+    public void setCouleur(Color couleurJoueur){
+        panelImage.setBackground(couleurJoueur);
     }
     
 }

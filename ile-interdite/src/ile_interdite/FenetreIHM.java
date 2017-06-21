@@ -89,7 +89,6 @@ public class FenetreIHM {
         panelMain.repaint();
     }
     
-    
     public void setObservateur(Observateur observateur) {
             System.out.println("Observateur de Fenetre IHM ="+observateur);
             this.observateur = observateur;
@@ -100,7 +99,9 @@ public class FenetreIHM {
 
         }
     
-    void setDefAventurier(String description) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void setAfficheJoueur(String description, Color couleur) {
+        this.afficherJoueur.setCouleur(couleur);
+        this.afficherJoueur.setDescription(description);
+        
     }
 }
