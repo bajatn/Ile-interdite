@@ -45,4 +45,8 @@ class AfficheNiveauEau extends JPanel {
         niveauEau.setValue(valeurNiveauEau);
     }
     
+    public void setNiveauEau(int niv){
+        niveauEau.setValue(niv);
+    }
+    
 }

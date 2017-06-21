@@ -135,7 +135,7 @@ public class Controleur implements Observateur{
                 }
                 break;
                 
-             case TERMINER_JEU:
+            case TERMINER_JEU:
                 int aventurierPresent = 0;
                 // J'ai oublier de verifier que les aventuriers possèdent bien les quatres tresors !!  
                 for (Aventurier aventurier: aventuriers){
@@ -161,6 +161,15 @@ public class Controleur implements Observateur{
                     }
                 }
                 break;
+            case BOUGER_CARTES:
+                if(message.getDeplaceCarte()){
+                    vue.getAfficherCartes().cartesSuivantes();
+                }
+                else{
+                    vue.getAfficherCartes().cartesPrecedentes();
+
+                }
+                    
                 
             default:
                 break;
@@ -183,11 +192,13 @@ public class Controleur implements Observateur{
         System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+        vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());
         vue.getAfficherCases().MettreAjourCases(this, grille);
         if (joueurCourant.getMain().size()>4) {
             defausse = 1;
         }
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
+        vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
     }
     
     private void Afficher(ArrayList<Tuile> tuiles) {

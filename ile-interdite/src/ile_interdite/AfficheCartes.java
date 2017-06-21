@@ -46,27 +46,44 @@ class AfficheCartes extends JPanel {
     public AfficheCartes(ArrayList<Carte_Tresor> cartes, Observateur observateur) {
         this.setLayout(new BorderLayout());
         panelCartes = new JPanel(new GridLayout(5,1));
-        
-                
+        System.out.println("nb cartes de la main du joueur actuel");
+        System.out.println(cartes.size());
         for(int i=0;i<5;i++){
-            System.out.println(i);
-            System.out.println(cartes.size());
-            if (cartes.isEmpty()){
+             if (cartes.isEmpty()){
                 panelCartes.add(new JButton());
+                System.out.println("JButton");
             }
             else{
                 BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
                 System.out.println(i);
                 panelCartes.add(carte);
+                System.out.println("BoutonCarte");
+
             }
         }
         panelCommande = new JPanel(new GridLayout(10,1));
         panelCommande.setBorder(BorderFactory.createLineBorder(Color.black));
         
         partieSuiv = new JButton(">");
+        partieSuiv.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setDeplaceCarte(Boolean.TRUE);
+                    observateur.traiterMessage(m);
+                }
+        });
         panelCommande.add(partieSuiv);
         
         partiePrec = new JButton("<");
+        partiePrec.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setDeplaceCarte(Boolean.TRUE);
+                    observateur.traiterMessage(m);
+                }
+        });
         panelCommande.add(partiePrec);
         
         panelCommande.add(new JPanel());

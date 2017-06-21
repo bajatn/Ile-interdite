@@ -14,6 +14,7 @@ public class Message {
     private Aventurier aventurier;
     private int x;
     private int y;
+    private Boolean deplaceCarte;
 
     public Message(TypeMessage type, int x, int y) {
         this.type = type;
@@ -31,7 +32,25 @@ public class Message {
     public TypeMessage getType() {
         return type;
     }
+    
+    public int getX() {
+        return x;
+    }
 
+    public int getY() {
+        return y;
+    }
+
+    public Carte_Tresor getCarte() {
+        return carte;
+    }
+
+    public Boolean getDeplaceCarte() {
+        return deplaceCarte;
+    }
+    
+    
+    
     public void setType(TypeMessage type) {
         this.type = type;
     }
@@ -56,21 +75,15 @@ public class Message {
     public void setY(int y) {
         this.y = y;
     }
+
+    public void setDeplaceCarte(Boolean deplaceCarte) {
+        this.deplaceCarte = deplaceCarte;
+    }
     
     
     
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public Carte_Tresor getCarte() {
-        return carte;
-    }
+    
 
 
     

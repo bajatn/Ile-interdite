@@ -16,5 +16,6 @@ public enum TypeMessage {
     DONNER,
     RECUPERER_TRESOR,
     TERMINER_JEU,
-    CARTE;
+    CARTE,
+    BOUGER_CARTES;
 }
