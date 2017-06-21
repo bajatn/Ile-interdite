@@ -22,14 +22,14 @@ public class Controleur implements Observateur{
 // defausse = 1 >> Le joueur doit se defausser de certaines cartes
     private int defausse = 0;
     private Pile_de_Cartes_Tresor pileTresor;
-    private Pile_de_Cartes_Inondation pileInnondation;
+    private Pile_de_Cartes_Inondation pileInondation;
     private Niveau_Eau niv;
     
     public Controleur() {
         this.grille = new Grille();
         this.aventuriers = new ArrayList<>();
         this.pileTresor = new Pile_de_Cartes_Tresor();
-        this.pileInnondation = new Pile_de_Cartes_Inondation();
+        this.pileInondation = new Pile_de_Cartes_Inondation();
         aventuriers.add(new Pilote(grille.getTuile(4,3)));
         this.niv = new Niveau_Eau(1);
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
@@ -40,6 +40,9 @@ public class Controleur implements Observateur{
         this.joueurCourant = aventuriers.get(1);
         this.vue = new FenetreIHM(this);
         vue.setObservateur(this);
+        System.out.println("On pioche 2 cartes tresor"); 
+            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         
     }
     
@@ -166,7 +169,13 @@ public class Controleur implements Observateur{
             
             
         if(actionUtilise >= joueurCourant.getNbAction()){
-            
+            System.out.println(""); 
+            System.out.println(""); 
+            System.out.println("TOUR " + compteurTour); 
+            System.out.println(""); 
+            System.out.println("nb cartes dans pile tresor : " + pileTresor.getCartes().size()); 
+            System.out.println("nb cartes dans pile inondation : " + pileInondation.getCartes().size());
+            System.out.println(""); 
             if (joueurCourant.getRole() == "Pilote"){
                 joueurCourant.setAVole(false);
             }
@@ -175,9 +184,9 @@ public class Controleur implements Observateur{
             actionUtilise = 0;
             System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
             System.out.println("On pioche 2 cartes tresor"); 
-            joueurCourant.piocheCarteTresor(pileTresor, pileInnondation, niv);
-            joueurCourant.piocheCarteTresor(pileTresor, pileInnondation, niv);
-            grille.Inondation(pileInnondation, niv);
+            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+            grille.Inondation(pileInondation, niv);
             
             if (joueurCourant.getMain().size()>4) {
                 defausse = 1;

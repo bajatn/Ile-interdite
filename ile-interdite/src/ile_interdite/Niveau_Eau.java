@@ -28,6 +28,7 @@ public class Niveau_Eau {
     
 
     public void monteNiveau() {
+        System.out.println("niveau++");
         this.niveau = this.niveau++;
         this.setPalier();
     }

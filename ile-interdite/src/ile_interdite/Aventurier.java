@@ -95,11 +95,13 @@ public abstract class Aventurier {
     }
     
     public void piocheCarteTresor(Pile_de_Cartes_Tresor pileT, Pile_de_Cartes_Inondation pileI, Niveau_Eau niv){
-        
+        System.out.println("entre pioche()");
         Carte carte = pileT.pioche();
+        System.out.println("sortie pioche()");
         Carte_Tresor carte_t = (Carte_Tresor) carte;
         
         if (carte_t.getType() == "Montee_des_eaux"){
+            System.out.println("On a pioché une montée des eaux");
             pileI.ChangerPile();
             niv.monteNiveau();
             pileT.defausseCarte(carte_t);

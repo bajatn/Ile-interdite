@@ -43,8 +43,8 @@ public abstract class Pile_de_Cartes {
     }
     
     public void setCarte_dessus(){
-        carte_dessus = cartes.get((int)Math.random()*cartes.size());
-        System.out.println(cartes.size());
+        carte_dessus = cartes.get((int)(Math.random()*cartes.size()));
+        System.out.println((int)(Math.random()*cartes.size()));
     }
 
     public Carte pioche() {
@@ -65,6 +65,7 @@ public abstract class Pile_de_Cartes {
     public void ChangerPile(){
         for(Carte carte : defausse){
            cartes.add(carte);
+           System.out.println(carte); 
         }
         setCarte_dessus();
         defausse.clear();
