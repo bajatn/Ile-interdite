@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
  * @author baratinm
  */
 class AfficheNiveauEau extends JPanel {
+    private Observateur observateur;
+    
     private JSlider niveauEau;
 
     public AfficheNiveauEau() {
@@ -28,15 +30,13 @@ class AfficheNiveauEau extends JPanel {
         niveauEau.setPreferredSize(new Dimension(30,650));
         niveauEau.setBackground(Color.blue);
         niveauEau.setEnabled(false);
-
-        
-
         niveauEau.setPaintTicks(true);
         this.setBackground(Color.blue);
         this.add(niveauEau);
-        
-        
-        
+    }
+    
+    public void setObservateur(Observateur observateur){
+        this.observateur = observateur;
     }
     
 }
