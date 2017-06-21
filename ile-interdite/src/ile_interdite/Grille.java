@@ -94,7 +94,17 @@ public class Grille {
         } else if (tuile.getEtat() == Inonde){
             tuile.setEtat(Submerge);
             if (!(tuile.getAventuriers().isEmpty())){
-                // Il y a un ou plusieurs aventurier sur la case ! il faut donc les deplacer !
+                // Il y a un ou plusieurs aventurier sur la case
+                for (Aventurier aventurier: tuile.getAventuriers()){
+                    if (!(aventurier.deplacer().isEmpty())){
+                        // L'aventurier est deplacer vers une case aleatoire
+                        Tuile tuileCible = aventurier.deplacer().get((int)Math.random()*aventurier.deplacer().size());
+                        aventurier.deplacerVersTuile(tuileCible.getX(), tuileCible.getX());
+                    } else {
+                        // Partie perdue !
+                        System.out.println("Partie perdue, un aventurier s'est noyé !");
+                    }
+                }
             }
         }
     }
