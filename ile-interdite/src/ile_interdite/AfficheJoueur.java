@@ -42,7 +42,7 @@ class AfficheJoueur extends JPanel {
     }
     
     public void setDescription(String description){
-        this.
+        this.labelDescription.setText(description);
     }
     
 }
