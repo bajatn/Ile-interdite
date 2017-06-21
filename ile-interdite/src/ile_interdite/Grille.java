@@ -17,12 +17,12 @@ import java.util.ArrayList;
 public class Grille {
     private ArrayList<Tuile> tuiles;
     
-    public Grille() {
+    public Grille(Pile_de_Cartes_Inondation pile) {
         tuiles = new ArrayList();        
         this.tuiles.add(new Tuile(1, 1, null, null, this));
         this.tuiles.add(new Tuile(2, 1, null, null, this));
         this.tuiles.add(new Tuile(3, 1, Asseche, Le_Pont_des_Abimes, this));
-        this.tuiles.add(new Tuile(4, 1, Inonde, La_Porte_de_Bronze, this));
+        this.tuiles.add(new Tuile(4, 1, Asseche, La_Porte_de_Bronze, this));
         this.tuiles.add(new Tuile(5, 1, null, null, this));
         this.tuiles.add(new Tuile(6, 1, null, null, this));
         this.tuiles.add(new Tuile(1, 2, null, null, this));
@@ -33,28 +33,31 @@ public class Grille {
         this.tuiles.add(new Tuile(6, 2, null, null, this));
         this.tuiles.add(new Tuile(1, 3, Asseche, Le_Palais_de_Corail, this));
         this.tuiles.add(new Tuile(2, 3, Asseche, La_Porte_d_Argent, this));
-        this.tuiles.add(new Tuile(3, 3, Submerge, Les_Dunes_de_l_Illusion, this));
+        this.tuiles.add(new Tuile(3, 3, Asseche, Les_Dunes_de_l_Illusion, this));
         this.tuiles.add(new Tuile(4, 3, Asseche, Heliport, this));
         this.tuiles.add(new Tuile(5, 3, Asseche, La_Porte_de_Cuivre, this));
         this.tuiles.add(new Tuile(6, 3, Asseche, Le_Jardin_des_Hurlements, this));
         this.tuiles.add(new Tuile(1, 4, Asseche, La_Foret_Pourpre, this));
-        this.tuiles.add(new Tuile(2, 4, Inonde, Le_Lagon_Perdu, this));
-        this.tuiles.add(new Tuile(3, 4, Submerge, Le_Marais_Brumeux, this));
-        this.tuiles.add(new Tuile(4, 4, Inonde, Observatoire, this));
-        this.tuiles.add(new Tuile(5, 4, Submerge, Le_Rocher_Fantome, this));
-        this.tuiles.add(new Tuile(6, 4, Inonde, La_Caverne_du_Brasier, this));
+        this.tuiles.add(new Tuile(2, 4, Asseche, Le_Lagon_Perdu, this));
+        this.tuiles.add(new Tuile(3, 4, Asseche, Le_Marais_Brumeux, this));
+        this.tuiles.add(new Tuile(4, 4, Asseche, Observatoire, this));
+        this.tuiles.add(new Tuile(5, 4, Asseche, Le_Rocher_Fantome, this));
+        this.tuiles.add(new Tuile(6, 4, Asseche, La_Caverne_du_Brasier, this));
         this.tuiles.add(new Tuile(1, 5, null, null, this));
         this.tuiles.add(new Tuile(2, 5, Asseche, Le_Temple_du_Soleil, this));
-        this.tuiles.add(new Tuile(3, 5, Submerge, Le_Temple_de_La_Lune, this));
+        this.tuiles.add(new Tuile(3, 5, Asseche, Le_Temple_de_La_Lune, this));
         this.tuiles.add(new Tuile(4, 5, Asseche, Le_Palais_des_Marees, this));
         this.tuiles.add(new Tuile(5, 5, Asseche, Le_Val_du_Crepuscule, this));
         this.tuiles.add(new Tuile(6, 5, null, null, this));
         this.tuiles.add(new Tuile(1, 6, null, null, this));
         this.tuiles.add(new Tuile(2, 6, null, null, this));
         this.tuiles.add(new Tuile(3, 6, Asseche, La_Tour_du_Guet, this));
-        this.tuiles.add(new Tuile(4, 6, Inonde, Le_Jardin_des_Murmures, this));
+        this.tuiles.add(new Tuile(4, 6, Asseche, Le_Jardin_des_Murmures, this));
         this.tuiles.add(new Tuile(5, 6, null, null, this));
         this.tuiles.add(new Tuile(6, 6, null, null, this));
+        for (int i=0; i<6; i++){
+            TireCarteInondation(pile);
+        }
     }
     
     public ArrayList<Tuile> getTuiles() {
@@ -109,18 +112,22 @@ public class Grille {
         }
     }
 
+    public void TireCarteInondation(Pile_de_Cartes_Inondation pile) {
+        Carte carte;
+        carte = pile.pioche();
+        Carte_Inondation elem = (Carte_Inondation) carte;
+        Lieu lieu = elem.getLieu();
+        Tuile tuile = getTuile(lieu);
+        inonderTuile(tuile);
+        if (tuile.getEtat() != Submerge){
+           pile.defausseCarte(carte); 
+        }
+    }   
     
     public void Inondation(Pile_de_Cartes_Inondation pile, Niveau_Eau niv) {
         Carte carte;
         for (int i=0; i<niv.getPalier(); i++){
-            carte = pile.pioche();
-            Carte_Inondation elem = (Carte_Inondation) carte;
-            Lieu lieu = elem.getLieu();
-            Tuile tuile = getTuile(lieu);
-            inonderTuile(tuile);
-            if (tuile.getEtat() != Submerge){
-               pile.defausseCarte(carte); 
-            }
+            TireCarteInondation(pile);
         }
     }   
 }

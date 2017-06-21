@@ -26,10 +26,10 @@ public class Controleur implements Observateur{
     private Niveau_Eau niv;
     
     public Controleur() {
-        this.grille = new Grille();
-        this.aventuriers = new ArrayList<>();
         this.pileTresor = new Pile_de_Cartes_Tresor();
         this.pileInondation = new Pile_de_Cartes_Inondation();
+        this.grille = new Grille(pileInondation);
+        this.aventuriers = new ArrayList<>();
         aventuriers.add(new Pilote(grille.getTuile(4,3)));
         this.niv = new Niveau_Eau(1);
         aventuriers.add(new Explorateur(grille.getTuile(5,3)));
@@ -41,8 +41,8 @@ public class Controleur implements Observateur{
         this.vue = new FenetreIHM(this,grille);
         vue.setObservateur(this);
         System.out.println("On pioche 2 cartes tresor"); 
-            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
-            joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+        joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
+        joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         
     }
     
@@ -187,6 +187,7 @@ public class Controleur implements Observateur{
             joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
             joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
             grille.Inondation(pileInondation, niv);
+            vue.getAfficherCases().MettreAjourCases(this, grille);
             
             if (joueurCourant.getMain().size()>4) {
                 defausse = 1;

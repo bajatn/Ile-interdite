@@ -39,7 +39,7 @@ public class BoutonCase extends JButton{
                 }
         });
         if (this.tuile.getEtat()== Asseche){
-            this.setBackground(Color.GREEN);
+            this.setBackground(Color.ORANGE);
         }
         else if (this.tuile.getEtat()== Inonde){
             this.setBackground(Color.CYAN);

@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.MatteBorder;
 
 /**
  *
@@ -103,5 +104,27 @@ public class FenetreIHM {
         this.afficherJoueur.setCouleur(couleur);
         this.afficherJoueur.setDescription(description);
         
+    } 
+
+    public AfficherCases getAfficherCases() {
+        return afficherCases;
     }
+
+    public AfficheNiveauEau getAfficherNiveauEau() {
+        return afficherNiveauEau;
+    }
+
+    public AfficheCartes getAfficherCartes() {
+        return afficherCartes;
+    }
+
+    public AfficheActions getAfficherActions() {
+        return afficherActions;
+    }
+
+    public AfficheJoueur getAfficherJoueur() {
+        return afficherJoueur;
+    }
+    
+    
 }
