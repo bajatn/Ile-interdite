@@ -5,6 +5,8 @@
  */
 package ile_interdite;
 
+import static ile_interdite.Etat.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -18,12 +20,14 @@ public class BoutonCase extends JButton{
     private int x;
     private int y;
     private Observateur observateur;
+    private Tuile tuile;
 
-    public BoutonCase(int x, int y) {
+    public BoutonCase(int x, int y,Tuile tuile) {
         super();
         
         this.x = x;
         this.y = y;
+        this.tuile = tuile;
         this.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -34,6 +38,16 @@ public class BoutonCase extends JButton{
 
                 }
         });
+        if (tuile.getEtat()== Asseche){
+            this.setBackground(Color.GREEN);
+        }
+        else if (tuile.getEtat()== Inonde){
+            this.setBackground(Color.CYAN);
+        }
+        else if (tuile.getEtat()==Submerge){
+            this.setBackground(Color.BLUE);
+            this.setEnabled(false);
+        }
     }
 
     public int getPosX() {

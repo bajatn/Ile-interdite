@@ -38,7 +38,7 @@ public class FenetreIHM {
     private AfficheJoueur afficherJoueur;
     
     private Observateur observateur;
-    public FenetreIHM(Observateur observateur){
+    public FenetreIHM(Observateur observateur, Grille grille){
             //Création et initialisation de la fenetre
         this.setObservateur(observateur);
         this.window = new JFrame();
@@ -62,7 +62,7 @@ public class FenetreIHM {
         panelCentral.add(panelLabel, BorderLayout.NORTH);
        
             //Ajout et initialisation de afficherCases au sud de panelCentral
-        this.afficherCases = new AfficherCases(observateur);
+        this.afficherCases = new AfficherCases(observateur, grille);
         panelCentral.add(afficherCases, BorderLayout.CENTER);       
             
             //Ajout et initialisation de afficherNiveauEau a l'est de PanelMain

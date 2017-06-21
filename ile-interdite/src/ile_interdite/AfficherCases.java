@@ -16,8 +16,8 @@ import javax.swing.JPanel;
  */
 class AfficherCases extends JPanel {
     private Observateur observateur;
-
-    public AfficherCases(Observateur observateur){
+    
+    public AfficherCases(Observateur observateur, Grille grille){
         this.setObservateur(observateur);
         this.setLayout(new GridLayout(6,6,10,10));
         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
@@ -26,7 +26,7 @@ class AfficherCases extends JPanel {
         
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
-                BoutonCase bouton = new BoutonCase(y,i);
+                BoutonCase bouton = new BoutonCase(y,i,grille.getTuile(y, i));
                 bouton.setObservateur(observateur);
 
                 
