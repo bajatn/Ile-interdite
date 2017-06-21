@@ -38,8 +38,9 @@ public class FenetreIHM {
     private AfficheJoueur afficherJoueur;
     
     private Observateur observateur;
-    public FenetreIHM(){
+    public FenetreIHM(Observateur observateur){
             //Création et initialisation de la fenetre
+        this.setObservateur(observateur);
         this.window = new JFrame();
         window.setSize(1000,1000);
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -61,7 +62,7 @@ public class FenetreIHM {
         panelCentral.add(panelLabel, BorderLayout.NORTH);
        
             //Ajout et initialisation de afficherCases au sud de panelCentral
-        this.afficherCases = new AfficherCases();
+        this.afficherCases = new AfficherCases(observateur);
         panelCentral.add(afficherCases, BorderLayout.CENTER);       
             
             //Ajout et initialisation de afficherNiveauEau a l'est de PanelMain
@@ -78,6 +79,7 @@ public class FenetreIHM {
         
             //Ajout et initialisation de afficherActions et AfficherJoueur a panelSud
         this.afficherActions = new AfficheActions();
+        this.afficherActions.setObservateur(observateur);
         panelSud.add(afficherActions);
         this.afficherJoueur = new AfficheJoueur();
         afficherJoueur.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -90,11 +92,10 @@ public class FenetreIHM {
     public void setObservateur(Observateur observateur) {
             System.out.println("Observateur de Fenetre IHM ="+observateur);
             this.observateur = observateur;
-            this.afficherActions.setObservateur(observateur);
-            this.afficherCartes.setObservateur(observateur);
-            this.afficherJoueur.setObservateur(observateur);
-            this.afficherNiveauEau.setObservateur(observateur);
-            this.afficherCases.setObservateur(observateur);
+//            this.afficherCartes.setObservateur(observateur);
+//            this.afficherJoueur.setObservateur(observateur);
+//            this.afficherNiveauEau.setObservateur(observateur);
+//            this.afficherCases.setObservateur(observateur);
 
         }
 }
