@@ -38,13 +38,13 @@ public class BoutonCase extends JButton{
 
                 }
         });
-        if (tuile.getEtat()== Asseche){
+        if (this.tuile.getEtat()== Asseche){
             this.setBackground(Color.GREEN);
         }
-        else if (tuile.getEtat()== Inonde){
+        else if (this.tuile.getEtat()== Inonde){
             this.setBackground(Color.CYAN);
         }
-        else if (tuile.getEtat()==Submerge){
+        else if (this.tuile.getEtat()==Submerge){
             this.setBackground(Color.BLUE);
             this.setEnabled(false);
         }
@@ -61,6 +61,7 @@ public class BoutonCase extends JButton{
     public void setObservateur(Observateur observateur) {
         this.observateur = observateur;
     }
+    
     
     
     
