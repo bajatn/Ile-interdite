@@ -7,6 +7,7 @@ package ile_interdite;
 
 import static ile_interdite.Etat.*;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -24,10 +25,13 @@ public class BoutonCase extends JButton{
 
     public BoutonCase(int x, int y,Tuile tuile) {
         super();
-        
         this.x = x;
         this.y = y;
         this.tuile = tuile;
+        if (this.tuile.getNom()!=null){
+            this.setText(this.tuile.getNom().toString());
+            //this.setFont(new Font("TimesRoman", Font.PLAIN, 10));
+        }
         this.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
