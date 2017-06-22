@@ -96,25 +96,43 @@ public class Grille {
             tuile.setEtat(Inonde);
         } else if (tuile.getEtat() == Inonde){
             tuile.setEtat(Submerge);
+            System.out.println("\n"+tuile.getNom()+" a été submergée !");
             if (tuile.getNom() == Heliport){
                 System.out.println("///////////////");
                 System.out.println(" Partie perdue");
                 System.out.println("///////////////");
             }
 // ça s'est quand on a une case qui se submerge sous un aventurier il faut qu'il bouge, mais ça fait tout buger...
-      /*    if (!(tuile.getAventuriers().isEmpty())){
+            if (!(tuile.getAventuriers().isEmpty())){
+                System.out.println("Il y a " + tuile.getAventuriers().size() + " aventurier !");
                 // Il y a un ou plusieurs aventurier sur la case
-                for (Aventurier aventurier: tuile.getAventuriers()){
-                    if (!(aventurier.deplacer().isEmpty())){
-                        // L'aventurier est deplacer vers une case aleatoire
-                        Tuile tuileCible = aventurier.deplacer().get((int)Math.random()*aventurier.deplacer().size());
-                        aventurier.deplacerVersTuile(tuileCible.getX(), tuileCible.getX());
-                    } else {
-                        // Partie perdue !
-                        System.out.println("Partie perdue, un aventurier s'est noyé !");
+                // Calcul des cases disponnibles pour y mettre les aventuriers
+                ArrayList<Tuile> TuilesAdj = tuile.calculerAdjacent();
+                ArrayList<Tuile> TuilesDispo = new ArrayList<>();
+                for (Tuile elem : TuilesAdj){
+                    if (elem.getEtat() == Asseche || elem.getEtat() == Inonde){
+                        TuilesDispo.add(elem);
                     }
                 }
-            }*/
+                int nbAventuriers = tuile.getAventuriers().size();
+                for (int i=0; i < nbAventuriers; i++){
+                    System.out.println("i = " + i);
+                    Aventurier aventurier = tuile.getAventuriers().get(0);
+                    System.out.println("Aventurier que l'on parcours actuellement : " + aventurier);
+                    if (TuilesDispo.isEmpty()){
+                        // Partie perdue ! Aucune case disponnibles pour y mettre l'aventurier
+                        System.out.println("///////////////");
+                        System.out.println(" Partie perdue");
+                        System.out.println("///////////////");
+                    } else {
+                        // L'aventurier est deplacer vers une case aleatoire
+                        System.out.println("test1");
+                        Tuile tuileCible = TuilesDispo.get((int)Math.random()*TuilesDispo.size());
+                        aventurier.deplacerVersTuile(tuileCible.getX(), tuileCible.getY());
+                        System.out.println("test2");
+                    }
+                }
+            }
         }
     }
 
