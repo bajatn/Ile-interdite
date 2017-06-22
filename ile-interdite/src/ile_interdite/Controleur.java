@@ -149,10 +149,8 @@ public class Controleur implements Observateur{
                 } else {
                     Afficher(message.getCarte().utiliserCarte(grille));
                     if (message.getCarte().getType() == "Helicoptere"){
-                        System.out.println("Carte helico");
                         actionSelect = 3;
                     } else if (message.getCarte().getType() == "Sac_de_sable"){
-                        System.out.println("Carte sac");
                         actionSelect = 4;
                     }
                 }
