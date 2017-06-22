@@ -53,7 +53,7 @@ public class Controleur implements Observateur{
         
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
-                Afficher(joueurCourant.deplacer());
+            //  Afficher(joueurCourant.deplacer());
                 for (Tuile tuile : joueurCourant.deplacer()){
                     tuile.setActive(true);
                 }
@@ -61,7 +61,7 @@ public class Controleur implements Observateur{
                 break;
                 
             case ASSECHER:
-                Afficher(joueurCourant.assecher());
+            //  Afficher(joueurCourant.assecher());
                 for (Tuile tuile : joueurCourant.assecher()){
                     tuile.setActive(true);
                 }
@@ -147,7 +147,7 @@ public class Controleur implements Observateur{
                 break;
                 
             case DONNER:
-                Afficher2(joueurCourant.donnerCarte());
+            //  Afficher2(joueurCourant.donnerCarte());
                 actionSelect = 2;
                 break;
                 
@@ -165,7 +165,7 @@ public class Controleur implements Observateur{
                 } else {
                     
                     
-                    Afficher(message.getCarte().utiliserCarte(grille));
+                //  Afficher(message.getCarte().utiliserCarte(grille));
                     for (Tuile tuile : message.getCarte().utiliserCarte(grille)){
                         tuile.setActive(true);
                     }
@@ -252,7 +252,7 @@ public class Controleur implements Observateur{
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
         vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
     }
-    
+    /*
     private void Afficher(ArrayList<Tuile> tuiles) {
         System.out.println("");
         System.out.println("Vous etes sur la case: " + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
@@ -272,4 +272,5 @@ public class Controleur implements Observateur{
             System.out.println("- " + aventurier.getRole());
         }
     }
+    */
 }

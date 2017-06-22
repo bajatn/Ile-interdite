@@ -36,7 +36,7 @@ public class BoutonCase extends JButton{
             //this.setFont(new Font("TimesRoman", Font.PLAIN, 10));
         }
         if (this.getTuile().getTresor()==la_statue_du_zephyr){
-            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.YELLOW.darker()));
+            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.YELLOW.darker().darker()));
         }
         else if (this.getTuile().getTresor()==le_calice_de_l_onde){
             this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GREEN.darker()));
@@ -45,7 +45,7 @@ public class BoutonCase extends JButton{
             this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.RED));
         }
         else if (this.getTuile().getTresor()==la_pierre_sacree){
-            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
+            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.BLACK));
         }
         this.addActionListener(new ActionListener() {
                 @Override

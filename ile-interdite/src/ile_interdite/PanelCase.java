@@ -5,6 +5,7 @@
  */
 package ile_interdite;
 
+import static ile_interdite.Etat.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
@@ -20,9 +21,12 @@ class PanelCase extends JPanel{
     public PanelCase(Observateur observateur, int x, int y, Tuile tuile){
         this.setObservateur(observateur);
         this.setLayout(new BorderLayout());
-        BoutonCase bouton = new BoutonCase(x, y, tuile);
-        bouton.setObservateur(observateur);
-        this.add(bouton);
+        // les tuiles submergée ne s'affichent pas
+        if (tuile.getEtat() != Submerge){
+            BoutonCase bouton = new BoutonCase(x, y, tuile);
+            bouton.setObservateur(observateur);
+            this.add(bouton);
+        }
         JPanel panel = new JPanel(new GridLayout(1,tuile.getAventuriers().size()));
         for (Aventurier elem : tuile.getAventuriers()){
             JPanel panelNew = new JPanel();
