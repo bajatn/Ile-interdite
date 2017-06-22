@@ -40,7 +40,7 @@ public class Controleur implements Observateur{
         aventuriers.add(new Messager(grille.getTuile(3,2)));
         aventuriers.add(new Navigateur(grille.getTuile(4,2)));
         this.joueurCourant = aventuriers.get(0);
-        this.vue = new FenetreIHM(this,grille,aventuriers.get(1).getMain());
+        this.vue = new FenetreIHM(this,grille,aventuriers.get(1).getMain(),this.aventuriers);
         this.recepteurChoisi = false;
         vue.setObservateur(this);
         TourSuiv();
@@ -178,10 +178,9 @@ public class Controleur implements Observateur{
                     carteAPasser = message.getCarte();
                     recepteurChoisi =true;
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
-                    actionUtilise++;
                 }
                 
-                if (defausse == 1){
+                else if (defausse == 1){
                     joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
                     if (joueurCourant.getMain().size()<=4) {
                         defausse = 0;
@@ -190,6 +189,7 @@ public class Controleur implements Observateur{
                     
                     
                 //  Afficher(message.getCarte().utiliserCarte(grille));
+                    System.out.println(actionSelect);
                     for (Tuile tuile : message.getCarte().utiliserCarte(grille)){
                         tuile.setActive(true);
                     }
@@ -250,6 +250,7 @@ public class Controleur implements Observateur{
                     joueurCourant.transfererCarte(message.getAventurier(), carteAPasser);
                     recepteurChoisi =false;
                     actionUtilise++; 
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                 
                 break;
                     

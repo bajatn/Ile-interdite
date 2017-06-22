@@ -44,7 +44,7 @@ class AfficheCartes extends JPanel {
 
     
 
-    public AfficheCartes(ArrayList<Carte_Tresor> cartes, Observateur observateur) {
+    public AfficheCartes(ArrayList<Carte_Tresor> cartes, Observateur observateur,ArrayList<Aventurier> aventuriers) {
         this.observateur = observateur;
         this.setLayout(new BorderLayout());
         panelCartes = new JPanel(new GridLayout(5,1));
@@ -89,30 +89,84 @@ class AfficheCartes extends JPanel {
         panelCommande.add(new JPanel());
         
         joueur1 = new JButton("P");
+        joueur1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TypeMessage.JOUEUR);
+                    m.setAventurier(aventuriers.get(0));
+                    observateur.traiterMessage(m);
+                }
+        });
         joueur1.setBackground(Color.blue);
         joueur1.setForeground(Color.white);
         panelCommande.add(joueur1);
         
         joueur2 = new JButton("E");
+        joueur2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TypeMessage.JOUEUR);
+                    m.setAventurier(aventuriers.get(1));
+                    observateur.traiterMessage(m);
+                }
+        });
         joueur2.setBackground(Color.green);
         joueur2.setForeground(Color.white);
         panelCommande.add(joueur2);
         
         joueur3 = new JButton("I");
+        joueur3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TypeMessage.JOUEUR);
+                    m.setAventurier(aventuriers.get(2));
+                    observateur.traiterMessage(m);
+                }
+        });
         joueur3.setBackground(Color.red);
         joueur3.setForeground(Color.white);
         panelCommande.add(joueur3);
         
         joueur4 = new JButton("Pl");
+        joueur4.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TypeMessage.JOUEUR);
+                    m.setAventurier(aventuriers.get(3));
+                    observateur.traiterMessage(m);
+                }
+        });
         joueur4.setBackground(Color.black);
         joueur4.setForeground(Color.white);
         panelCommande.add(joueur4);
         
         joueur5 = new JButton("M");
+        joueur5.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TypeMessage.JOUEUR);
+                    m.setAventurier(aventuriers.get(4));
+                    observateur.traiterMessage(m);
+                }
+        });
         joueur5.setBackground(Color.lightGray);
         panelCommande.add(joueur5);
         
         joueur6 = new JButton("N");
+        joueur6.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TypeMessage.JOUEUR);
+                    m.setAventurier(aventuriers.get(5));
+                    observateur.traiterMessage(m);
+                }
+        });
         joueur6.setBackground(Color.yellow);
         joueur6.setForeground(Color.black);
         panelCommande.add(joueur6);

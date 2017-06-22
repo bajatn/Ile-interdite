@@ -40,7 +40,7 @@ public class FenetreIHM {
     private AfficheJoueur afficherJoueur;
     
     private Observateur observateur;
-    public FenetreIHM(Observateur observateur, Grille grille, ArrayList<Carte_Tresor> cartesTresor){
+    public FenetreIHM(Observateur observateur, Grille grille, ArrayList<Carte_Tresor> cartesTresor,ArrayList<Aventurier> aventuriers){
             //Création et initialisation de la fenetre
         this.setObservateur(observateur);
         this.window = new JFrame();
@@ -72,7 +72,7 @@ public class FenetreIHM {
         panelMain.add(afficherNiveauEau, BorderLayout.EAST);
         
             //Ajout et initialisation de afficherCartes a l'ouest de PanelMain
-        this.afficherCartes = new AfficheCartes(cartesTresor, observateur);
+        this.afficherCartes = new AfficheCartes(cartesTresor, observateur,aventuriers);
         
         panelMain.add(afficherCartes, BorderLayout.WEST);
         
