@@ -41,6 +41,7 @@ public class Pilote extends Aventurier {
                     choixTuile.add(tuile);
                 }
             }
+            choixTuile.remove(this.getTuileActu());
             return choixTuile;
         } else {
             return super.deplacer();            

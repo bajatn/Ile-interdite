@@ -34,6 +34,7 @@ public class Explorateur extends Aventurier {
     public ArrayList<Tuile> assecher(){
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAutours();
+        collecTuiles.add(this.getTuileActu());
         for (Tuile tuile: collecTuiles){
             if (tuile.getEtat() == Etat.Inonde){
               choixTuile.add(tuile);

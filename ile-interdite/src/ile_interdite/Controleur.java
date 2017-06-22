@@ -43,9 +43,13 @@ public class Controleur implements Observateur{
         TourSuiv();
         
     }
-    
+//////////////////////////////////////////////////////////////////////////
     @Override
     public void traiterMessage(Message message){
+        
+        for (Tuile tuile : grille.getTuiles()){
+            tuile.setActive(false);
+        }
         
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
@@ -54,8 +58,6 @@ public class Controleur implements Observateur{
                     tuile.setActive(true);
                 }
                 actionSelect = 0;
-                vue.getAfficherCases().MettreAjourCases(this, grille);
-                vue.repaint();
                 break;
                 
             case ASSECHER:
@@ -64,8 +66,6 @@ public class Controleur implements Observateur{
                     tuile.setActive(true);
                 }
                 actionSelect = 1;
-                vue.getAfficherCases().MettreAjourCases(this, grille);
-                vue.repaint();
                 break;
                 
             case CHOIX:
@@ -73,45 +73,20 @@ public class Controleur implements Observateur{
                     // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
-                    
-                    
-                    for (Tuile tuile : grille.getTuiles()){
-                        tuile.setActive(false);
-                    }
-                    vue.getAfficherCases().MettreAjourCases(this, grille);
-                    vue.repaint();
                     actionUtilise++;  
                     
                     // Assecher (ingenieur)
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
                     grille.assécherTuile(message.getX(),message.getY());
-                    
-                    for (Tuile tuile : grille.getTuiles()){
-                        tuile.setActive(false);
-                    }
-                    vue.getAfficherCases().MettreAjourCases(this, grille);
-                    vue.repaint();
                     actionUtilise++;  
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==false){
                     grille.assécherTuile(message.getX(),message.getY()); 
-                    
-                    for (Tuile tuile : grille.getTuiles()){
-                        tuile.setActive(false);
-                    }
-                    vue.getAfficherCases().MettreAjourCases(this, grille);
-                    vue.repaint();
                     this.aDejaAsseche=true;     
                     
                     // Assecher
                 } else if (actionSelect == 1){
                     grille.assécherTuile(message.getX(),message.getY());
                     this.aDejaAsseche = false;
-                    
-                    for (Tuile tuile : grille.getTuiles()){
-                        tuile.setActive(false);
-                    }
-                    vue.getAfficherCases().MettreAjourCases(this, grille);
-                    vue.repaint();
                     actionUtilise++;  
                     
                     // Donner carte
@@ -127,6 +102,7 @@ public class Controleur implements Observateur{
                             aventurier.deplacerVersTuile(message.getX(), message.getY());
                         }
                     }
+                    // Defausse d'une carte Helico de la main du joueur
                     boolean carteDefausse = false;
                     int i = 0;
                     while (carteDefausse == false){
@@ -137,21 +113,29 @@ public class Controleur implements Observateur{
                         }
                         i++;
                     }
-                    vue.getAfficherCases().MettreAjourCases(this, grille);
-                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
-                    vue.repaint();
                     
                     // Sac de sable
                 } else if (actionSelect == 4){
                     grille.assécherTuile(message.getX(),message.getY());
+                    // Defausse d'une carte Sac de sable de la main du joueur
+                    boolean carteDefausse = false;
+                    int i = 0;
+                    while (carteDefausse == false){
+                        Carte_Tresor carte = joueurCourant.getMain().get(i);
+                        if (carte.getType() == "Sac_de_Sable"){
+                            joueurCourant.defausseCarteMain(carte, pileTresor);
+                            carteDefausse = true;
+                        }
+                        i++;
+                    }
                     
                 } else {
                     System.out.println("Action impossible");
                 }  
                 
-                for (Tuile tuile : grille.getTuiles()){
-                    tuile.setActive(false);
-                }
+               // for (Tuile tuile : grille.getTuiles()){
+               //     tuile.setActive(false);
+               // }
                 
                 break;
                 
@@ -179,7 +163,13 @@ public class Controleur implements Observateur{
                         defausse = 0;
                     }
                 } else {
+                    
+                    
                     Afficher(message.getCarte().utiliserCarte(grille));
+                    for (Tuile tuile : message.getCarte().utiliserCarte(grille)){
+                        tuile.setActive(true);
+                    }
+                    
                     if (message.getCarte().getType() == "Helicoptere"){
                         actionSelect = 3;
                     } else if (message.getCarte().getType() == "Sac_de_sable"){
@@ -233,7 +223,9 @@ public class Controleur implements Observateur{
                 break;
         }
             
-            
+        vue.getAfficherCases().MettreAjourCases(this, grille);
+        vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+        vue.repaint();   
         if(actionUtilise >= joueurCourant.getNbAction()){
             grille.Inondation(pileInondation, niv);
             TourSuiv();
