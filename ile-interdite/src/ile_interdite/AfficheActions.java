@@ -22,6 +22,12 @@ import javax.swing.border.CompoundBorder;
  */
 class AfficheActions extends JPanel {
     private Observateur observateur;
+    private JButton assecher;
+    private JButton attendre;
+    private JButton deplacer;
+    private JButton donner;
+    private JButton tresor;
+    private JButton quitter;
 
     public AfficheActions() {
         
@@ -30,7 +36,7 @@ class AfficheActions extends JPanel {
             BorderFactory.createLineBorder(Color.black),    
             BorderFactory.createEmptyBorder(10,10,10,10)
         ));
-        JButton deplacer = new JButton("Deplacer");
+        deplacer = new JButton("Deplacer");
         deplacer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,8 +48,7 @@ class AfficheActions extends JPanel {
         });
         this.add(deplacer);
                 
-        JButton assecher = new JButton("Assecher");
-        
+        assecher = new JButton("Assecher");
         assecher.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +59,7 @@ class AfficheActions extends JPanel {
         });  
         this.add(assecher);
         
-        JButton attendre = new JButton("Fin de tour");
+        attendre = new JButton("Fin de tour");
         attendre.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -65,7 +70,7 @@ class AfficheActions extends JPanel {
         });        
         this.add(attendre);
         
-        JButton donner = new JButton("Donner");
+        donner = new JButton("Donner");
         donner.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -76,7 +81,7 @@ class AfficheActions extends JPanel {
         });        
         this.add(donner);
         
-        JButton tresor = new JButton("Prendre Tresor");
+        tresor = new JButton("Prendre Tresor");
         tresor.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -87,7 +92,7 @@ class AfficheActions extends JPanel {
         });        
         this.add(tresor);
         
-        JButton quitter = new JButton("Quitter/Décoller");
+        quitter = new JButton("Quitter/Décoller");
         quitter.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -101,5 +106,12 @@ class AfficheActions extends JPanel {
     public void setObservateur(Observateur observateur){
         this.observateur = observateur;
     }
-    
+    public void setEnabled(boolean bool){
+        this.assecher.setEnabled(bool);
+        this.attendre.setEnabled(bool);
+        this.deplacer.setEnabled(bool);
+        this.donner.setEnabled(bool);
+        this.tresor.setEnabled(bool);
+        this.quitter.setEnabled(bool);
+    }
 }

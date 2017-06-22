@@ -138,8 +138,6 @@ public class Controleur implements Observateur{
                         }
                     i++;
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
-                    vue.MettreAJourActions("Carte sac de sable utilisée");
-                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                     vue.repaint();
 
                     }
@@ -148,9 +146,6 @@ public class Controleur implements Observateur{
                     System.out.println("Action impossible");
                 }  
                 
-               // for (Tuile tuile : grille.getTuiles()){
-               //     tuile.setActive(false);
-               // }
                 
                 break;
                 
@@ -165,7 +160,7 @@ public class Controleur implements Observateur{
             case DONNER:
                 actionSelect = 2;
                 vue.getAfficherCartes().activerCartesPartieTresor();
-
+                vue.MettreAJourActions("Vous avez donné une carte");
                 break;
                 
             case RECUPERER_TRESOR:
@@ -173,7 +168,8 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
-                
+                System.out.println("\nEntree TraiterMessage CARTE");
+                System.out.println("defausse = " + defausse);
                 if  (actionSelect == 2){
                     carteAPasser = message.getCarte();
                     recepteurChoisi =true;
@@ -182,8 +178,13 @@ public class Controleur implements Observateur{
                 
                 else if (defausse == 1){
                     joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
-                    if (joueurCourant.getMain().size()<=4) {
+                    if (joueurCourant.getMain().size()<=5) {
                         defausse = 0;
+                        vue.MettreAJourActions("C'est maintenant le tour du "+joueurCourant.getRole());
+                        vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                        vue.getAfficherActions().setEnabled(true);
+                    } else {
+                        vue.getAfficherCartes().activerCartes();
                     }
                 } else {
                     
@@ -222,28 +223,28 @@ public class Controleur implements Observateur{
                     }
                 }
                 if ((aventurierPresent == aventuriers.size()) && (nbTresors >= 4) && (carteHelico == true)){
-                    System.out.println();
-                    System.out.println("///////////////");
-                    System.out.println(" Partie gagnée");
-                    System.out.println("///////////////");
                     vue.MettreAJourActions("Partie gagnée");
 
                 } else {
-                    System.out.println();
-                    System.out.println("///////////////");
-                    System.out.println(" Partie perdue");
-                    System.out.println("///////////////");
                     vue.MettreAJourActions("Partie perdue");
                 }
                 break;
             case BOUGER_CARTES:
+                int cas;
+                if (defausse == 1){
+                    cas = 2;
+                }else if (actionSelect == 2){
+                    cas = 1;
+                }else {
+                    cas = 0;
+                }
                 if(message.getDeplaceCarte()){
-                    vue.getAfficherCartes().cartesSuivantes();
+                    vue.getAfficherCartes().cartesSuivantes(cas);
                 }
                 else{
-                    vue.getAfficherCartes().cartesPrecedentes();
+                    vue.getAfficherCartes().cartesPrecedentes(cas);
                 }
-                vue.repaint();                
+                vue.repaint(); 
                 break;
                 
             case JOUEUR:
@@ -272,22 +273,25 @@ public class Controleur implements Observateur{
             joueurCourant.setAVole(false);
         }
         compteurTour++;
-        joueurCourant = aventuriers.get(compteurTour%6);
+        joueurCourant = aventuriers.get(compteurTour%aventuriers.size());
         actionUtilise = 0;
-        System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
         vue.MettreAJourActions("C'est maintenant le tour du "+joueurCourant.getRole());
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());
         vue.getAfficherCases().MettreAjourCases(this, grille);
-        if (joueurCourant.getMain().size()>4) {
-            System.out.println("Veuillez vous défausser de certaines cartes");
-            defausse = 1;
+        
         vue.getAfficherCartes().setDecalage(0);
-            
-        }
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
         vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+        vue.repaint();
+        
+        if (joueurCourant.getMain().size()>5) {
+            vue.MettreAJourActions("Veuillez vous défausser de certaines cartes");
+            defausse = 1;
+            vue.getAfficherCartes().activerCartes();
+            vue.getAfficherActions().setEnabled(false);
+        }
     }
     /*
     private void Afficher(ArrayList<Tuile> tuiles) {

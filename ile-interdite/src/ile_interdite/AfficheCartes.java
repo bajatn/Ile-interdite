@@ -53,7 +53,7 @@ class AfficheCartes extends JPanel {
                 panelCartes.add(new JButton());
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur,false);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur,0);
                 panelCartes.add(carte);
 
             }
@@ -189,13 +189,13 @@ class AfficheCartes extends JPanel {
                 panelCartes.add(new JButton());
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,false);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,0);
                 panelCartes.add(carte);
             }
             this.revalidate();
         }
     }
-    public void cartesSuivantes(){
+    public void cartesSuivantes(int cas){
         decalage++;
         this.panelCartes.removeAll();
         for(int i=0;i<min(cartes.size()-decalage, 5);i++){
@@ -204,7 +204,7 @@ class AfficheCartes extends JPanel {
                 System.out.println("JButton");
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,false);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,cas);
                 panelCartes.add(carte);
                 System.out.println("BoutonCarte");
  
@@ -215,7 +215,7 @@ class AfficheCartes extends JPanel {
         
     }
     
-    public void cartesPrecedentes(){
+    public void cartesPrecedentes(int cas){
         if (decalage>0){
             decalage--;
         }
@@ -227,7 +227,7 @@ class AfficheCartes extends JPanel {
                
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,false);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,cas);
                 panelCartes.add(carte);
                 System.out.println("BoutonCarte");            
             }
@@ -246,14 +246,25 @@ class AfficheCartes extends JPanel {
         for(int i=0;i<min(cartes.size()-decalage, 5);i++){
             if (cartes.isEmpty()){
                 panelCartes.add(new JButton());
-                System.out.println("JButton");
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,true);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,1);
                 panelCartes.add(carte);
-                System.out.println("BoutonCarte");
- 
+            }
+            this.revalidate();
+        }
                 
+    }
+    
+    public void activerCartes(){
+        this.panelCartes.removeAll();
+        for(int i=0;i<min(cartes.size()-decalage, 5);i++){
+            if (cartes.isEmpty()){
+                panelCartes.add(new JButton());
+            }
+            else{
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,2);
+                panelCartes.add(carte);
             }
             this.revalidate();
         }

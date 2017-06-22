@@ -5,6 +5,7 @@
  */
 package ile_interdite;
 
+import static ile_interdite.Type_Tresor.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -16,6 +17,11 @@ public class Explorateur extends Aventurier {
 
     public Explorateur(Tuile tuile) {
         super("Explorateur", tuile, Color.GREEN, 3,"<html>L'Explorateur peut se déplacer <br> et assécher en diagonale.</html> ");
+        this.addCarte(new Helicoptere());
+        this.addCarte(new Sac_de_sable());
+        this.addCarte(new Partie_Tresor(la_statue_du_zephyr));
+        this.addCarte(new Partie_Tresor(le_cristal_ardent));
+        this.addCarte(new Partie_Tresor(le_cristal_ardent));
     }
     
     @Override
