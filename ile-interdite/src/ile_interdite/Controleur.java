@@ -122,8 +122,10 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
+                System.out.println("Entrée traiterMessage Carte");
                 if (defausse == 1){
                     joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
+                    System.out.println(joueurCourant.getMain());
                     if (joueurCourant.getMain().size()<=4) {
                         defausse = 0;
                     }
@@ -139,17 +141,15 @@ public class Controleur implements Observateur{
                 break;
                 
             case TERMINER_JEU:
-                System.out.println();
-                System.out.println();
-                System.out.println("Entrée Terminer Jeu");
-                System.out.println();
                 int aventurierPresent = 0;
                 int nbTresors = 0;
                 boolean carteHelico = false;
+                
                 for (Aventurier aventurier: aventuriers){
+                    System.out.println();
                     // ils sont tous sur l'heliport ?
                     if(aventurier.getTuileActu() == grille.getTuile(Lieu.Heliport)){
-                        aventurierPresent = aventurierPresent++;
+                        aventurierPresent++;
                     }
                     // ils ont les tresors ?
                     nbTresors = nbTresors + aventurier.getTresors().size();
@@ -160,9 +160,6 @@ public class Controleur implements Observateur{
                         }
                     }
                 }
-                System.out.println("aventurierPresent = " + aventurierPresent);
-                System.out.println("nbTresors = " + nbTresors);
-                System.out.println("carteHelico = " + carteHelico);
                 if ((aventurierPresent == aventuriers.size()) && (nbTresors >= 4) && (carteHelico == true)){
                     System.out.println();
                     System.out.println("///////////////");
@@ -209,6 +206,7 @@ public class Controleur implements Observateur{
         vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());
         vue.getAfficherCases().MettreAjourCases(this, grille);
         if (joueurCourant.getMain().size()>4) {
+            System.out.println("Veuillez vous deffausser de certaines cartes");
             defausse = 1;
         }
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
