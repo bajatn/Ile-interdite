@@ -46,7 +46,6 @@ public class Controleur implements Observateur{
         TourSuiv();
         
     }
-//////////////////////////////////////////////////////////////////////////
     @Override
     public void traiterMessage(Message message){
         
@@ -56,7 +55,6 @@ public class Controleur implements Observateur{
         
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
-            //  Afficher(joueurCourant.deplacer());
                 for (Tuile tuile : joueurCourant.deplacer()){
                     tuile.setActive(true);
                 }
@@ -65,7 +63,6 @@ public class Controleur implements Observateur{
                 break;
                 
             case ASSECHER:
-            //  Afficher(joueurCourant.assecher());
                 for (Tuile tuile : joueurCourant.assecher()){
                     tuile.setActive(true);
                 }
@@ -143,7 +140,7 @@ public class Controleur implements Observateur{
                     }
                     
                 } else {
-                    System.out.println("Action impossible");
+                    vue.MettreAJourActions("action impossible");
                 }  
                 
                 
@@ -152,7 +149,6 @@ public class Controleur implements Observateur{
                 
                 
             case TERMINER_TOUR:
-                System.out.println("TERMINER_TOUR");
                 actionUtilise = 10;
                 vue.MettreAJourActions("Fin du tour");
                 break;
@@ -168,8 +164,6 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
-                System.out.println("\nEntree TraiterMessage CARTE");
-                System.out.println("defausse = " + defausse);
                 if  (actionSelect == 2){
                     carteAPasser = message.getCarte();
                     recepteurChoisi =true;
@@ -187,9 +181,6 @@ public class Controleur implements Observateur{
                         vue.getAfficherCartes().activerCartes();
                     }
                 } else {
-                    
-                    
-                //  Afficher(message.getCarte().utiliserCarte(grille));
                     System.out.println(actionSelect);
                     for (Tuile tuile : message.getCarte().utiliserCarte(grille)){
                         tuile.setActive(true);
@@ -293,25 +284,5 @@ public class Controleur implements Observateur{
             vue.getAfficherActions().setEnabled(false);
         }
     }
-    /*
-    private void Afficher(ArrayList<Tuile> tuiles) {
-        System.out.println("");
-        System.out.println("Vous etes sur la case: " + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
-        System.out.println("");
-        System.out.println("Tuiles dispos :");
-        for (Tuile tuile: tuiles){
-            System.out.println("tuile " + tuile.getX() + "-" + tuile.getY() + " : " + tuile.getNom());
-        }
-    }
-    
-    private void Afficher2(ArrayList<Aventurier> aventuriers) {
-        System.out.println("");
-        System.out.println("Vous etes sur la case: " + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
-        System.out.println("");
-        System.out.println("aventuriers dispos :");
-        for (Aventurier aventurier: aventuriers){
-            System.out.println("- " + aventurier.getRole());
-        }
-    }
-    */
 }
+

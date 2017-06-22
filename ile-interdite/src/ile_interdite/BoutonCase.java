@@ -33,7 +33,6 @@ public class BoutonCase extends JButton{
         this.setEnabled(tuile.isActive());
         if (this.tuile.getNom()!=null){
             this.setText(this.tuile.getNom().toString());
-            //this.setFont(new Font("TimesRoman", Font.PLAIN, 10));
         }
         if (this.getTuile().getTresor()==la_statue_du_zephyr){
             this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.YELLOW.darker().darker()));

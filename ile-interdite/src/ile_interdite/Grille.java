@@ -102,7 +102,6 @@ public class Grille {
                 System.out.println(" Partie perdue");
                 System.out.println("///////////////");
             }
-// ça s'est quand on a une case qui se submerge sous un aventurier il faut qu'il bouge, mais ça fait tout buger...
             if (!(tuile.getAventuriers().isEmpty())){
                 System.out.println("Il y a " + tuile.getAventuriers().size() + " aventurier !");
                 // Il y a un ou plusieurs aventurier sur la case

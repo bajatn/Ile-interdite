@@ -46,9 +46,7 @@ public class FenetreIHM {
         this.window = new JFrame();
         window.setSize(1700,1050);
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-
-        //window.setDefaultCloseOperation();
-        
+                
             //Ajout et initialisation de panelMain a window
         this.panelMain = new JPanel(new BorderLayout());
         window.add(panelMain);
@@ -94,11 +92,6 @@ public class FenetreIHM {
     
     public void setObservateur(Observateur observateur) {
             this.observateur = observateur;
-//            this.afficherCartes.setObservateur(observateur);
-//            this.afficherJoueur.setObservateur(observateur);
-//            this.afficherNiveauEau.setObservateur(observateur);
-//            this.afficherCases.setObservateur(observateur);
-
         }
     
     void setAfficheJoueur(String description, Color couleur) {

@@ -107,10 +107,6 @@ public class VueAventurier  {
                 String stringPosition;
                 Message m = new Message();
                 m.setType(DEPLACER);
-                // String stringPositionTextField = new String(position.getText());
-                // System.out.println(stringPositionTextField);
-                // System.out.print(m.getType().toString());                
-                // m.setCoordonees(4,4);
                 observateur.traiterMessage(m);
             }
         });
@@ -167,9 +163,6 @@ public class VueAventurier  {
         panelAventurier.add(this.nomAventurier);
         mainPanel.add(panelAventurier, BorderLayout.NORTH);
         window.repaint();
-        
-
-
     }
 }
 

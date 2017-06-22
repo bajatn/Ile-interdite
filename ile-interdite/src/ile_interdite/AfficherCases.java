@@ -23,7 +23,6 @@ class AfficherCases extends JPanel {
         this.setObservateur(observateur);
         this.setLayout(new GridLayout(6,6,10,10));
         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        //this.setBackground(Color.GREEN);
         
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
@@ -48,42 +47,7 @@ class AfficherCases extends JPanel {
                     this.add(panelCase);
                 }
             }        
-        }
-        
-           
-            //Ligne 1
-            
-//            this.add(new JLabel("trésor HG"));
-//            this.add(new JPanel());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JPanel());
-//            this.add(new JLabel("trésor HD"));
-//            //Ligne 2
-//            this.add(new JPanel());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JPanel()); 
-//            //Ligne 3 et 4 
-//            for (int i=0;i<12;i++){
-//                this.add(new JButton());                
-//            }
-//            //Ligne 5
-//            this.add(new JPanel());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JPanel()); 
-//            //Ligne 6
-//            this.add(new JLabel("trésor BG"));
-//            this.add(new JPanel());
-//            this.add(new JButton());
-//            this.add(new JButton());
-//            this.add(new JPanel());
-//            this.add(new JLabel("trésor BD"));           
+        }       
     }
     
     public void setObservateur(Observateur observateur){
@@ -94,9 +58,7 @@ class AfficherCases extends JPanel {
         this.removeAll();
         this.setLayout(new GridLayout(6,6,10,10));
         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        
-        //this.setBackground(Color.GREEN);
-        
+             
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
                 PanelCase panelCase = new PanelCase(observateur, y+1, i+1, grille.getTuile(y+1,i+1));

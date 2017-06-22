@@ -44,7 +44,6 @@ public class Niveau_Eau {
             palier = 5;
         } else {
             palier = 6;
-            //  /!\ C'est perdu /!\
         }
         this.palier = palier;
     }

@@ -24,8 +24,6 @@ public class Tuile {
     private ArrayList<Aventurier> aventuriers;
     private boolean active;
     
-    ////////////////////////////////////////////////////
-
     public Tuile(int x, int y, Etat etat, Lieu nom, Grille grille) {
         this.x = x;
         this.y = y;
@@ -34,8 +32,7 @@ public class Tuile {
         this.grille = grille;
         this.aventuriers = new ArrayList<>();
         this.active = false;
-        
-        
+         
         if (this.nom==La_Caverne_des_Ombres || this.nom==La_Caverne_du_Brasier){
             this.tresor = le_cristal_ardent;
         }
@@ -92,9 +89,6 @@ public class Tuile {
     public ArrayList<Aventurier> getAventuriers() {
         return aventuriers;
     }
-    
-    
-    
     
     public void setEtat(Etat etat) {
         this.etat = etat;

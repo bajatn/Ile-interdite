@@ -36,5 +36,4 @@ public class Pile_de_Cartes_Tresor extends Pile_de_Cartes {
         }
         setCarte_dessus();
     }
-    
 }
