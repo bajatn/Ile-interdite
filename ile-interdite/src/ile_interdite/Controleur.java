@@ -120,8 +120,10 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
+                System.out.println("Entrée traiterMessage Carte");
                 if (defausse == 1){
                     joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
+                    System.out.println(joueurCourant.getMain());
                     if (joueurCourant.getMain().size()<=4) {
                         defausse = 0;
                     }
@@ -202,6 +204,7 @@ public class Controleur implements Observateur{
         vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());
         vue.getAfficherCases().MettreAjourCases(this, grille);
         if (joueurCourant.getMain().size()>4) {
+            System.out.println("Veuillez vous deffausser de certaines cartes");
             defausse = 1;
         }
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
