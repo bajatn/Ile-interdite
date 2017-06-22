@@ -100,13 +100,6 @@ public class Controleur implements Observateur{
                     vue.MettreAJourActions("Votre aventurier a asséché la case" + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
 
                     // Donner carte
-                } else if (actionSelect == 2){
-                    joueurCourant.transfererCarte(message.getAventurier(), message.getCarte());
-                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
-                    actionUtilise++;  
-                    vue.MettreAJourActions("Votre aventurier a donné la carte"+ message.getCarte());
-
-                    // Helico
                 } else if (actionSelect == 3){
                     Tuile tuileVisee = joueurCourant.getTuileActu();
                     for (Aventurier aventurier : aventuriers){
@@ -170,7 +163,7 @@ public class Controleur implements Observateur{
                 break;
                 
             case DONNER:
-                defausse = 0;
+                actionSelect = 2;
                 vue.getAfficherCartes().activerCartesPartieTresor();
 
                 break;
@@ -181,7 +174,7 @@ public class Controleur implements Observateur{
                 
             case CARTE:
                 
-                if  (defausse == 0){
+                if  (actionSelect == 2){
                     carteAPasser = message.getCarte();
                     recepteurChoisi =true;
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
