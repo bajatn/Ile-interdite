@@ -137,17 +137,15 @@ public class Controleur implements Observateur{
                 break;
                 
             case TERMINER_JEU:
-                System.out.println();
-                System.out.println();
-                System.out.println("Entrée Terminer Jeu");
-                System.out.println();
                 int aventurierPresent = 0;
                 int nbTresors = 0;
                 boolean carteHelico = false;
+                
                 for (Aventurier aventurier: aventuriers){
+                    System.out.println();
                     // ils sont tous sur l'heliport ?
                     if(aventurier.getTuileActu() == grille.getTuile(Lieu.Heliport)){
-                        aventurierPresent = aventurierPresent++;
+                        aventurierPresent++;
                     }
                     // ils ont les tresors ?
                     nbTresors = nbTresors + aventurier.getTresors().size();
@@ -158,9 +156,6 @@ public class Controleur implements Observateur{
                         }
                     }
                 }
-                System.out.println("aventurierPresent = " + aventurierPresent);
-                System.out.println("nbTresors = " + nbTresors);
-                System.out.println("carteHelico = " + carteHelico);
                 if ((aventurierPresent == aventuriers.size()) && (nbTresors >= 4) && (carteHelico == true)){
                     System.out.println();
                     System.out.println("///////////////");
