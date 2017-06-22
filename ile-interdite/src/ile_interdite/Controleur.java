@@ -122,10 +122,8 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
-                System.out.println("Entrée traiterMessage Carte");
                 if (defausse == 1){
                     joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
-                    System.out.println(joueurCourant.getMain());
                     if (joueurCourant.getMain().size()<=4) {
                         defausse = 0;
                     }
