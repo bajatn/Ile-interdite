@@ -92,6 +92,7 @@ public class Controleur implements Observateur{
                     // Donner carte
                 } else if (actionSelect == 2){
                     joueurCourant.transfererCarte(message.getAventurier(), message.getCarte());
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                     actionUtilise++;  
 
                     // Helico
@@ -101,6 +102,8 @@ public class Controleur implements Observateur{
                         if (aventurier.getTuileActu() == tuileVisee){
                             aventurier.deplacerVersTuile(message.getX(), message.getY());
                         }
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+
                     }
                     // Defausse d'une carte Helico de la main du joueur
                     boolean carteDefausse = false;
@@ -112,6 +115,7 @@ public class Controleur implements Observateur{
                             carteDefausse = true;
                         }
                         i++;
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                     }
                     
                     // Sac de sable
@@ -126,7 +130,8 @@ public class Controleur implements Observateur{
                             joueurCourant.defausseCarteMain(carte, pileTresor);
                             carteDefausse = true;
                         }
-                        i++;
+                    i++;
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                     }
                     
                 } else {
@@ -215,8 +220,9 @@ public class Controleur implements Observateur{
                 }
                 else{
                     vue.getAfficherCartes().cartesPrecedentes();
-
                 }
+                vue.repaint();                
+                break;
                     
                 
             default:
@@ -224,7 +230,6 @@ public class Controleur implements Observateur{
         }
             
         vue.getAfficherCases().MettreAjourCases(this, grille);
-        vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
         vue.repaint();   
         if(actionUtilise >= joueurCourant.getNbAction()){
             grille.Inondation(pileInondation, niv);
@@ -247,6 +252,7 @@ public class Controleur implements Observateur{
         if (joueurCourant.getMain().size()>4) {
             System.out.println("Veuillez vous défausser de certaines cartes");
             defausse = 1;
+        vue.getAfficherCartes().setDecalage(0);
             
         }
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());

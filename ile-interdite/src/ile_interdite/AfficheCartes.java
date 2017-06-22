@@ -66,6 +66,7 @@ class AfficheCartes extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Message m = new Message();
+                    m.setType(TypeMessage.BOUGER_CARTES);
                     m.setDeplaceCarte(Boolean.TRUE);
                     observateur.traiterMessage(m);
                 }
@@ -77,7 +78,8 @@ class AfficheCartes extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Message m = new Message();
-                    m.setDeplaceCarte(Boolean.TRUE);
+                    m.setType(TypeMessage.BOUGER_CARTES);
+                    m.setDeplaceCarte(Boolean.FALSE);
                     observateur.traiterMessage(m);
                 }
         });
@@ -126,32 +128,62 @@ class AfficheCartes extends JPanel {
     }
     
     public void mettreAJourCartes(ArrayList<Carte_Tresor> cartes){
-        decalage = 0;
+        this.cartes = cartes;
         this.panelCartes.removeAll();
-        for(int i=decalage;i<min(cartes.size(), 5);i++){
-            BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
-            panelCartes.add(carte);
+        for(int i=0;i<min(cartes.size(), 5);i++){
+            if ((cartes.get(i+decalage)==null)){
+                panelCartes.add(new JButton());
+            }
+            else{
+                BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
+                panelCartes.add(carte);
+            }
+            this.revalidate();
         }
-        this.repaint();
     }
-    
     public void cartesSuivantes(){
         decalage++;
         this.panelCartes.removeAll();
-        for(int i=0;i<min(cartes.size(), 5);i++){
-            BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
-            panelCartes.add(carte);    
-        }  
-        this.repaint();
+        for(int i=0;i<min(cartes.size()-decalage, 5);i++){
+            if (cartes.isEmpty()){
+                panelCartes.add(new JButton());
+                System.out.println("JButton");
+            }
+            else{
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
+                panelCartes.add(carte);
+                System.out.println("BoutonCarte");
+ 
+                
+            }
+            this.revalidate();
+        }
+        
     }
     
     public void cartesPrecedentes(){
-        decalage--;
+        if (decalage>0){
+            decalage--;
+        }
         this.panelCartes.removeAll();
-        for(int i=0;i<min(cartes.size(), 5);i++){
-            BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
-            panelCartes.add(carte);    
-        }  
-        this.repaint();
+        for(int i=0;i<min(cartes.size()-decalage, 5);i++){
+            if (cartes.isEmpty()){
+                panelCartes.add(new JButton());
+                System.out.println("JButton");
+               
+            }
+            else{
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
+                panelCartes.add(carte);
+                System.out.println("BoutonCarte");            
+            }
+        }
+        this.revalidate();
+        
+        
+    }
+
+    public void setDecalage(int decalage) {
+        this.decalage = decalage;
     }
 }
