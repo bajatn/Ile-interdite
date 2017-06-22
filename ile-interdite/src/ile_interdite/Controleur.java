@@ -101,7 +101,7 @@ public class Controleur implements Observateur{
                     joueurCourant.transfererCarte(message.getAventurier(), message.getCarte());
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                     actionUtilise++;  
-                    vue.MettreAJourActions("Votre aventurier a donné la carte"+ message.getCarte().toString());
+                    vue.MettreAJourActions("Votre aventurier a donné la carte"+ message.getCarte());
 
                     // Helico
                 } else if (actionSelect == 3){
@@ -125,7 +125,7 @@ public class Controleur implements Observateur{
                         }
                         i++;
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
-                    vue.MettreAJourActions("Vous avez défaussez"+ joueurCourant.getMain().get(i).toString());       
+                    
                     }
                     
                     // Sac de sable
@@ -143,6 +143,9 @@ public class Controleur implements Observateur{
                     i++;
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                     vue.MettreAJourActions("Carte sac de sable utilisée");
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                    vue.repaint();
+
                     }
                     
                 } else {
@@ -160,6 +163,7 @@ public class Controleur implements Observateur{
             case TERMINER_TOUR:
                 System.out.println("TERMINER_TOUR");
                 actionUtilise = 10;
+                vue.MettreAJourActions("Fin du tour");
                 break;
                 
             case DONNER:
@@ -218,11 +222,14 @@ public class Controleur implements Observateur{
                     System.out.println("///////////////");
                     System.out.println(" Partie gagnée");
                     System.out.println("///////////////");
+                    vue.MettreAJourActions("Partie gagnée");
+
                 } else {
                     System.out.println();
                     System.out.println("///////////////");
                     System.out.println(" Partie perdue");
                     System.out.println("///////////////");
+                    vue.MettreAJourActions("Partie perdue");
                 }
                 break;
             case BOUGER_CARTES:
@@ -256,6 +263,7 @@ public class Controleur implements Observateur{
         joueurCourant = aventuriers.get(compteurTour%6);
         actionUtilise = 0;
         System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
+        vue.MettreAJourActions("C'est maintenant le tour du "+joueurCourant.getRole());
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());
