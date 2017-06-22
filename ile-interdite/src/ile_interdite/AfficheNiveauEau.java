@@ -25,7 +25,7 @@ class AfficheNiveauEau extends JPanel {
     public AfficheNiveauEau() {
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         valeurNiveauEau = 0;
-        niveauEau = new JSlider(SwingConstants.VERTICAL,valeurNiveauEau,10,0);
+        niveauEau = new JSlider(SwingConstants.VERTICAL,1,10,1);
         niveauEau.setMinorTickSpacing(1);
         niveauEau.setMajorTickSpacing(5);
         niveauEau.setPreferredSize(new Dimension(30,650));
