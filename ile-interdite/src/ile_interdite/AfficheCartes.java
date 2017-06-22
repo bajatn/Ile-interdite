@@ -45,19 +45,16 @@ class AfficheCartes extends JPanel {
     
 
     public AfficheCartes(ArrayList<Carte_Tresor> cartes, Observateur observateur) {
+        this.observateur = observateur;
         this.setLayout(new BorderLayout());
         panelCartes = new JPanel(new GridLayout(5,1));
-        System.out.println("nb cartes de la main du joueur actuel : " + cartes.size());
-        for(int i=0;i<5;i++){
+        for(int i=0;i<min(cartes.size(), 5);i++){
              if (cartes.isEmpty()){
                 panelCartes.add(new JButton());
-                System.out.println("JButton");
             }
             else{
                 BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
-                System.out.println(i);
                 panelCartes.add(carte);
-                System.out.println("BoutonCarte");
 
             }
         }
@@ -120,7 +117,6 @@ class AfficheCartes extends JPanel {
 
         
         
-        
         this.add(panelCartes, BorderLayout.CENTER);
         this.add(panelCommande, BorderLayout.EAST);
     }
@@ -130,12 +126,13 @@ class AfficheCartes extends JPanel {
     }
     
     public void mettreAJourCartes(ArrayList<Carte_Tresor> cartes){
-        decalage = 0;        
+        decalage = 0;
         this.panelCartes.removeAll();
         for(int i=decalage;i<min(cartes.size(), 5);i++){
             BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
-            panelCartes.add(carte);    
+            panelCartes.add(carte);
         }
+        this.repaint();
     }
     
     public void cartesSuivantes(){
@@ -144,7 +141,8 @@ class AfficheCartes extends JPanel {
         for(int i=0;i<min(cartes.size(), 5);i++){
             BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
             panelCartes.add(carte);    
-        }    
+        }  
+        this.repaint();
     }
     
     public void cartesPrecedentes(){
@@ -153,6 +151,7 @@ class AfficheCartes extends JPanel {
         for(int i=0;i<min(cartes.size(), 5);i++){
             BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
             panelCartes.add(carte);    
-        }    
+        }  
+        this.repaint();
     }
 }

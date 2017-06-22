@@ -21,7 +21,6 @@ public class Explorateur extends Aventurier {
         this.addCarte(new Partie_Tresor(le_cristal_ardent));
         this.addCarte(new Partie_Tresor(le_calice_de_l_onde));
         this.addCarte(new Partie_Tresor(la_pierre_sacree));
-        this.addCarte(new Helicoptere());
     }
     
     @Override

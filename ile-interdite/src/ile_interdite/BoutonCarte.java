@@ -45,7 +45,6 @@ public class BoutonCarte extends JButton{
         this.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("//// click Carte ////");
                     Message m = new Message();
                     m.setType(TypeMessage.CARTE);
                     m.setCarte(carte);
