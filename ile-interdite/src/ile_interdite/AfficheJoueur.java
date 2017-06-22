@@ -32,7 +32,7 @@ class AfficheJoueur extends JPanel {
         panelImage = new JPanel();
         panelGeneral.add(panelImage, BorderLayout.EAST);
         
-        panelDescription = new JPanel();
+        panelDescription = new JPanel(new BorderLayout());
         labelDescription = new JLabel("Description de la classe");
         panelDescription.add(labelDescription);
         panelGeneral.add(panelDescription, BorderLayout.CENTER);

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Messager extends Aventurier {
 
     public Messager(Tuile tuile) {
-        super("Messager", tuile, Color.GRAY, 3,"Le Messager peut donner des cartes Trésor à un autre joueur n'importe où sur l'île pour 1 action par carte. ");
+        super("Messager", tuile, Color.GRAY, 3,"<html>Le Messager peut donner des cartes Trésor <br> à un autre joueur n'importe où sur l'île pour 1 action par carte. </html>");
     }
     
     @Override

@@ -17,7 +17,7 @@ public class Pilote extends Aventurier {
     private boolean aVole = false;
     
     public Pilote(Tuile tuile) {
-        super("Pilote", tuile, Color.BLUE, 3,"Le Pilote peut, une fois par tour, voler jusqu'à n'importe quelle tuile de l'île pour une action. ");
+        super("Pilote", tuile, Color.BLUE, 3,"<html>Le Pilote peut, une fois par tour,<br> voler jusqu'à n'importe quelle tuile de l'île pour une action. </html>");
         aVole = false;
     }
     
