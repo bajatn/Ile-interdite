@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Integer.min;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -46,8 +47,7 @@ class AfficheCartes extends JPanel {
     public AfficheCartes(ArrayList<Carte_Tresor> cartes, Observateur observateur) {
         this.setLayout(new BorderLayout());
         panelCartes = new JPanel(new GridLayout(5,1));
-        System.out.println("nb cartes de la main du joueur actuel");
-        System.out.println(cartes.size());
+        System.out.println("nb cartes de la main du joueur actuel : " + cartes.size());
         for(int i=0;i<5;i++){
              if (cartes.isEmpty()){
                 panelCartes.add(new JButton());
@@ -130,18 +130,21 @@ class AfficheCartes extends JPanel {
     }
     
     public void mettreAJourCartes(ArrayList<Carte_Tresor> cartes){
+        System.out.println("debut mettreAJourCarte");
         decalage = 0;        
         this.panelCartes.removeAll();
-        for(int i=0;i<5;i++){
+        for(int i=decalage;i<min(cartes.size(), 5);i++){
+            System.out.println("entrée boucle n°" + i);
             BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
             panelCartes.add(carte);    
         }
+        System.out.println("fin mettreAJourCarte");
     }
     
     public void cartesSuivantes(){
         decalage++;
         this.panelCartes.removeAll();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<min(cartes.size(), 5);i++){
             BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
             panelCartes.add(carte);    
         }    
@@ -150,7 +153,7 @@ class AfficheCartes extends JPanel {
     public void cartesPrecedentes(){
         decalage--;
         this.panelCartes.removeAll();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<min(cartes.size(), 5);i++){
             BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
             panelCartes.add(carte);    
         }    

@@ -87,7 +87,16 @@ class AfficheActions extends JPanel {
         });        
         this.add(tresor);
         
-        this.add(new JButton("Quitter/Décoller"));        
+        JButton quitter = new JButton("Quitter/Décoller");
+        quitter.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Message m = new Message();
+                    m.setType(TERMINER_JEU);
+                    observateur.traiterMessage(m);
+            }
+        }); 
+        this.add(quitter);    
     }
     public void setObservateur(Observateur observateur){
         this.observateur = observateur;

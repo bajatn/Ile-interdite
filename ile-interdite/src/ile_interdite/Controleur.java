@@ -137,6 +137,10 @@ public class Controleur implements Observateur{
                 break;
                 
             case TERMINER_JEU:
+                System.out.println();
+                System.out.println();
+                System.out.println("Entrée Terminer Jeu");
+                System.out.println();
                 int aventurierPresent = 0;
                 int nbTresors = 0;
                 boolean carteHelico = false;
@@ -154,10 +158,19 @@ public class Controleur implements Observateur{
                         }
                     }
                 }
-                if ((aventurierPresent == aventuriers.size()) && (nbTresors == 4) && (carteHelico == true)){
-                    System.out.println("Partie gagnée");
+                System.out.println("aventurierPresent = " + aventurierPresent);
+                System.out.println("nbTresors = " + nbTresors);
+                System.out.println("carteHelico = " + carteHelico);
+                if ((aventurierPresent == aventuriers.size()) && (nbTresors >= 4) && (carteHelico == true)){
+                    System.out.println();
+                    System.out.println("///////////////");
+                    System.out.println(" Partie gagnée");
+                    System.out.println("///////////////");
                 } else {
-                    System.out.println("Partie perdue");
+                    System.out.println();
+                    System.out.println("///////////////");
+                    System.out.println(" Partie perdue");
+                    System.out.println("///////////////");
                 }
                 break;
             case BOUGER_CARTES:

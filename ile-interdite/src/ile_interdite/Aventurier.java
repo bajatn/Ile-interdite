@@ -70,6 +70,10 @@ public abstract class Aventurier {
         this.main.add(carte);
     }
     
+    public void addTresor(Type_Tresor tresor) {
+        this.tresors.add(tresor);
+    }
+    
     public ArrayList<Tuile> deplacer(){
         ArrayList<Tuile> choixTuile = new ArrayList<Tuile>();
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
@@ -137,7 +141,7 @@ public abstract class Aventurier {
             }
         }
         if (a>=4) {
-            this.tresors.add(getTuileActu().getTresor());
+            this.addTresor(getTuileActu().getTresor());
             for (Tuile tuile : getTuileActu().getGrille().getTuiles()){
                 if (tuile.getTresor() == this.getTuileActu().getTresor()){
                    tuile.setTresor(null);
