@@ -55,6 +55,7 @@ public class Plongeur extends Aventurier {
             for (Tuile tuile: tuilesTempGeneral){
                     if(tuilesEauAccessibles.contains(tuile) == false){
                         tuilesEauAccessibles.add(tuile);
+                        choixTuile.add(tuile);
                         modif = true;
                     }   
             }  
@@ -68,7 +69,7 @@ public class Plongeur extends Aventurier {
                 } 
             }
         }
-
+        
         choixTuile.remove(tuileDepart);
   
 

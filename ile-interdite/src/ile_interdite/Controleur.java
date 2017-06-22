@@ -247,6 +247,7 @@ public class Controleur implements Observateur{
         if (joueurCourant.getMain().size()>4) {
             System.out.println("Veuillez vous défausser de certaines cartes");
             defausse = 1;
+            
         }
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
         vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
