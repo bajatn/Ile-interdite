@@ -130,15 +130,12 @@ class AfficheCartes extends JPanel {
     }
     
     public void mettreAJourCartes(ArrayList<Carte_Tresor> cartes){
-        System.out.println("debut mettreAJourCarte");
         decalage = 0;        
         this.panelCartes.removeAll();
         for(int i=decalage;i<min(cartes.size(), 5);i++){
-            System.out.println("entrée boucle n°" + i);
             BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
             panelCartes.add(carte);    
         }
-        System.out.println("fin mettreAJourCarte");
     }
     
     public void cartesSuivantes(){

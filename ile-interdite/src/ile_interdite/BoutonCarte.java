@@ -5,7 +5,9 @@
  */
 package ile_interdite;
 
+import static ile_interdite.Type_Tresor.*;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -20,6 +22,23 @@ public class BoutonCarte extends JButton{
 
     public BoutonCarte(Carte_Tresor carte,Observateur observateur) {
         super(carte.getType());
+        this.setPreferredSize(new Dimension(180, 0));
+        if (carte.getType() == "Partie_Tresor"){
+            Partie_Tresor carteT = (Partie_Tresor) carte;
+            if (carteT.getTresor() == la_statue_du_zephyr){
+                this.setText("La statue du zephyr");
+            } else if (carteT.getTresor() == le_cristal_ardent){
+                this.setText("Le cristal ardent");
+            } else if (carteT.getTresor() == le_calice_de_l_onde){
+                this.setText("Le calice de l'onde");
+            } else if (carteT.getTresor() == la_pierre_sacree){
+                this.setText("La pierre sacrée");
+            }
+        } else {
+            if (carte.getType() == "Sac_de_sable"){
+                this.setText("Sac de sable");
+            }
+        }
         this.carte = carte;
         this.observateur = observateur;
         this.setBackground(Color.red);

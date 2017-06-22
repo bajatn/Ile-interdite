@@ -22,4 +22,6 @@ public class Partie_Tresor extends Carte_Tresor {
         return tresor;
     }
     
+    
+    
 }
