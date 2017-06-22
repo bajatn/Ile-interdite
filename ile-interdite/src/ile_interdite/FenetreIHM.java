@@ -62,7 +62,7 @@ public class FenetreIHM {
         this.labelCentral = new JLabel("Bienvenue sur l'ile interdite !");
         panelLabel.add(labelCentral);
         panelCentral.add(panelLabel, BorderLayout.NORTH);
-       
+        
             //Ajout et initialisation de afficherCases au sud de panelCentral
         this.afficherCases = new AfficherCases(observateur, grille);
         panelCentral.add(afficherCases, BorderLayout.CENTER);       
@@ -126,8 +126,11 @@ public class FenetreIHM {
     public AfficheJoueur getAfficherJoueur() {
         return afficherJoueur;
     }
-    
     public void repaint(){
         window.repaint();
+    }
+    
+    public void MettreAJourActions(String nomAction){
+        labelCentral.setText(nomAction);
     }
 }
