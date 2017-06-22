@@ -24,6 +24,7 @@ public class BoutonCarte extends JButton{
         super(carte.getType());
         this.setPreferredSize(new Dimension(180, 0));
         if (carte.getType() == "Partie_Tresor"){
+            this.setEnabled(false);
             Partie_Tresor carteT = (Partie_Tresor) carte;
             if (carteT.getTresor() == la_statue_du_zephyr){
                 this.setText("La statue du zephyr");

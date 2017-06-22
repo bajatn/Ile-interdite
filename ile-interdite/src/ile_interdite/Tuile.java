@@ -22,6 +22,7 @@ public class Tuile {
     private Grille grille;
     private Type_Tresor tresor;
     private ArrayList<Aventurier> aventuriers;
+    private boolean active;
     
     ////////////////////////////////////////////////////
 
@@ -32,7 +33,7 @@ public class Tuile {
         this.nom = nom;
         this.grille = grille;
         this.aventuriers = new ArrayList<>();
-        
+        this.active = false;
         
         
         if (this.nom==La_Caverne_des_Ombres || this.nom==La_Caverne_du_Brasier){
@@ -64,6 +65,14 @@ public class Tuile {
     }
     public Grille getGrille() {
         return grille;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Type_Tresor getTresor() {

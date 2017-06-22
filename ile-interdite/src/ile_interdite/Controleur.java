@@ -89,12 +89,25 @@ public class Controleur implements Observateur{
 
                     // Helico
                 } else if (actionSelect == 3){
+                    Tuile tuileVisee = joueurCourant.getTuileActu();
                     for (Aventurier aventurier : aventuriers){
-                        if (aventurier.getTuileActu() == joueurCourant.getTuileActu()){
+                        if (aventurier.getTuileActu() == tuileVisee){
                             aventurier.deplacerVersTuile(message.getX(), message.getY());
                         }
                     }
-                    joueurCourant.deplacerVersTuile(message.getX(),message.getY());
+                    boolean carteDefausse = false;
+                    int i = 0;
+                    while (carteDefausse == false){
+                        Carte_Tresor carte = joueurCourant.getMain().get(i);
+                        if (carte.getType() == "Helicoptere"){
+                            joueurCourant.defausseCarteMain(carte, pileTresor);
+                            carteDefausse = true;
+                        }
+                        i++;
+                    }
+                    vue.getAfficherCases().MettreAjourCases(this, grille);
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                    vue.repaint();
                     
                     // Sac de sable
                 } else if (actionSelect == 4){
@@ -102,7 +115,12 @@ public class Controleur implements Observateur{
                     
                 } else {
                     System.out.println("Action impossible");
-                }            
+                }  
+                
+                for (Tuile tuile : grille.getTuiles()){
+                    tuile.setActive(false);
+                }
+                
                 break;
                 
                 
@@ -122,17 +140,19 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
+                System.out.println("Entree traiterMessage CARTE");
                 if (defausse == 1){
                     joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
                     if (joueurCourant.getMain().size()<=4) {
                         defausse = 0;
                     }
-
                 } else {
                     Afficher(message.getCarte().utiliserCarte(grille));
                     if (message.getCarte().getType() == "Helicoptere"){
+                        System.out.println("Carte helico");
                         actionSelect = 3;
                     } else if (message.getCarte().getType() == "Sac_de_sable"){
+                        System.out.println("Carte sac");
                         actionSelect = 4;
                     }
                 }
@@ -144,7 +164,6 @@ public class Controleur implements Observateur{
                 boolean carteHelico = false;
                 
                 for (Aventurier aventurier: aventuriers){
-                    System.out.println();
                     // ils sont tous sur l'heliport ?
                     if(aventurier.getTuileActu() == grille.getTuile(Lieu.Heliport)){
                         aventurierPresent++;

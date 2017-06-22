@@ -79,7 +79,8 @@ public abstract class Aventurier {
         ArrayList<Tuile> collecTuiles = getTuileActu().calculerAdjacent();
         for (Tuile tuile: collecTuiles){
             if (tuile.getEtat() == Etat.Asseche || tuile.getEtat() == Etat.Inonde){
-              choixTuile.add(tuile);
+                choixTuile.add(tuile);
+                tuile.setActive(true);
             }
         }
         return choixTuile;        
@@ -91,6 +92,7 @@ public abstract class Aventurier {
         for (Tuile tuile: collecTuiles){
             if (tuile.getEtat() == Etat.Inonde){
               choixTuile.add(tuile);
+              tuile.setActive(true);
             }
         }
         return choixTuile;

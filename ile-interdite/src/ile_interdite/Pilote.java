@@ -19,6 +19,7 @@ public class Pilote extends Aventurier {
     public Pilote(Tuile tuile) {
         super("Pilote", tuile, Color.BLUE, 3,"<html>Le Pilote peut, une fois par tour,<br> voler jusqu'à n'importe quelle tuile de l'île pour une action. </html>");
         aVole = false;
+        this.addCarte(new Helicoptere());
     }
     
     public boolean getAVole() {
