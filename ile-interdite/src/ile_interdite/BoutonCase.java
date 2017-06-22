@@ -6,10 +6,12 @@
 package ile_interdite;
 
 import static ile_interdite.Etat.*;
+import static ile_interdite.Type_Tresor.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 /**
@@ -32,6 +34,18 @@ public class BoutonCase extends JButton{
         if (this.tuile.getNom()!=null){
             this.setText(this.tuile.getNom().toString());
             //this.setFont(new Font("TimesRoman", Font.PLAIN, 10));
+        }
+        if (this.getTuile().getTresor()==la_statue_du_zephyr){
+            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.YELLOW.darker()));
+        }
+        else if (this.getTuile().getTresor()==le_calice_de_l_onde){
+            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GREEN.darker()));
+        }
+        else if (this.getTuile().getTresor()==le_cristal_ardent){
+            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.RED));
+        }
+        else if (this.getTuile().getTresor()==la_pierre_sacree){
+            this.setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
         }
         this.addActionListener(new ActionListener() {
                 @Override
@@ -65,6 +79,10 @@ public class BoutonCase extends JButton{
 
     public void setObservateur(Observateur observateur) {
         this.observateur = observateur;
+    }
+
+    public Tuile getTuile() {
+        return tuile;
     }
     
     

@@ -28,7 +28,6 @@ class AfficherCases extends JPanel {
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
                 PanelCase panelCase = new PanelCase(observateur, y+1, i+1, grille.getTuile(y+1,i+1));
-                
                 if (i==0||i==5){
                     if (y==2||y==3){
                         this.add(panelCase);
@@ -95,35 +94,29 @@ class AfficherCases extends JPanel {
         this.removeAll();
         this.setLayout(new GridLayout(6,6,10,10));
         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-
+        
         //this.setBackground(Color.GREEN);
         
         for (int i=0;i<6;i++){
             for (int y=0;y<6;y++){
                 PanelCase panelCase = new PanelCase(observateur, y+1, i+1, grille.getTuile(y+1,i+1));
-                
                 if (i==0||i==5){
                     if (y==2||y==3){
-                        System.out.println("Un panelCase est créé");
                         this.add(panelCase);
                     }
                     else{
-                        System.out.println("Un JLabel est créé");
                         this.add(new JLabel());
                     }   
                 }
                 if (i==1||i==4){
                     if(y==0||y==5){
-                        System.out.println("Un JLabel est créé");
                         this.add(new JLabel());
                     }
                     else{
-                        System.out.println("Un panelCase est créé");
                         this.add(panelCase);
                     }
                 }
                 if (i==2||i==3){
-                    System.out.println("Un panelCase est créé");
                     this.add(panelCase);
                 }
             }        
