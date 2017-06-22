@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Plongeur extends Aventurier {
 
     public Plongeur(Tuile tuile) {
-        super("Plongeur", tuile, Color.BLACK, 3,"Le Plongeur peut passer par une ou deux tuiles adjacentes inondées et/ou manquantes pour une action (il doit terminer le tour sur une tuile). ");
+        super("Plongeur", tuile, Color.BLACK, 3,"<html>Le Plongeur peut passer par une <br> ou deux tuiles adjacentes inondées <br>et/ou manquantes pour une action (il doit terminer le tour sur une tuile). </html>");
     }
 
     @Override

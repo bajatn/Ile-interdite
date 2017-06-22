@@ -14,7 +14,7 @@ import java.awt.Color;
 public class Navigateur extends Aventurier {
 
     public Navigateur( Tuile tuile) {
-        super("Navigateur", tuile,Color.YELLOW, 4," Le Navigateur peut déplacer un autre joueur d'une ou deux tuiles adjacentes pour une action. ");
+        super("Navigateur", tuile,Color.YELLOW, 4,"Le Navigateur peut effectuer 4 actions. ");
     }
 
 
