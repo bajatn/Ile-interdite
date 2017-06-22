@@ -76,8 +76,8 @@ class AfficheActions extends JPanel {
         });        
         this.add(donner);
         
-        JButton tresor = new JButton("Tresor");
-        donner.addActionListener(new ActionListener() {
+        JButton tresor = new JButton("Prendre Tresor");
+        tresor.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Message m = new Message();

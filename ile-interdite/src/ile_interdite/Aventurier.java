@@ -143,6 +143,7 @@ public abstract class Aventurier {
                 }
             }
         }
+        
         if (a>=4) {
             this.addTresor(getTuileActu().getTresor());
             for (Tuile tuile : getTuileActu().getGrille().getTuiles()){
@@ -150,17 +151,18 @@ public abstract class Aventurier {
                    tuile.setTresor(null);
                 }
             }
-            int i = 0;
-            while (i < 4) {
-                Carte_Tresor elem = this.main.get(i);
+            
+            int nbBoucle = main.size();
+            for (int i=nbBoucle;i>0; i--) {    
+                Carte_Tresor elem = main.get(i-1);
                 if (elem.getType() == "Partie_Tresor" ){
                     Partie_Tresor elem2 = (Partie_Tresor) elem;
                     if (elem2.getTresor() == tresor){
                        this.main.remove(elem2);
-                       i++;
                     }
                 }
             }
+            
         }
     }
 
