@@ -77,6 +77,7 @@ public class Controleur implements Observateur{
                 } else if (actionSelect == 1){
                     grille.assécherTuile(message.getX(),message.getY());
                     this.aDejaAsseche = false;
+                    vue.getAfficherCases().MettreAjourCases(this, grille);
                     actionUtilise++;  
                     
                     // Donner carte
@@ -137,28 +138,26 @@ public class Controleur implements Observateur{
                 
             case TERMINER_JEU:
                 int aventurierPresent = 0;
-                // J'ai oublier de verifier que les aventuriers possèdent bien les quatres tresors !!  
+                int nbTresors = 0;
+                boolean carteHelico = false;
                 for (Aventurier aventurier: aventuriers){
+                    // ils sont tous sur l'heliport ?
                     if(aventurier.getTuileActu() == grille.getTuile(Lieu.Heliport)){
                         aventurierPresent = aventurierPresent++;
                     }
-                }
-                if (aventurierPresent == aventuriers.size()){
-                    boolean carteHelico = false;
-                    for (Aventurier aventurier: aventuriers){
-                        for (Carte_Tresor carte: aventurier.getMain()){
-                            if(carte.getType()=="Helicoptere"){
-                                carteHelico = true;
-                            }
+                    // ils ont les tresors ?
+                    nbTresors = nbTresors + aventurier.getTresors().size();
+                    // ils ont une carte helicoptere ?
+                    for (Carte_Tresor carte: aventurier.getMain()){
+                        if(carte.getType()=="Helicoptere"){
+                            carteHelico = true;
                         }
                     }
-                    if (carteHelico == true){
-                        // GAGNE !
-                        System.out.println("Partie gagnée, felicitation !");
-                    } else {
-                        // PERDU !
-                        System.out.println("Partie perdue !");
-                    }
+                }
+                if ((aventurierPresent == aventuriers.size()) && (nbTresors == 4) && (carteHelico == true)){
+                    System.out.println("Partie gagnée");
+                } else {
+                    System.out.println("Partie perdue");
                 }
                 break;
             case BOUGER_CARTES:

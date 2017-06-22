@@ -14,7 +14,7 @@ public abstract class Aventurier {
     private Tuile tuileActu;
     private Color couleur;
     private int nbAction;
-    private ArrayList<Type_Tresor> tresor;
+    private ArrayList<Type_Tresor> tresors;
     private ArrayList<Carte_Tresor> main;
     private String description;
 
@@ -23,10 +23,14 @@ public abstract class Aventurier {
         this.tuileActu = tuile;
         this.couleur = couleur;
         this.main = new ArrayList<>();
-        this.tresor = new ArrayList<>();
+        this.tresors = new ArrayList<>();
         this.nbAction = nbAction;
         this.description = description;
         tuile.addAventurier(this);
+    }
+
+    public ArrayList<Type_Tresor> getTresors() {
+        return tresors;
     }
 
     public String getDescription() {
@@ -133,7 +137,7 @@ public abstract class Aventurier {
             }
         }
         if (a>=4) {
-            this.tresor.add(getTuileActu().getTresor());
+            this.tresors.add(getTuileActu().getTresor());
             for (Tuile tuile : getTuileActu().getGrille().getTuiles()){
                 if (tuile.getTresor() == this.getTuileActu().getTresor()){
                    tuile.setTresor(null);
