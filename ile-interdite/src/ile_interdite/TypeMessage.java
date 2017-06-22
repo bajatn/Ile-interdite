@@ -17,5 +17,6 @@ public enum TypeMessage {
     RECUPERER_TRESOR,
     TERMINER_JEU,
     CARTE,
-    BOUGER_CARTES;
+    BOUGER_CARTES,
+    JOUEUR;
 }

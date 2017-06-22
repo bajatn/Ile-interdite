@@ -53,7 +53,7 @@ class AfficheCartes extends JPanel {
                 panelCartes.add(new JButton());
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur,false);
                 panelCartes.add(carte);
 
             }
@@ -135,7 +135,7 @@ class AfficheCartes extends JPanel {
                 panelCartes.add(new JButton());
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i),observateur);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,false);
                 panelCartes.add(carte);
             }
             this.revalidate();
@@ -150,7 +150,7 @@ class AfficheCartes extends JPanel {
                 System.out.println("JButton");
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,false);
                 panelCartes.add(carte);
                 System.out.println("BoutonCarte");
  
@@ -173,7 +173,7 @@ class AfficheCartes extends JPanel {
                
             }
             else{
-                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur);
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,false);
                 panelCartes.add(carte);
                 System.out.println("BoutonCarte");            
             }
@@ -185,5 +185,24 @@ class AfficheCartes extends JPanel {
 
     public void setDecalage(int decalage) {
         this.decalage = decalage;
+    }
+    
+    public void activerCartesPartieTresor(){
+        this.panelCartes.removeAll();
+        for(int i=0;i<min(cartes.size()-decalage, 5);i++){
+            if (cartes.isEmpty()){
+                panelCartes.add(new JButton());
+                System.out.println("JButton");
+            }
+            else{
+                BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,true);
+                panelCartes.add(carte);
+                System.out.println("BoutonCarte");
+ 
+                
+            }
+            this.revalidate();
+        }
+                
     }
 }

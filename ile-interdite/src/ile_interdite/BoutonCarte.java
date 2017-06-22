@@ -20,11 +20,11 @@ public class BoutonCarte extends JButton{
     private Carte_Tresor carte;
     private Observateur observateur;
 
-    public BoutonCarte(Carte_Tresor carte,Observateur observateur) {
+    public BoutonCarte(Carte_Tresor carte,Observateur observateur,boolean don) {
         super(carte.getType());
         this.setPreferredSize(new Dimension(180, 0));
         if (carte.getType() == "Partie_Tresor"){
-            this.setEnabled(false);
+                this.setEnabled(don);
             Partie_Tresor carteT = (Partie_Tresor) carte;
             if (carteT.getTresor() == la_statue_du_zephyr){
                 this.setText("La statue du zephyr");
@@ -36,6 +36,7 @@ public class BoutonCarte extends JButton{
                 this.setText("La pierre sacrée");
             }
         } else {
+            this.setEnabled(!don);
             if (carte.getType() == "Sac_de_sable"){
                 this.setText("Sac de sable");
             }
@@ -57,4 +58,13 @@ public class BoutonCarte extends JButton{
     public void setObservateur(Observateur observateur) {
         this.observateur = observateur;
     }
+
+    public Carte_Tresor getCarte() {
+        return carte;
+    }
+
+    public Observateur getObservateur() {
+        return observateur;
+    }
+    
 }
