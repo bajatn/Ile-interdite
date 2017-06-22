@@ -61,6 +61,7 @@ public class Controleur implements Observateur{
                     tuile.setActive(true);
                 }
                 actionSelect = 0;
+                vue.MettreAJourActions("Choisissez une carte");
                 break;
                 
             case ASSECHER:
@@ -69,6 +70,8 @@ public class Controleur implements Observateur{
                     tuile.setActive(true);
                 }
                 actionSelect = 1;
+                vue.MettreAJourActions("Choisissez une carte");
+
                 break;
                 
             case CHOIX:
@@ -77,26 +80,31 @@ public class Controleur implements Observateur{
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
                     actionUtilise++;  
-                    
+                    vue.MettreAJourActions("Votre aventurier s'est deplacé sur la case: " + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
+
                     // Assecher (ingenieur)
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
                     grille.assécherTuile(message.getX(),message.getY());
-                    actionUtilise++;  
+                    actionUtilise++;
+                    vue.MettreAJourActions("Votre aventurier a asséché la case" + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
+
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==false){
                     grille.assécherTuile(message.getX(),message.getY()); 
                     this.aDejaAsseche=true;     
-                    
+                    vue.MettreAJourActions("Votre aventurier a asséché la case" + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
                     // Assecher
                 } else if (actionSelect == 1){
                     grille.assécherTuile(message.getX(),message.getY());
                     this.aDejaAsseche = false;
                     actionUtilise++;  
-                    
+                    vue.MettreAJourActions("Votre aventurier a asséché la case" + joueurCourant.getPositionX() + "-" + joueurCourant.getPositionY() + " : " + joueurCourant.getTuileActu().getNom());
+
                     // Donner carte
                 } else if (actionSelect == 2){
                     joueurCourant.transfererCarte(message.getAventurier(), message.getCarte());
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
                     actionUtilise++;  
+                    vue.MettreAJourActions("Votre aventurier a donné la carte"+ message.getCarte());
 
                     // Helico
                 } else if (actionSelect == 3){
@@ -106,6 +114,7 @@ public class Controleur implements Observateur{
                             aventurier.deplacerVersTuile(message.getX(), message.getY());
                         }
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                    vue.MettreAJourActions("Carte helicoptere utilisée");
 
                     }
                     // Defausse d'une carte Helico de la main du joueur
@@ -119,6 +128,7 @@ public class Controleur implements Observateur{
                         }
                         i++;
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                    
                     }
                     
                     // Sac de sable
@@ -135,6 +145,10 @@ public class Controleur implements Observateur{
                         }
                     i++;
                     vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                    vue.MettreAJourActions("Carte sac de sable utilisée");
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                    vue.repaint();
+
                     }
                     
                 } else {
@@ -152,6 +166,7 @@ public class Controleur implements Observateur{
             case TERMINER_TOUR:
                 System.out.println("TERMINER_TOUR");
                 actionUtilise = 10;
+                vue.MettreAJourActions("Fin du tour");
                 break;
                 
             case DONNER:
@@ -218,11 +233,14 @@ public class Controleur implements Observateur{
                     System.out.println("///////////////");
                     System.out.println(" Partie gagnée");
                     System.out.println("///////////////");
+                    vue.MettreAJourActions("Partie gagnée");
+
                 } else {
                     System.out.println();
                     System.out.println("///////////////");
                     System.out.println(" Partie perdue");
                     System.out.println("///////////////");
+                    vue.MettreAJourActions("Partie perdue");
                 }
                 break;
             case BOUGER_CARTES:
@@ -263,6 +281,7 @@ public class Controleur implements Observateur{
         joueurCourant = aventuriers.get(compteurTour%6);
         actionUtilise = 0;
         System.out.println("C'est maintenant le tour du "+joueurCourant.getRole()); 
+        vue.MettreAJourActions("C'est maintenant le tour du "+joueurCourant.getRole());
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());

@@ -5,6 +5,7 @@
  */
 package ile_interdite;
 
+import static ile_interdite.Type_Tresor.la_statue_du_zephyr;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -16,6 +17,10 @@ public class Plongeur extends Aventurier {
 
     public Plongeur(Tuile tuile) {
         super("Plongeur", tuile, Color.BLACK, 3,"<html>Le Plongeur peut passer par une <br> ou deux tuiles adjacentes inondées <br>et/ou manquantes pour une action (il doit terminer le tour sur une tuile). </html>");
+        //this.addCarte(new Partie_Tresor(la_statue_du_zephyr));
+        //this.addCarte(new Partie_Tresor(la_statue_du_zephyr));
+        //this.addCarte(new Partie_Tresor(la_statue_du_zephyr));
+        //this.addCarte(new Partie_Tresor(la_statue_du_zephyr));
     }
 
     @Override

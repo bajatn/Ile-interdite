@@ -22,11 +22,11 @@ class PanelCase extends JPanel{
         this.setObservateur(observateur);
         this.setLayout(new BorderLayout());
         // les tuiles submergée ne s'affichent pas
-        if (tuile.getEtat() != Submerge){
+       // if (tuile.getEtat() != Submerge){
             BoutonCase bouton = new BoutonCase(x, y, tuile);
             bouton.setObservateur(observateur);
             this.add(bouton);
-        }
+       // }
         JPanel panel = new JPanel(new GridLayout(1,tuile.getAventuriers().size()));
         for (Aventurier elem : tuile.getAventuriers()){
             JPanel panelNew = new JPanel();
