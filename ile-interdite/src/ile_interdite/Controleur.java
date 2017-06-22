@@ -24,6 +24,8 @@ public class Controleur implements Observateur{
     private Pile_de_Cartes_Tresor pileTresor;
     private Pile_de_Cartes_Inondation pileInondation;
     private Niveau_Eau niv;
+    private boolean recepteurChoisi;
+    private Carte_Tresor carteAPasser;
     
     public Controleur() {
         this.pileTresor = new Pile_de_Cartes_Tresor();
@@ -39,6 +41,7 @@ public class Controleur implements Observateur{
         aventuriers.add(new Navigateur(grille.getTuile(4,2)));
         this.joueurCourant = aventuriers.get(0);
         this.vue = new FenetreIHM(this,grille,aventuriers.get(1).getMain());
+        this.recepteurChoisi = false;
         vue.setObservateur(this);
         TourSuiv();
         
@@ -152,8 +155,9 @@ public class Controleur implements Observateur{
                 break;
                 
             case DONNER:
-            //  Afficher2(joueurCourant.donnerCarte());
-                actionSelect = 2;
+                defausse = 0;
+                vue.getAfficherCartes().activerCartesPartieTresor();
+
                 break;
                 
             case RECUPERER_TRESOR:
@@ -161,7 +165,14 @@ public class Controleur implements Observateur{
                 break;
                 
             case CARTE:
-                System.out.println("Entree traiterMessage CARTE");
+                
+                if  (defausse == 0){
+                    carteAPasser = message.getCarte();
+                    recepteurChoisi =true;
+                    vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
+                    actionUtilise++;
+                }
+                
                 if (defausse == 1){
                     joueurCourant.defausseCarteMain(message.getCarte(), pileTresor);
                     if (joueurCourant.getMain().size()<=4) {
@@ -222,6 +233,13 @@ public class Controleur implements Observateur{
                     vue.getAfficherCartes().cartesPrecedentes();
                 }
                 vue.repaint();                
+                break;
+                
+            case JOUEUR:
+                    joueurCourant.transfererCarte(message.getAventurier(), carteAPasser);
+                    recepteurChoisi =false;
+                    actionUtilise++; 
+                
                 break;
                     
                 
