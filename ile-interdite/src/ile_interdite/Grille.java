@@ -87,7 +87,6 @@ public class Grille {
     public void assécherTuile(int x, int y){
         if (getTuile(x, y) != null && getTuile(x, y).getEtat() != Submerge){
             getTuile(x, y).setEtat(Asseche);
-            System.out.println("La tuile " + x + "-" + y + " a été asséchée");System.out.println("");
         }
     }
     
@@ -96,14 +95,7 @@ public class Grille {
             tuile.setEtat(Inonde);
         } else if (tuile.getEtat() == Inonde){
             tuile.setEtat(Submerge);
-            System.out.println("\n"+tuile.getNom()+" a été submergée !");
-            if (tuile.getNom() == Heliport){
-                System.out.println("///////////////");
-                System.out.println(" Partie perdue");
-                System.out.println("///////////////");
-            }
             if (!(tuile.getAventuriers().isEmpty())){
-                System.out.println("Il y a " + tuile.getAventuriers().size() + " aventurier !");
                 // Il y a un ou plusieurs aventurier sur la case
                 // Calcul des cases disponnibles pour y mettre les aventuriers
                 ArrayList<Tuile> TuilesAdj = tuile.calculerAdjacent();
@@ -115,9 +107,7 @@ public class Grille {
                 }
                 int nbAventuriers = tuile.getAventuriers().size();
                 for (int i=0; i < nbAventuriers; i++){
-                    System.out.println("i = " + i);
                     Aventurier aventurier = tuile.getAventuriers().get(0);
-                    System.out.println("Aventurier que l'on parcours actuellement : " + aventurier);
                     if (TuilesDispo.isEmpty()){
                         // Partie perdue ! Aucune case disponnibles pour y mettre l'aventurier
                         System.out.println("///////////////");
@@ -125,10 +115,8 @@ public class Grille {
                         System.out.println("///////////////");
                     } else {
                         // L'aventurier est deplacer vers une case aleatoire
-                        System.out.println("test1");
                         Tuile tuileCible = TuilesDispo.get((int)Math.random()*TuilesDispo.size());
                         aventurier.deplacerVersTuile(tuileCible.getX(), tuileCible.getY());
-                        System.out.println("test2");
                     }
                 }
             }

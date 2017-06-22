@@ -222,14 +222,11 @@ class AfficheCartes extends JPanel {
         this.panelCartes.removeAll();
         for(int i=0;i<min(cartes.size()-decalage, 5);i++){
             if (cartes.isEmpty()){
-                panelCartes.add(new JButton());
-                System.out.println("JButton");
-               
+                panelCartes.add(new JButton());           
             }
             else{
                 BoutonCarte carte = new BoutonCarte(cartes.get(i+decalage),observateur,cas);
                 panelCartes.add(carte);
-                System.out.println("BoutonCarte");            
             }
         }
         this.revalidate();

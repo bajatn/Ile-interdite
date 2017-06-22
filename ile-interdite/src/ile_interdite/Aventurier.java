@@ -105,7 +105,6 @@ public abstract class Aventurier {
         tuileVisee = this.getTuileActu().getGrille().getTuile(x, y);
         setTuileActu(tuileVisee);
         this.tuileActu.addAventurier(this);
-        System.out.println("Votre Aventurier s'est déplacé en " + x + "-" + y);System.out.println("");
     }  
 
     
@@ -117,7 +116,6 @@ public abstract class Aventurier {
         Carte_Tresor carte_t = (Carte_Tresor) carte;
         
         if (carte_t.getType() == "Montee_des_eaux"){
-            System.out.println("Pioche carte Montée eau");
             pileI.ChangerPile();
             niv.monteNiveau();
             pileT.defausseCarte(carte_t);

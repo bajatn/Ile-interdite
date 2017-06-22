@@ -271,7 +271,6 @@ public class Controleur implements Observateur{
         joueurCourant.piocheCarteTresor(pileTresor, pileInondation, niv);
         vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());
         vue.getAfficherCases().MettreAjourCases(this, grille);
-        
         vue.getAfficherCartes().setDecalage(0);
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());
         vue.getAfficherCartes().mettreAJourCartes(joueurCourant.getMain());
