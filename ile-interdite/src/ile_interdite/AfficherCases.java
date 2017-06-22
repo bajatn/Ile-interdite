@@ -6,6 +6,7 @@
 package ile_interdite;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -22,7 +23,6 @@ class AfficherCases extends JPanel {
         this.setObservateur(observateur);
         this.setLayout(new GridLayout(6,6,10,10));
         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-
         //this.setBackground(Color.GREEN);
         
         for (int i=0;i<6;i++){
@@ -104,24 +104,31 @@ class AfficherCases extends JPanel {
                 
                 if (i==0||i==5){
                     if (y==2||y==3){
+                        System.out.println("Un panelCase est créé");
                         this.add(panelCase);
                     }
                     else{
+                        System.out.println("Un JLabel est créé");
                         this.add(new JLabel());
                     }   
                 }
                 if (i==1||i==4){
                     if(y==0||y==5){
+                        System.out.println("Un JLabel est créé");
                         this.add(new JLabel());
                     }
                     else{
+                        System.out.println("Un panelCase est créé");
                         this.add(panelCase);
                     }
                 }
                 if (i==2||i==3){
+                    System.out.println("Un panelCase est créé");
                     this.add(panelCase);
                 }
             }        
         }
+        this.revalidate();
+        
     }
 }

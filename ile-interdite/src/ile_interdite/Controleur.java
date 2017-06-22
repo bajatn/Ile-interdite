@@ -63,9 +63,9 @@ public class Controleur implements Observateur{
                     // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
-                    this.vue.getAfficherCases().MettreAjourCases(this, grille);
+                    vue.getAfficherCases().MettreAjourCases(this, grille);
+                    vue.repaint();
                     actionUtilise++;  
-                    this.vue.Repaint();
                     
                     // Assecher (ingenieur)
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
@@ -206,7 +206,7 @@ public class Controleur implements Observateur{
         vue.getAfficherNiveauEau().setNiveauEau(niv.getNiveau());
         vue.getAfficherCases().MettreAjourCases(this, grille);
         if (joueurCourant.getMain().size()>4) {
-            System.out.println("Veuillez vous deffausser de certaines cartes");
+            System.out.println("Veuillez vous défausser de certaines cartes");
             defausse = 1;
         }
         vue.setAfficheJoueur(joueurCourant.getDescription(),joueurCourant.getCouleur());

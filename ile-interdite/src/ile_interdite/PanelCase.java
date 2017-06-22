@@ -6,9 +6,7 @@
 package ile_interdite;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**

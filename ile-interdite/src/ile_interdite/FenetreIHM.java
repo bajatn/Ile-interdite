@@ -44,7 +44,7 @@ public class FenetreIHM {
             //Création et initialisation de la fenetre
         this.setObservateur(observateur);
         this.window = new JFrame();
-        window.setSize(1000,1000);
+        window.setSize(1100,1000);
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 
         //window.setDefaultCloseOperation();
@@ -127,5 +127,7 @@ public class FenetreIHM {
         return afficherJoueur;
     }
     
-    
+    public void repaint(){
+        window.repaint();
+    }
 }
