@@ -44,7 +44,7 @@ public class FenetreIHM {
             //Création et initialisation de la fenetre
         this.setObservateur(observateur);
         this.window = new JFrame();
-        window.setSize(1100,1000);
+        window.setSize(1700,1050);
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 
         //window.setDefaultCloseOperation();
