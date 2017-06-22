@@ -126,7 +126,7 @@ public class Controleur implements Observateur{
                     int i = 0;
                     while (carteDefausse == false){
                         Carte_Tresor carte = joueurCourant.getMain().get(i);
-                        if (carte.getType() == "Sac_de_Sable"){
+                        if (carte.getType() == "Sac_de_sable"){
                             joueurCourant.defausseCarteMain(carte, pileTresor);
                             carteDefausse = true;
                         }
