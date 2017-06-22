@@ -63,7 +63,9 @@ public class Controleur implements Observateur{
                     // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
+                    this.vue.getAfficherCases().MettreAjourCases(this, grille);
                     actionUtilise++;  
+                    this.vue.Repaint();
                     
                     // Assecher (ingenieur)
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
