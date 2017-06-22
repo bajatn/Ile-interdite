@@ -50,12 +50,22 @@ public class Controleur implements Observateur{
         if (null != message.getType()) switch (message.getType()) {
             case DEPLACER:
                 Afficher(joueurCourant.deplacer());
+                for (Tuile tuile : joueurCourant.deplacer()){
+                    tuile.setActive(true);
+                }
                 actionSelect = 0;
+                vue.getAfficherCases().MettreAjourCases(this, grille);
+                vue.repaint();
                 break;
                 
             case ASSECHER:
                 Afficher(joueurCourant.assecher());
+                for (Tuile tuile : joueurCourant.assecher()){
+                    tuile.setActive(true);
+                }
                 actionSelect = 1;
+                vue.getAfficherCases().MettreAjourCases(this, grille);
+                vue.repaint();
                 break;
                 
             case CHOIX:
@@ -63,6 +73,11 @@ public class Controleur implements Observateur{
                     // Deplacer
                 if (actionSelect == 0){
                     joueurCourant.deplacerVersTuile(message.getX(),message.getY());
+                    
+                    
+                    for (Tuile tuile : grille.getTuiles()){
+                        tuile.setActive(false);
+                    }
                     vue.getAfficherCases().MettreAjourCases(this, grille);
                     vue.repaint();
                     actionUtilise++;  
@@ -70,16 +85,33 @@ public class Controleur implements Observateur{
                     // Assecher (ingenieur)
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==true) {
                     grille.assécherTuile(message.getX(),message.getY());
+                    
+                    for (Tuile tuile : grille.getTuiles()){
+                        tuile.setActive(false);
+                    }
+                    vue.getAfficherCases().MettreAjourCases(this, grille);
+                    vue.repaint();
                     actionUtilise++;  
                 } else if (joueurCourant.getRole()=="Ingénieur" && actionSelect==1 && aDejaAsseche==false){
-                    grille.assécherTuile(message.getX(),message.getY());  
+                    grille.assécherTuile(message.getX(),message.getY()); 
+                    
+                    for (Tuile tuile : grille.getTuiles()){
+                        tuile.setActive(false);
+                    }
+                    vue.getAfficherCases().MettreAjourCases(this, grille);
+                    vue.repaint();
                     this.aDejaAsseche=true;     
                     
                     // Assecher
                 } else if (actionSelect == 1){
                     grille.assécherTuile(message.getX(),message.getY());
                     this.aDejaAsseche = false;
+                    
+                    for (Tuile tuile : grille.getTuiles()){
+                        tuile.setActive(false);
+                    }
                     vue.getAfficherCases().MettreAjourCases(this, grille);
+                    vue.repaint();
                     actionUtilise++;  
                     
                     // Donner carte

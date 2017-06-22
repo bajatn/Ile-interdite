@@ -28,8 +28,6 @@ class PanelCase extends JPanel{
             JPanel panelNew = new JPanel();
             panelNew.setBackground(elem.getCouleur());
             panel.add(panelNew, BorderLayout.SOUTH);
-            
-            
         }
         this.add(panel, BorderLayout.SOUTH);
     }
